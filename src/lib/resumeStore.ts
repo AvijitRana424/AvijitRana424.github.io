@@ -258,7 +258,8 @@ const downloadNameFor = (v: ResumeVersion) => (/\.pdf$/i.test(v.file_name) ? v.f
 async function fetchCurrentRow(): Promise<ResumeVersion | null> {
   const key = config.supabaseAnonKey;
   const res = await fetch(`${sbBase}/rest/v1/resume_versions?select=*&is_current=eq.true&limit=1`, {
-    headers: { apikey: key, Authorization: `Bearer ${key}`, Accept: 'application/json' },
+    // legacy anon keys are JWTs and also go in Authorization; new "sb_publishable_…" keys must not
+    headers: key.startsWith('sb_') ? { apikey: key, Accept: 'application/json' } : { apikey: key, Authorization: `Bearer ${key}`, Accept: 'application/json' },
     cache: 'no-store',
   });
   if (!res.ok) throw new Error(`resume_versions HTTP ${res.status}`);
