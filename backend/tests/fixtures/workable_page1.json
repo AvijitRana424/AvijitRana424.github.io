@@ -1,0 +1,71 @@
+{
+ "total": 3,
+ "results": [
+  {
+   "id": 6140066,
+   "shortcode": "ACD32AC5E1",
+   "title": "Operations Driver Success Specialist - Skroutz Last Mile (ODSS 1026)",
+   "remote": false,
+   "location": {
+    "country": "Greece",
+    "countryCode": "GR",
+    "city": "Metamorfosi",
+    "region": "Attica"
+   },
+   "locations": [
+    {
+     "country": "Greece",
+     "countryCode": "GR",
+     "city": "Metamorfosi",
+     "region": "Attica",
+     "hidden": false
+    }
+   ],
+   "state": "published",
+   "isInternal": false,
+   "code": "1026",
+   "published": "2026-09-23T00:00:00.000Z",
+   "type": "full",
+   "language": "en",
+   "department": [
+    "Last Mile"
+   ],
+   "accountUid": "80c18561-920b-46e3-bfcd-23738a7556d1",
+   "approvalStatus": "approved",
+   "workplace": "on_site"
+  },
+  {
+   "id": 6131311,
+   "shortcode": "C0CCE340BE",
+   "title": "Cargo Specialist - Skroutz Last Mile (CS0926)",
+   "remote": false,
+   "location": {
+    "country": "Greece",
+    "countryCode": "GR",
+    "city": "Athens",
+    "region": "Attica"
+   },
+   "locations": [
+    {
+     "country": "Greece",
+     "countryCode": "GR",
+     "city": "Athens",
+     "region": "Attica",
+     "hidden": false
+    }
+   ],
+   "state": "published",
+   "isInternal": false,
+   "code": "CS0926",
+   "published": "2026-09-22T00:00:00.000Z",
+   "language": "en",
+   "department": [
+    "Last Mile"
+   ],
+   "accountUid": "80c18561-920b-46e3-bfcd-23738a7556d1",
+   "approvalStatus": "approved",
+   "workplace": "on_site"
+  }
+ ],
+ "nextPage": "WzE3ODYzMjAwMDAwMDAsNTc2MjM5OF0="
+}

@@ -1,0 +1,50 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  padding: 36px 20px;
+  color: var(--chalk-dim);
+}
+.paper {
+  color: var(--ink-3);
+}
+.compact {
+  padding: 18px 10px;
+}
+.doodle {
+  width: 120px;
+  height: 120px;
+  color: var(--chalk-faint);
+  margin-bottom: 4px;
+}
+.paper .doodle {
+  color: var(--ink-3);
+  opacity: 0.6;
+}
+.compact .doodle {
+  width: 64px;
+  height: 64px;
+}
+.title {
+  font-family: var(--font-hand);
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--chalk);
+}
+.paper .title {
+  color: var(--ink);
+}
+.compact .title {
+  font-size: 17px;
+  color: var(--chalk-dim);
+}
+.body {
+  max-width: 380px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.action {
+  margin-top: 12px;
+}

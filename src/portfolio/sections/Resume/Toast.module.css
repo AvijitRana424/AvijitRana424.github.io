@@ -1,0 +1,36 @@
+.region {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 1050; /* above modals so viewer actions can toast too */
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  padding-inline: 16px;
+}
+.toast {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  max-width: min(440px, 100%);
+  padding: 11px 18px 11px 14px;
+  border-radius: 4px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--sticky) 0%, var(--sticky) 80%, var(--sticky-2) 100%);
+  box-shadow: var(--shadow-sticker);
+  pointer-events: auto;
+}
+.toast svg {
+  flex-shrink: 0;
+  color: var(--ink-2);
+}
+.error {
+  background: var(--paper);
+  border-left: 4px solid var(--accent);
+}
+.error svg {
+  color: var(--accent);
+}

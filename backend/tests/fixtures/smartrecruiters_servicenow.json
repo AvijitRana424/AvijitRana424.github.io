@@ -1,0 +1,263 @@
+{
+ "offset": 0,
+ "limit": 100,
+ "totalFound": 5,
+ "content": [
+  {
+   "id": "744000151949130",
+   "name": "Software Engineer",
+   "uuid": "d0879dd0-5ec9-4d0d-b0ca-4daf54d05051",
+   "jobAdId": "bcb5a6c9-ba39-4285-88f1-226aeafa33d5",
+   "defaultJobAd": true,
+   "refNumber": "JB0075720",
+   "company": {
+    "identifier": "ServiceNow",
+    "name": "ServiceNow"
+   },
+   "releasedDate": "2026-09-25T23:33:08.068Z",
+   "location": {
+    "city": "Santa Clara",
+    "region": "CALIFORNIA",
+    "country": "us",
+    "address": "Building A,B,C 2225 Lawson Lane",
+    "postalCode": "95054",
+    "remote": false,
+    "hybrid": false,
+    "fullLocation": "Santa Clara, CALIFORNIA, United States"
+   },
+   "industry": {
+    "id": "it_and_services",
+    "label": "Information Technology And Services"
+   },
+   "department": {
+    "id": "2294038",
+    "label": "Engineering, Infrastructure and Operations"
+   },
+   "function": {
+    "id": "engineering",
+    "label": "Engineering"
+   },
+   "typeOfEmployment": {
+    "id": "permanent",
+    "label": "Full-time"
+   },
+   "experienceLevel": {
+    "id": "entry_level",
+    "label": "Entry Level"
+   },
+   "visibility": "PUBLIC",
+   "ref": "https://api.smartrecruiters.com/v1/companies/ServiceNow/postings/744000151949130",
+   "language": {
+    "code": "en",
+    "label": "English",
+    "labelNative": "English (US)"
+   }
+  },
+  {
+   "id": "744000151896179",
+   "name": "Senior Software Engineer",
+   "uuid": "c876b202-49ab-4ce2-a5a2-240b429d4aed",
+   "jobAdId": "1c358909-db93-4bb5-9df3-67d73899ed6b",
+   "defaultJobAd": true,
+   "refNumber": "JB0075689",
+   "company": {
+    "identifier": "ServiceNow",
+    "name": "ServiceNow"
+   },
+   "releasedDate": "2026-09-25T16:20:44.895Z",
+   "location": {
+    "city": "Santa Clara",
+    "region": "California",
+    "country": "us",
+    "address": "Building A,B,C 2225 Lawson Lane",
+    "postalCode": "95054",
+    "remote": false,
+    "hybrid": true,
+    "hybridDescription": "2 days in office",
+    "fullLocation": "Santa Clara, California, United States"
+   },
+   "industry": {
+    "id": "it_and_services",
+    "label": "Information Technology And Services"
+   },
+   "department": {
+    "id": "2294038",
+    "label": "Engineering, Infrastructure and Operations"
+   },
+   "function": {
+    "id": "engineering",
+    "label": "Engineering"
+   },
+   "typeOfEmployment": {
+    "id": "permanent",
+    "label": "Full-time"
+   },
+   "experienceLevel": {
+    "id": "not_applicable",
+    "label": "Not Applicable"
+   },
+   "visibility": "PUBLIC",
+   "ref": "https://api.smartrecruiters.com/v1/companies/ServiceNow/postings/744000151896179",
+   "creator": {
+    "name": "Tina Schneider"
+   },
+   "language": {
+    "code": "en",
+    "label": "English",
+    "labelNative": "English (US)"
+   }
+  },
+  {
+   "id": "744000151797409",
+   "name": "Sr Software Engineer",
+   "uuid": "249a96c8-fea7-4e61-abea-a40d5fbb32f7",
+   "jobAdId": "c7db1dae-39d2-45b0-92e7-30dc92e9a4cd",
+   "defaultJobAd": true,
+   "refNumber": "JB0075729",
+   "company": {
+    "identifier": "ServiceNow",
+    "name": "ServiceNow"
+   },
+   "releasedDate": "2026-09-25T09:08:06.524Z",
+   "location": {
+    "city": "Hyderabad",
+    "country": "in",
+    "address": "Salarpuria Sattva Knowledge City Knowledge City, Unit II, 17 to 10 Floor Survey No. 83/1, Serilingampally Mandal",
+    "postalCode": "500081",
+    "remote": false,
+    "hybrid": true,
+    "fullLocation": "Hyderabad, , India"
+   },
+   "industry": {
+    "id": "it_and_services",
+    "label": "Information Technology And Services"
+   },
+   "department": {
+    "id": "2294038",
+    "label": "Engineering, Infrastructure and Operations"
+   },
+   "function": {
+    "id": "engineering",
+    "label": "Engineering"
+   },
+   "typeOfEmployment": {
+    "id": "permanent",
+    "label": "Full-time"
+   },
+   "experienceLevel": {
+    "id": "not_applicable",
+    "label": "Not Applicable"
+   },
+   "visibility": "PUBLIC",
+   "ref": "https://api.smartrecruiters.com/v1/companies/ServiceNow/postings/744000151797409",
+   "language": {
+    "code": "en",
+    "label": "English",
+    "labelNative": "English (US)"
+   }
+  },
+  {
+   "id": "744000151981339",
+   "name": "Sr. Staff Product Designer, Mobile Experience Strategy & Systems ",
+   "uuid": "da22c5f6-007d-482b-95f7-c01bc41c83a5",
+   "jobAdId": "67ce9ec0-9d17-4c47-91a1-ac250aa27eca",
+   "defaultJobAd": true,
+   "refNumber": "JB0075768",
+   "company": {
+    "identifier": "ServiceNow",
+    "name": "ServiceNow"
+   },
+   "releasedDate": "2026-09-26T03:12:04.607Z",
+   "location": {
+    "city": "Santa Clara",
+    "region": "CALIFORNIA",
+    "country": "us",
+    "address": "Building A,B,C 2225 Lawson Lane",
+    "postalCode": "95054",
+    "remote": false,
+    "hybrid": false,
+    "fullLocation": "Santa Clara, CALIFORNIA, United States"
+   },
+   "industry": {
+    "id": "it_and_services",
+    "label": "Information Technology And Services"
+   },
+   "department": {
+    "id": "2907670",
+    "label": "User Experience Design"
+   },
+   "function": {
+    "id": "design",
+    "label": "Design"
+   },
+   "typeOfEmployment": {
+    "id": "permanent",
+    "label": "Full-time"
+   },
+   "experienceLevel": {
+    "id": "not_applicable",
+    "label": "Not Applicable"
+   },
+   "visibility": "PUBLIC",
+   "ref": "https://api.smartrecruiters.com/v1/companies/ServiceNow/postings/744000151981339",
+   "creator": {
+    "name": "Desiree Quan"
+   },
+   "language": {
+    "code": "en",
+    "label": "English",
+    "labelNative": "English (US)"
+   }
+  },
+  {
+   "id": "744000151946239",
+   "name": "Client Director - Strategic Tech",
+   "uuid": "debf3468-f965-4c83-8441-a9512b0b0109",
+   "jobAdId": "bb2bbc64-5e04-47a9-948a-c76908acf391",
+   "defaultJobAd": true,
+   "refNumber": "JB0075348",
+   "company": {
+    "identifier": "ServiceNow",
+    "name": "ServiceNow"
+   },
+   "releasedDate": "2026-09-25T22:28:46.277Z",
+   "location": {
+    "city": "Santa Clara",
+    "region": "California",
+    "country": "us",
+    "address": "2225 Lawson Lane",
+    "postalCode": "95054",
+    "remote": true,
+    "hybrid": false,
+    "fullLocation": "Santa Clara, California, United States"
+   },
+   "industry": {
+    "id": "it_and_services",
+    "label": "Information Technology And Services"
+   },
+   "department": {
+    "id": "2294208",
+    "label": "Sales"
+   },
+   "function": {
+    "id": "sales",
+    "label": "Sales"
+   },
+   "typeOfEmployment": {
+    "id": "permanent",
+    "label": "Full-time"
+   },
+   "experienceLevel": {
+    "id": "mid_senior_level",
+    "label": "Mid-Senior Level"
+   },
+   "visibility": "PUBLIC",
+   "ref": "https://api.smartrecruiters.com/v1/companies/ServiceNow/postings/744000151946239",
+   "language": {
+    "code": "en",
+    "label": "English",
+    "labelNative": "English (US)"
+   }
+  }
+ ]
+}

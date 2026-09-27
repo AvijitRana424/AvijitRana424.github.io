@@ -1,0 +1,89 @@
+/* ─────────────────────────────────────────────────────────────
+   Design tokens — "chalkboard studio"
+   Dark slate board, warm paper cards, red handwritten accents.
+   Use these variables everywhere; do not hard-code colors.
+   ───────────────────────────────────────────────────────────── */
+:root {
+  /* board */
+  --board: #1b1b1a;
+  --board-2: #222221;
+  --board-3: #2b2b29;
+  --board-line: rgba(232, 228, 220, 0.08);
+  --board-line-strong: rgba(232, 228, 220, 0.16);
+
+  /* chalk (text/lines drawn on the board) */
+  --chalk: #ece8df;
+  --chalk-dim: rgba(236, 232, 223, 0.62);
+  --chalk-faint: rgba(236, 232, 223, 0.28); /* lines & doodles only — NOT for text (2.3:1) */
+  --chalk-muted: rgba(236, 232, 223, 0.55); /* smallest allowed text on the board (5.1:1) */
+  --chalk-red: #e8685a;
+  --chalk-yellow: #ecc94b;
+  --chalk-blue: #8ec5e8;
+  --chalk-green: #9bd1a3;
+
+  /* paper (cards pinned on the board) */
+  --paper: #f5efe6;
+  --paper-2: #efe7db;
+  --paper-3: #e6dccd;
+  --paper-line: rgba(40, 32, 24, 0.12);
+  --sticky: #f8e9a6;
+  --sticky-2: #f3dc86;
+  --tape: rgba(206, 192, 166, 0.78);
+  --kraft: #c9a878;
+
+  /* ink (text on paper) */
+  --ink: #1f1c19;
+  --ink-2: #4a443d;
+  --ink-3: #675f55; /* ≥ 4.6:1 on every paper tone */
+
+  /* accent */
+  --accent: #d9503f; /* red marker */
+  --accent-2: #b93c2d;
+  --accent-ink: #aa3627; /* red TEXT on paper (≥ 4.5:1); keep --accent for strokes, fills, underlines */
+  --accent-soft: rgba(217, 80, 63, 0.12);
+  --pin: #d23c2e;
+
+  /* status colors (tracker) */
+  --st-new: #8ec5e8;
+  --st-saved: #c7b8f0;
+  --st-applied: #ecc94b;
+  --st-interview: #f0a35e;
+  --st-offer: #7fcf8b;
+  --st-rejected: #e8685a;
+  --st-archived: #9a948a;
+
+  /* github heatmap */
+  --heat-0: #e7e0d4;
+  --heat-1: #9be0a8;
+  --heat-2: #58c26f;
+  --heat-3: #2f9a4b;
+  --heat-4: #1a6b31;
+
+  /* type */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-hand: 'Gochi Hand', 'Caveat', 'Comic Sans MS', cursive;
+  --font-chalk: 'Caveat', 'Gochi Hand', cursive;
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* radii + shadows */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 26px;
+  --shadow-paper: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 12px 28px -12px rgba(0, 0, 0, 0.55),
+    0 3px 8px -2px rgba(0, 0, 0, 0.35);
+  --shadow-lift: 0 30px 60px -20px rgba(0, 0, 0, 0.7), 0 10px 20px -8px rgba(0, 0, 0, 0.45);
+  --shadow-sticker: 0 6px 14px -4px rgba(0, 0, 0, 0.55);
+
+  /* layout */
+  --container: 1160px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --nav-h: 88px;
+  /* vertical rhythm: every portfolio section uses this as padding-top (bottom padding 0) */
+  --section-y: clamp(56px, 7vw, 96px);
+
+  /* motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}

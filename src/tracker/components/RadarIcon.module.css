@@ -1,0 +1,42 @@
+.radar {
+  flex: none;
+  overflow: visible;
+}
+.sweep {
+  transform-origin: 20px 20px;
+  animation: sweep 3.6s linear infinite;
+}
+.blip {
+  opacity: 0.2;
+  animation: blip 3.6s ease-out infinite;
+}
+.b2 {
+  animation-delay: 1.9s;
+}
+.b3 {
+  animation-delay: 2.7s;
+}
+@keyframes sweep {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes blip {
+  0%,
+  8% {
+    opacity: 1;
+  }
+  60%,
+  100% {
+    opacity: 0.2;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sweep,
+  .blip {
+    animation: none;
+  }
+  .blip {
+    opacity: 0.9;
+  }
+}

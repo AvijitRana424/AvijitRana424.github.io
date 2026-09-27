@@ -1,0 +1,274 @@
+.app {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.shell {
+  flex: 1;
+  width: 100%;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding: 26px var(--gutter) 64px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 22px;
+}
+
+/* demo banner — a sticky note taped to the top of the board */
+.banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding: 12px 12px 12px 18px;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--sticky) 0%, var(--sticky) 80%, var(--sticky-2) 100%);
+  border-radius: 3px;
+  box-shadow: var(--shadow-sticker);
+  overflow: visible;
+}
+.bannerTape {
+  position: absolute;
+  top: -11px;
+  right: 18%;
+  width: 84px;
+  height: 22px;
+  background: var(--tape);
+  transform: rotate(4deg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  clip-path: polygon(0 8%, 8% 0, 16% 9%, 28% 1%, 40% 8%, 54% 0, 66% 9%, 80% 1%, 92% 8%, 100% 0, 100% 92%, 90% 100%, 78% 91%, 64% 100%, 50% 92%, 36% 100%, 22% 91%, 10% 100%, 0 92%);
+}
+.bannerText {
+  flex: 1 1 320px;
+  font-size: 14.5px;
+  line-height: 1.45;
+}
+.bannerText b {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: 19px;
+  color: var(--accent-ink);
+  margin-right: 2px;
+}
+.bannerText code {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.07);
+}
+.bannerActions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+.bannerAsk {
+  font-family: var(--font-hand);
+  font-size: 17px;
+  margin-right: 4px;
+}
+.bannerBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 600;
+  border: 1.5px solid rgba(0, 0, 0, 0.18);
+  transition: background 0.15s;
+}
+.bannerBtn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.45);
+}
+.bannerDanger {
+  color: var(--paper);
+  background: var(--accent-2);
+  border-color: transparent;
+}
+.bannerDanger:hover:not(:disabled) {
+  background: var(--accent);
+}
+.bannerClose {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--ink-2);
+}
+.bannerClose:hover {
+  background: rgba(0, 0, 0, 0.07);
+}
+
+/* greeting */
+.hello {
+  padding-top: 2px;
+}
+.h1 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 14px;
+  font-family: var(--font-chalk);
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.05;
+  color: var(--chalk);
+}
+.h1Sub {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: clamp(18px, 1.8vw, 22px);
+  color: var(--chalk-dim);
+}
+.sample {
+  align-self: center;
+  padding: 2px 10px 3px;
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  background: var(--kraft);
+  border-radius: 3px;
+  box-shadow: var(--shadow-sticker);
+  transform: rotate(-3deg);
+}
+.hot {
+  color: var(--chalk-red);
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+.tabsWrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
+  margin-top: 6px;
+}
+.panel {
+  outline: none;
+  min-width: 0;
+}
+.panel[hidden] {
+  display: none;
+}
+.panelFallback {
+  display: grid;
+  gap: 14px;
+}
+
+.error {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+  padding: 24px;
+  border-radius: var(--r-md);
+  border: 1.5px dashed var(--chalk-red);
+  color: var(--chalk-dim);
+}
+.errorTitle {
+  font-family: var(--font-hand);
+  font-size: 26px;
+  color: var(--chalk-red);
+}
+.errorActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+.retry,
+.retryGhost {
+  min-height: 40px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  color: var(--ink);
+  background: var(--paper);
+  font-weight: 600;
+}
+.retryGhost {
+  color: var(--chalk);
+  background: transparent;
+  border: 1.5px dashed var(--chalk-dim);
+}
+
+.foot {
+  position: relative;
+  z-index: 1;
+  padding: 18px var(--gutter) 28px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--chalk-muted);
+}
+.foot :global(.hand) {
+  font-size: 16px;
+  color: var(--chalk-dim);
+}
+@media (max-width: 640px) {
+  .shell {
+    padding-top: 16px;
+    gap: 14px;
+  }
+  .banner {
+    flex-wrap: nowrap;
+    gap: 6px;
+    padding: 8px 4px 8px 12px;
+  }
+  .bannerText {
+    flex: 1 1 auto;
+    font-size: 13.5px;
+    line-height: 1.35;
+  }
+  .bannerText b {
+    font-size: 17px;
+  }
+  .bannerMore {
+    display: none;
+  }
+  .bannerActions {
+    gap: 2px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .bannerBtn {
+    padding: 6px 12px;
+  }
+  .h1 {
+    font-size: 30px;
+    gap: 0 10px;
+  }
+  .h1Sub {
+    font-size: 17px;
+  }
+  .sample {
+    order: 1;
+    font-size: 14px;
+  }
+  /* own line on phones, so the height is the same while loading and once the count is known */
+  .h1Sub {
+    order: 2;
+    flex-basis: 100%;
+  }
+  .tabsWrap {
+    gap: 14px;
+    margin-top: 2px;
+  }
+}
+.banner {
+  --focus-ring: var(--ink);
+}
+.banner :focus-visible {
+  outline-color: var(--ink);
+}

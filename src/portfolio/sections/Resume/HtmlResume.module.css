@@ -1,0 +1,225 @@
+/* A one-page, LaTeX-flavoured resume typeset from profile.ts.
+   Designed at 816 × 1056 (US Letter @ 96dpi) and scaled by <FitPage>. */
+.page {
+  --rs-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, 'Times New Roman', serif;
+  box-sizing: border-box;
+  width: 816px;
+  min-height: 1056px;
+  padding: 40px 54px 36px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--rs-serif);
+  /* every size below is in em, so the auto-fit pass only has to change this one value */
+  font-size: 12px;
+  line-height: 1.34;
+  text-align: left;
+  -webkit-font-smoothing: antialiased;
+  --focus-ring: var(--accent-2);
+}
+.page a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--paper-line);
+  text-underline-offset: 2px;
+}
+.page a:hover {
+  color: var(--accent-ink);
+}
+
+.head {
+  text-align: center;
+  margin-bottom: 0.6em;
+}
+.name {
+  font-size: 2.6em;
+  line-height: 1.05;
+  font-variant: small-caps;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+}
+.role {
+  margin-top: 0.2em;
+  font-size: 1.08em;
+  font-style: italic;
+  color: var(--ink-2);
+}
+.contact {
+  margin-top: 0.3em;
+  font-size: 1em;
+  color: var(--ink-2);
+}
+.sep {
+  display: inline-block;
+  margin-inline: 0.55em;
+  color: var(--ink-3);
+}
+
+.block {
+  margin-top: 0.7em;
+}
+.blockTitle {
+  font-family: var(--rs-serif);
+  font-size: 1.25em;
+  font-weight: 600;
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  padding-bottom: 0.1em;
+  margin-bottom: 0.3em;
+  border-bottom: 1px solid var(--ink);
+  color: var(--ink);
+}
+
+.summary {
+  color: var(--ink);
+}
+
+.entry + .entry {
+  margin-top: 0.45em;
+}
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.3em;
+}
+.rowLeft {
+  min-width: 0;
+}
+.rowRight {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.subRow {
+  font-style: italic;
+  font-size: 0.96em;
+  color: var(--ink-2);
+}
+.subRow > span:last-child {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.note {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink-2);
+}
+.role2 {
+  margin-top: 0.15em;
+}
+.role2 + .role2 {
+  margin-top: 0.4em;
+}
+.tech {
+  font-size: 0.96em;
+  color: var(--ink-2);
+}
+
+.bullets {
+  margin: 0.15em 0 0;
+  padding-left: 1.5em;
+}
+.bullets li {
+  padding-left: 0.15em;
+}
+.bullets li + li {
+  margin-top: 0.08em;
+}
+.bullets li::marker {
+  color: var(--ink-3);
+  font-size: 0.8em;
+}
+
+.skills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+}
+.skills strong {
+  font-weight: 700;
+}
+
+/* ── reading layout (phones): reflowing single column at a readable size ── */
+.flow {
+  width: auto;
+  max-width: 68ch;
+  min-height: 0;
+  margin-inline: auto;
+  padding: clamp(20px, 5vw, 36px) clamp(18px, 5vw, 40px) clamp(24px, 6vw, 40px);
+  /* --rs-text is set by the viewer's text-size control */
+  font-size: var(--rs-text, 16px);
+  line-height: 1.5;
+  overflow-wrap: break-word;
+}
+.flow .head {
+  margin-bottom: 1em;
+}
+.flow .name {
+  font-size: 2em;
+}
+.flow .role {
+  font-size: 1em;
+}
+.flow .contact {
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+/* contact items wrap as a centred cluster; the "|" separators would start wrapped lines */
+.flow .contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.1em 1em;
+}
+.flow .contact .sep {
+  display: none;
+}
+.flow .block {
+  margin-top: 1.3em;
+}
+.flow .blockTitle {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+.flow .row {
+  flex-wrap: wrap;
+  gap: 0 0.8em;
+}
+.flow .rowRight,
+.flow .subRow > span:last-child {
+  white-space: normal;
+  color: var(--ink-2);
+}
+.flow .subRow {
+  font-size: 0.92em;
+}
+.flow .entry + .entry {
+  margin-top: 0.9em;
+}
+.flow .role2 + .role2 {
+  margin-top: 0.7em;
+}
+.flow .bullets {
+  margin-top: 0.3em;
+  padding-left: 1.2em;
+}
+.flow .bullets li + li {
+  margin-top: 0.3em;
+}
+.flow .skills {
+  gap: 0.35em;
+}
+
+/* ── scaling wrapper ─────────────────────────────────────────────── */
+.fit {
+  position: relative;
+  overflow: hidden;
+}
+.fitInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+}

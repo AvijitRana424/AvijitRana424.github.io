@@ -1,0 +1,137 @@
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 500;
+  white-space: nowrap;
+  border-radius: 999px;
+  transition: transform 0.18s var(--ease-out), background 0.2s, color 0.2s, box-shadow 0.2s, border-color 0.2s;
+  user-select: none;
+}
+.btn:active:not(:disabled) {
+  transform: translateY(1px) scale(0.98);
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.icon {
+  display: inline-flex;
+}
+.icon svg {
+  width: 1.1em;
+  height: 1.1em;
+}
+.sm {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+.md {
+  padding: 9px 18px;
+  font-size: 14.5px;
+}
+.lg {
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+/* red marker blob with scribble texture */
+.marker {
+  color: #fff4ee;
+  font-family: var(--font-hand);
+  font-size: 1.12em;
+  letter-spacing: 0.02em;
+  background: radial-gradient(120% 140% at 30% 30%, #cf4f3d 0%, var(--accent-2) 55%, #9f3024 100%);
+  border-radius: 46% 54% 50% 50% / 60% 55% 45% 40%;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.15), 0 6px 16px -6px rgba(217, 80, 63, 0.7);
+}
+.marker::before {
+  content: '';
+  position: absolute;
+  inset: 3px 6px;
+  border-radius: inherit;
+  background: repeating-linear-gradient(-28deg, rgba(255, 255, 255, 0.09) 0 2px, transparent 2px 6px);
+  pointer-events: none;
+}
+.marker:hover:not(:disabled) {
+  transform: rotate(-2deg) scale(1.04);
+}
+
+.chalk {
+  color: var(--chalk);
+  border: 1.5px dashed var(--chalk-faint);
+  background: rgba(255, 255, 255, 0.02);
+}
+.chalk:hover:not(:disabled) {
+  border-color: var(--chalk);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.paper {
+  color: var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-sticker);
+}
+.paper:hover:not(:disabled) {
+  background: #fff9f0;
+  transform: translateY(-1px);
+}
+
+.ink {
+  color: var(--paper);
+  background: var(--ink);
+}
+.ink:hover:not(:disabled) {
+  background: #36312b;
+}
+
+.ghost {
+  color: inherit;
+  padding-inline: 8px;
+}
+.ghost:hover:not(:disabled) {
+  /* --ghost-hover is set to --accent-ink on paper surfaces (contrast) */
+  color: var(--ghost-hover, var(--accent));
+}
+
+.loading {
+  pointer-events: none;
+}
+.loading::after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.iconBtn {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  color: var(--ink-2);
+  background: var(--paper);
+  border: 1px solid var(--paper-line);
+  box-shadow: 0 2px 0 var(--paper-3);
+  transition: transform 0.15s var(--ease-out), color 0.15s, box-shadow 0.15s;
+}
+.iconBtn svg {
+  width: 17px;
+  height: 17px;
+}
+.iconBtn:hover {
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 0 var(--paper-3);
+}

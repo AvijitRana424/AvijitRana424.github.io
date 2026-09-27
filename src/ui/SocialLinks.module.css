@@ -1,0 +1,35 @@
+.list {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.link {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--accent);
+  background: var(--paper);
+  border: 2px dotted var(--accent);
+  box-shadow: 0 0 0 3px var(--paper), var(--shadow-sticker);
+  transition: background 0.2s, color 0.2s;
+}
+.link svg {
+  width: 20px;
+  height: 20px;
+}
+.link:hover {
+  background: var(--accent);
+  color: var(--paper);
+}
+.sm .link {
+  width: 36px;
+  height: 36px;
+}
+.sm .link svg {
+  width: 16px;
+  height: 16px;
+}

@@ -1,0 +1,35 @@
+{
+ "total": 3,
+ "results": [
+  {
+   "id": 1264893,
+   "shortcode": "4FFDCB70B4",
+   "title": "Join Skroutz",
+   "remote": false,
+   "location": {
+    "country": "Greece",
+    "countryCode": "GR",
+    "city": "Athens",
+    "region": "Attica"
+   },
+   "locations": [
+    {
+     "country": "Greece",
+     "countryCode": "GR",
+     "city": "Athens",
+     "region": "Attica",
+     "hidden": false
+    }
+   ],
+   "state": "published",
+   "isInternal": false,
+   "code": "",
+   "published": "2026-07-27T00:00:00.000Z",
+   "language": "en",
+   "department": [],
+   "accountUid": "80c18561-920b-46e3-bfcd-23738a7556d1",
+   "approvalStatus": "approved",
+   "workplace": "hybrid"
+  }
+ ]
+}

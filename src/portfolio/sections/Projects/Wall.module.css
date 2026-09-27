@@ -1,0 +1,287 @@
+.track {
+  position: relative;
+  --card-w: 348px;
+  --card-h: 408px;
+  --wall-scale-h: 1;
+  --wall-scale-w: 1;
+}
+
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* this is the section's --section-y: at least one rhythm step, and always clear of the fixed nav */
+  padding-top: max(var(--section-y), calc(var(--nav-h) + 16px));
+  overflow: clip;
+  touch-action: pan-y;
+  cursor: grab;
+  outline: none;
+}
+.dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+.dragging * {
+  cursor: grabbing !important;
+}
+/* keyboard focus on the wall → outline the front card */
+.stage:focus-visible .front .tilt {
+  outline: 2px dashed var(--chalk-yellow);
+  outline-offset: 10px;
+  border-radius: var(--r-md);
+}
+
+.head {
+  flex: none;
+  position: relative;
+  z-index: 2;
+}
+
+.scene {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  perspective: 1400px;
+  perspective-origin: 50% 38%;
+}
+.ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  scale: min(var(--wall-scale-h), var(--wall-scale-w));
+}
+
+.slot {
+  position: absolute;
+  left: calc(var(--card-w) / -2);
+  top: calc(var(--card-h) / -2);
+  width: var(--card-w);
+  height: var(--card-h);
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+}
+/* cards turned away from the front: freeze their illustration loops */
+.slot[data-far] * {
+  animation-play-state: paused !important;
+}
+.pop,
+.tilt {
+  height: 100%;
+}
+.shade {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-md);
+  background: var(--board);
+  pointer-events: none;
+  will-change: opacity; /* its own layer: the per-frame fade never repaints the card */
+}
+
+.floor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1440px;
+  height: 1440px;
+  pointer-events: none;
+}
+.floorSvg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.floorRing,
+.floorRingInner,
+.floorMark,
+.floorMarkDim {
+  fill: none;
+  stroke-linecap: round;
+}
+.floorRing {
+  stroke: var(--chalk-faint);
+  stroke-width: 5;
+  stroke-dasharray: 2 26;
+}
+.floorRingInner {
+  stroke: var(--board-line-strong);
+  stroke-width: 3;
+}
+.floorMark {
+  stroke: var(--chalk-dim);
+  stroke-width: 5;
+}
+.floorMarkDim {
+  stroke: var(--chalk-faint);
+  stroke-width: 4;
+}
+
+/* chalk notes on the board beside the wall */
+.note {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-chalk);
+  font-size: 28px;
+  line-height: 1.05;
+  color: var(--chalk-dim);
+  pointer-events: none;
+  z-index: 0;
+}
+.noteStart {
+  right: calc(50% + var(--card-w) / 2 + 72px);
+  margin-top: -70px;
+  align-items: flex-end;
+  text-align: right;
+  transform: rotate(-4deg);
+}
+.noteEnd {
+  left: calc(50% + var(--card-w) / 2 + 80px);
+  margin-top: -60px;
+  transform: rotate(3deg);
+}
+.noteArrow {
+  width: 110px;
+  height: 56px;
+  margin-top: 6px;
+  margin-right: -64px;
+  overflow: visible;
+}
+.noteArrow path,
+.noteStar path {
+  fill: none;
+  stroke: var(--chalk-dim);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.noteStar {
+  width: 34px;
+  height: 34px;
+  margin-bottom: 6px;
+}
+.noteStar path {
+  stroke: var(--chalk-yellow);
+}
+
+/* ── controls ─────────────────────────────────── */
+.controls {
+  flex: none;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: end;
+  gap: clamp(14px, 2vw, 28px);
+  max-width: 940px;
+  min-height: 50px;
+  padding-bottom: var(--wall-controls-pb, clamp(14px, 3.2vh, 34px));
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: default;
+}
+.navBtn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--chalk);
+  border: 1.5px dashed var(--chalk-faint);
+  transition: border-color 0.2s, background 0.2s, transform 0.2s var(--ease-out), opacity 0.2s;
+}
+.navBtn:hover:not(:disabled) {
+  border-color: var(--chalk);
+  background: rgba(255, 255, 255, 0.06);
+  transform: scale(1.06);
+}
+.navBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.counter {
+  min-width: 78px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--chalk-dim);
+}
+.counter b {
+  font-weight: 600;
+  color: var(--chalk);
+  font-size: 16px;
+}
+.puppyTrack {
+  align-self: center;
+}
+.hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-hand);
+  font-size: 19px;
+  color: var(--chalk-dim);
+  white-space: nowrap;
+  padding-bottom: 8px;
+}
+.hintArrow {
+  width: 30px;
+  height: 18px;
+  flex: none;
+  fill: none;
+  stroke: var(--chalk-dim);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* smaller laptops: shrink the wall so the whole stage fits */
+@media (max-height: 860px) {
+  .track {
+    --wall-scale-h: 0.92;
+  }
+}
+@media (max-height: 780px) {
+  .track {
+    --wall-scale-h: 0.84;
+  }
+  .stage {
+    padding-top: calc(var(--nav-h) + 2px);
+  }
+}
+@media (max-height: 700px) {
+  .track {
+    --wall-scale-h: 0.74;
+  }
+}
+@media (max-height: 620px) {
+  .track {
+    --wall-scale-h: 0.64;
+  }
+}
+@media (max-width: 1180px) {
+  .track {
+    --wall-scale-w: 0.92;
+  }
+}
+@media (max-width: 1020px) {
+  .track {
+    --wall-scale-w: 0.84;
+  }
+  .hint,
+  .note {
+    display: none;
+  }
+  .controls {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+}

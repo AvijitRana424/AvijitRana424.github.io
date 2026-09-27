@@ -1,0 +1,113 @@
+name: Job Radar scan
+
+# Privacy: in a public repository these logs and job summaries are public. The scanner therefore
+# prints only counts and anonymised lines ("company #3: 212 postings, 2 matches, ok"); company names,
+# titles and errors go to Supabase, which only the owner can read. Set the repository variable
+# LOG_DETAILS=true to print full detail (do that only in a private repository). Note that GitHub
+# shows every step's env block in the log: keep personal values (EMAIL_TO, EMAIL_FROM) in secrets,
+# and remember the optional "company" input of a manual run is visible too.
+
+on:
+  schedule:
+    - cron: '30 3 * * *' # 03:30 UTC = 09:00 IST, every day
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run — read only: no database writes, no email'
+        type: boolean
+        default: false
+      company:
+        description: 'Only scan this company (name, optional — shown in the public log)'
+        type: string
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: job-radar-scan
+  cancel-in-progress: false # never kill a scan halfway through its database writes
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    # The scanner stops starting new companies after RUN_TIME_BUDGET (13 min) and gives up on a single
+    # company after COMPANY_TIME_BUDGET (4 min), so the digest and the fetch_runs row are always written
+    # well before this hard limit.
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: backend/requirements*.txt
+
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+
+      # Only for career pages that render their job list with JavaScript.
+      # Enable with the repository variable ENABLE_BROWSER = true (adds ~1 min to the run).
+      - name: Install headless Chromium
+        if: ${{ vars.ENABLE_BROWSER == 'true' }}
+        run: |
+          python -m pip install -r requirements-browser.txt
+          python -m playwright install --with-deps chromium
+
+      - name: Scan career pages
+        env:
+          # Secrets: Settings → Secrets and variables → Actions → Secrets
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL || vars.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM || vars.EMAIL_FROM }}
+          # Variables (all optional; empty = the scanner's default): Settings → Secrets and variables → Actions → Variables
+          EMAIL_PROVIDER: ${{ vars.EMAIL_PROVIDER }}
+          SMTP_HOST: ${{ vars.SMTP_HOST }}
+          SMTP_PORT: ${{ vars.SMTP_PORT }}
+          SITE_URL: ${{ vars.SITE_URL }}
+          MAX_WORKERS: ${{ vars.MAX_WORKERS }}
+          REQUEST_TIMEOUT: ${{ vars.REQUEST_TIMEOUT }}
+          ENRICH_LIMIT: ${{ vars.ENRICH_LIMIT }}
+          COMPANY_TIME_BUDGET: ${{ vars.COMPANY_TIME_BUDGET }}
+          RUN_TIME_BUDGET: ${{ vars.RUN_TIME_BUDGET }}
+          LOG_DETAILS: ${{ vars.LOG_DETAILS }}
+          RUN_TRIGGER: ${{ github.event_name == 'schedule' && 'schedule' || 'manual' }}
+          DRY_RUN: ${{ inputs.dry_run && 'true' || 'false' }}
+          COMPANY: ${{ inputs.company }}
+          PYTHONUNBUFFERED: '1'
+        run: |
+          # Default link in the email: the GitHub Pages URL of this repo
+          if [ -z "$SITE_URL" ]; then
+            owner="${GITHUB_REPOSITORY%%/*}"; repo="${GITHUB_REPOSITORY#*/}"
+            if [ "$repo" = "$owner.github.io" ]; then SITE_URL="https://$repo/"; else SITE_URL="https://$owner.github.io/$repo/"; fi
+            export SITE_URL
+          fi
+          args=()
+          if [ -n "$COMPANY" ]; then args+=(--company "$COMPANY"); fi
+          python -m job_radar run "${args[@]}"
+
+  # GitHub disables scheduled workflows after 60 days without repository activity (public repos), and
+  # a set-and-forget tracker rarely gets commits. Re-enabling the workflow through the API on every
+  # scheduled run resets that clock without dummy commits. Runs in its own job so the scan keeps a
+  # read-only token.
+  keepalive:
+    if: ${{ github.event_name == 'schedule' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    permissions:
+      actions: write
+    steps:
+      - name: Keep the daily schedule enabled
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${GITHUB_REPOSITORY}/actions/workflows/job-fetch.yml/enable"

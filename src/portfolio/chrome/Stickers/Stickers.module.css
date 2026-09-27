@@ -1,0 +1,196 @@
+/* Positioned in document space (absolute to the initial containing block), z 5. */
+.layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow-x: clip; /* stickers near the gutters must never widen the page */
+}
+@media (max-width: 1279.98px) {
+  .layer {
+    display: none;
+  }
+}
+
+.sticker {
+  position: absolute;
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.sticker[data-dragging] {
+  cursor: grabbing;
+}
+
+.enter,
+.spin,
+.bob {
+  width: 100%;
+  height: 100%;
+}
+.enter {
+  /* shadow lives here (not on .face) so the peeled-corner mask doesn't clip it */
+  filter: drop-shadow(0 5px 6px rgba(0, 0, 0, 0.42)) drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
+  transition: filter 0.25s var(--ease-out);
+}
+.sticker[data-dragging] .enter {
+  filter: drop-shadow(0 22px 18px rgba(0, 0, 0, 0.5)) drop-shadow(0 6px 6px rgba(0, 0, 0, 0.35));
+}
+
+/* idle bob: a compositor-only CSS loop, paused off-screen and while dragging */
+.bob {
+  position: relative;
+  transform: rotate(var(--tilt, 0deg));
+  animation: bob var(--bob-dur, 6s) ease-in-out var(--bob-delay, 0s) infinite;
+}
+.sticker[data-offscreen] .bob,
+.sticker[data-dragging] .bob {
+  animation-play-state: paused;
+}
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--tilt, 0deg));
+  }
+  50% {
+    transform: translateY(-6px) rotate(calc(var(--tilt, 0deg) + 3deg));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bob {
+    animation: none;
+  }
+}
+
+/* die-cut sticker: thick paper border, printed disc, one corner peeling up */
+.face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--paper);
+  padding: 11%;
+  box-shadow: inset 0 -2px 0 var(--paper-3), inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+  /* cut a chord off the lower-right edge: that's where the corner lifts */
+  -webkit-mask: linear-gradient(135deg, #000 78.6%, transparent 79%);
+  mask: linear-gradient(135deg, #000 78.6%, transparent 79%);
+}
+/* the lifted flap: the cut segment folded back over the face (its paper back showing) */
+.peel {
+  position: absolute;
+  left: 50.4%;
+  top: 68.6%;
+  width: 57.2%;
+  height: 10.4%;
+  transform-origin: 50% 100%;
+  transform: rotate(-45deg);
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: linear-gradient(0deg, #d9cebd 0%, #eee6d8 55%, #f8f3ea 100%);
+  box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+  transition: height 0.25s var(--ease-spring);
+}
+.sticker:hover .peel,
+.sticker[data-dragging] .peel {
+  height: 13%;
+}
+.inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 0 1.5px var(--accent-soft), inset 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.inner::after {
+  /* printed dashed ring */
+  content: '';
+  position: absolute;
+  inset: 9%;
+  border-radius: 50%;
+  border: 1.5px dashed color-mix(in srgb, var(--accent) 38%, transparent);
+}
+.icon {
+  color: var(--accent);
+  position: relative;
+  z-index: 1;
+}
+.gloss {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(60% 45% at 30% 22%, color-mix(in srgb, var(--paper) 70%, transparent), transparent 70%),
+    linear-gradient(160deg, transparent 55%, rgba(0, 0, 0, 0.06));
+  mix-blend-mode: soft-light;
+}
+
+.label {
+  /* always-visible chalk caption, so it reads as a sticker you can peel, not a button */
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 4px);
+  transform: translate(-50%, 0) rotate(-4deg);
+  padding: 2px 8px 3px;
+  border-radius: 7px;
+  border: 1px solid transparent;
+  font-family: var(--font-hand);
+  font-size: 15px;
+  line-height: 1;
+  color: var(--chalk-dim);
+  white-space: nowrap;
+  pointer-events: none;
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.25s var(--ease-spring);
+}
+.sticker:hover .label,
+.sticker[data-dragging] .label {
+  color: var(--chalk);
+  background: var(--board-2);
+  border-color: var(--board-line-strong);
+  transform: translate(-50%, 2px) rotate(-4deg);
+}
+
+.burst {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+.ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  border: 2px dashed var(--chalk);
+}
+.mote {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  background: var(--chalk);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--chalk) 60%, transparent);
+}
+.mote:nth-child(3n + 1) {
+  background: var(--accent);
+  box-shadow: none;
+}
+.mote:nth-child(3n + 2) {
+  background: var(--chalk-yellow);
+  box-shadow: none;
+}
+.dark .icon {
+  color: var(--chalk-red);
+}
+.dark::after {
+  border-color: color-mix(in srgb, var(--chalk) 22%, transparent);
+}

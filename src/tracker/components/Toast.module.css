@@ -1,0 +1,112 @@
+.region {
+  position: fixed;
+  z-index: 1050;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+  max-width: min(420px, calc(100vw - 32px));
+}
+.toast {
+  --focus-ring: var(--accent-2);
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 8px 8px 8px 12px;
+  color: var(--ink);
+  background: var(--sticky);
+  border-radius: 4px;
+  box-shadow: var(--shadow-lift);
+  font-size: 14px;
+  line-height: 1.35;
+}
+.ok .icon {
+  background: var(--st-offer);
+}
+.error {
+  background: var(--paper);
+  box-shadow: var(--shadow-lift), inset 4px 0 0 var(--accent);
+}
+.error .icon {
+  background: var(--accent);
+  color: var(--paper);
+}
+.info {
+  background: var(--paper);
+}
+.info .icon {
+  background: var(--st-new);
+}
+.icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: var(--ink);
+}
+.msg {
+  flex: 1;
+  min-width: 0;
+}
+.actions {
+  flex: none;
+  display: inline-flex;
+  gap: 2px;
+}
+/* two or more actions ("Retry", "Copy notes"): they get their own row under the message */
+.multi {
+  flex-wrap: wrap;
+}
+.multi .msg {
+  flex: 1 1 calc(100% - 90px);
+}
+.multi .actions {
+  order: 4;
+  flex-basis: 100%;
+  justify-content: flex-end;
+  margin-top: -6px;
+}
+.action {
+  flex: none;
+  font-family: var(--font-hand);
+  font-size: 17px;
+  color: var(--accent-ink);
+  padding: 6px 10px;
+  min-height: 40px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+.action:hover {
+  background: var(--accent-soft);
+}
+.close {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--ink-3);
+}
+.close:hover {
+  color: var(--ink);
+  background: rgba(0, 0, 0, 0.06);
+}
+@media (max-width: 640px) {
+  .region {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    transform: none;
+    max-width: none;
+    align-items: stretch;
+  }
+}

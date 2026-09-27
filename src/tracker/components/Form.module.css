@@ -1,0 +1,169 @@
+/* Form controls on paper. */
+.form {
+  display: grid;
+  gap: 16px;
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+@media (max-width: 560px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+.field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-2);
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.optional {
+  font-weight: 400;
+  color: var(--ink-3);
+  font-size: 12px;
+}
+.input,
+.select,
+.textarea {
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 12px;
+  border-radius: 9px;
+  border: 1.5px solid var(--paper-3);
+  background: #fffaf2;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.4;
+  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+}
+.input::placeholder,
+.textarea::placeholder {
+  color: color-mix(in srgb, var(--ink-3) 58%, var(--paper));
+}
+.input:hover,
+.select:hover,
+.textarea:hover {
+  border-color: color-mix(in srgb, var(--ink-3) 55%, var(--paper-3));
+}
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--ink-2);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+  background: #fffdf8;
+}
+.input[aria-invalid='true'] {
+  border-color: var(--accent);
+}
+.select {
+  appearance: none;
+  padding-right: 34px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%237a7166' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  cursor: pointer;
+}
+.textarea {
+  resize: vertical;
+  min-height: 84px;
+}
+.hint {
+  font-size: 12.5px;
+  color: var(--ink-3);
+  line-height: 1.45;
+}
+.error {
+  font-size: 13px;
+  color: var(--accent-ink);
+  font-weight: 500;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+.actionsSplit {
+  justify-content: space-between;
+}
+.legend {
+  font-family: var(--font-hand);
+  font-size: 20px;
+  color: var(--accent-ink);
+  padding: 0;
+  margin-bottom: 2px;
+}
+.fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  display: grid;
+  gap: 12px;
+}
+
+/* board-toned inputs (search boxes on the chalkboard) */
+.chalkInput {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 12px 8px 36px;
+  border-radius: 999px;
+  border: 1.5px dashed var(--chalk-faint);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--chalk);
+  font-size: 14px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.chalkInput::placeholder {
+  color: var(--chalk-muted);
+}
+.chalkInput:focus {
+  outline: none;
+  border-color: var(--chalk-dim);
+  border-style: solid;
+  background: rgba(255, 255, 255, 0.06);
+}
+.searchWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  border-radius: 999px;
+}
+/* same dashed ring as the global :focus-visible (the input itself only changes its border) */
+.searchWrap:focus-within {
+  outline: 2px dashed var(--chalk-yellow);
+  outline-offset: 3px;
+}
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  color: var(--chalk-muted);
+  pointer-events: none;
+}
+.searchIconPaper {
+  color: var(--ink-3);
+}
+.inputPaperSearch {
+  padding-left: 36px;
+}
+
+/* focus rings on paper: the global chalk-yellow ring is too faint on cream */
+.form {
+  --focus-ring: var(--accent-2);
+}
+.form :focus-visible {
+  outline-color: var(--accent-2);
+}

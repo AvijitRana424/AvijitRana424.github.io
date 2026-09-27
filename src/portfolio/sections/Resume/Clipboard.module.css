@@ -1,0 +1,247 @@
+.stage {
+  perspective: 1500px;
+  perspective-origin: 50% 30%;
+  width: 100%;
+  touch-action: pan-y;
+}
+
+.board {
+  /* warm hardboard brown, derived from the kraft + marker tokens */
+  --wood-base: color-mix(in srgb, var(--kraft) 84%, var(--accent-2));
+  --wood: color-mix(in srgb, var(--wood-base) 74%, var(--ink));
+  --wood-dark: color-mix(in srgb, var(--wood-base) 56%, var(--ink));
+  --clip-edge: color-mix(in srgb, var(--wood-base) 36%, var(--ink));
+  position: relative;
+  width: 100%;
+  padding: clamp(46px, 11vw, 80px) clamp(14px, 3.2vw, 28px) 0;
+  border-radius: 22px;
+  background:
+    radial-gradient(130% 70% at 25% 0%, rgba(255, 255, 255, 0.16), transparent 60%),
+    radial-gradient(90% 60% at 90% 100%, rgba(0, 0, 0, 0.18), transparent 70%),
+    repeating-linear-gradient(91deg, rgba(60, 38, 16, 0.1) 0 1.5px, transparent 1.5px 7px),
+    repeating-linear-gradient(88.5deg, rgba(255, 240, 210, 0.06) 0 1px, transparent 1px 17px),
+    repeating-radial-gradient(ellipse 160% 36% at 20% 40%, transparent 0 18px, rgba(60, 38, 16, 0.07) 18px 20px),
+    linear-gradient(180deg, var(--wood) 0%, var(--wood-dark) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.18),
+    0 6px 0 var(--clip-edge),
+    0 24px 40px -14px rgba(0, 0, 0, 0.65);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+/* subtle fibre noise on the hardboard */
+.board::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='0.9 0.08' numOctaves='3' seed='4'/><feColorMatrix values='0 0 0 0 0.3  0 0 0 0 0.2  0 0 0 0 0.1  0 0 0 0.22 0'/></filter><rect width='100%' height='100%' filter='url(%23w)'/></svg>");
+}
+
+.hole {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  width: 40px;
+  height: 12px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: var(--board);
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.7), 0 1px 0 rgba(255, 255, 255, 0.18);
+  z-index: 1;
+}
+
+.clip {
+  position: absolute;
+  top: clamp(10px, 2.2vw, 16px);
+  left: 50%;
+  width: clamp(150px, 42%, 236px);
+  height: auto;
+  transform: translateX(-50%);
+  z-index: 6;
+  pointer-events: none;
+}
+
+.well {
+  position: relative;
+  perspective: 1400px;
+  perspective-origin: 50% 0%;
+}
+
+.stack {
+  display: grid;
+  position: relative;
+  z-index: 2;
+}
+.stack > * {
+  grid-area: 1 / 1;
+}
+
+.sheet {
+  position: relative;
+  transform-origin: 50% 0%;
+  backface-visibility: hidden;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.18), 0 6px 14px -6px rgba(0, 0, 0, 0.45);
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--paper);
+}
+/* soft bottom curl + light falloff on the sheet */
+.sheet::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.07) 0, transparent 5%, transparent 88%, rgba(0, 0, 0, 0.05) 100%);
+  z-index: 3;
+}
+
+/* sheets peeking out underneath (remaining pages) */
+.under {
+  position: absolute;
+  inset: 0;
+  background: var(--paper-2);
+  border-radius: 2px;
+  box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+.under[data-depth='1'] {
+  transform: translate(4px, 5px) rotate(0.7deg);
+}
+.under[data-depth='2'] {
+  transform: translate(-3px, 9px) rotate(-0.9deg);
+  background: var(--paper-3);
+}
+
+.hit {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  cursor: zoom-in;
+  border-radius: 2px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 10px;
+}
+.hit:focus-visible {
+  outline-offset: -6px;
+}
+.hitHint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--paper);
+  background: var(--ink);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s, transform 0.25s var(--ease-out);
+  box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.6);
+}
+.hit:hover .hitHint,
+.hit:focus-visible .hitHint {
+  opacity: 1;
+  transform: none;
+}
+
+.busy {
+  position: absolute;
+  top: 38px;
+  right: 14px;
+  z-index: 5;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2.5px solid var(--accent);
+  border-right-color: transparent;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.footer {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 64px;
+  padding: 12px 0 14px;
+}
+
+.pager {
+  --focus-ring: var(--accent-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 2px 0 var(--paper-3), 0 6px 12px -6px rgba(0, 0, 0, 0.5);
+}
+.pageBtn {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--ink-2);
+  transition: background 0.15s, color 0.15s, transform 0.15s var(--ease-out);
+}
+.pageBtn:hover:not(:disabled) {
+  background: var(--paper-3);
+  color: var(--accent-ink);
+}
+.pageBtn:active:not(:disabled) {
+  transform: scale(0.92);
+}
+.pageBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.pageNum {
+  min-width: 58px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.stamp {
+  font-family: var(--font-hand);
+  font-size: 18px;
+  color: color-mix(in srgb, var(--ink) 82%, var(--kraft));
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.expand {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--paper);
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition: background 0.15s, transform 0.2s var(--ease-out);
+}
+.expand:hover {
+  background: rgba(0, 0, 0, 0.3);
+  transform: translateY(-50%) scale(1.06);
+}

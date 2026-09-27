@@ -1,0 +1,120 @@
+.section {
+  position: relative;
+  padding-top: var(--section-y);
+  padding-bottom: 0;
+  overflow-x: clip;
+}
+/* Wall mode: the sticky stage's own top padding is the section rhythm (it also has to clear the
+   fixed nav while pinned), so the section adds none. */
+.wallMode {
+  --wall-controls-pb: clamp(14px, 3.2vh, 34px);
+  --wall-controls-h: calc(50px + var(--wall-controls-pb)); /* pager row + its bottom padding */
+  padding-top: 0;
+  /* The pinned stage ends with the pager strip, which fades out as the wall leaves (Wall.tsx).
+     Let the next section's empty top padding tuck up under that strip so the gap stays ~one
+     --section-y; z-index keeps the pager on top (and clickable) during the last pinned pixels. */
+  margin-bottom: calc(-1 * var(--wall-controls-h));
+  z-index: 1;
+  /* nav links scroll to the section with html scroll-padding; land exactly on the stuck stage instead */
+  scroll-margin-top: calc(-1 * (var(--nav-h) + 16px));
+}
+
+.head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px 28px;
+  margin-bottom: clamp(18px, 3vw, 32px);
+}
+.wallMode .head {
+  margin-bottom: 0;
+}
+.head .heading {
+  margin-bottom: 0;
+}
+
+/* ── chalk filter chips ───────────────────────── */
+.filters {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+.chip {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  min-height: 42px;
+  padding: 6px 16px 6px;
+  font-family: var(--font-chalk);
+  font-size: 23px;
+  line-height: 1;
+  color: var(--chalk-dim);
+  border-radius: 999px;
+  transition: color 0.2s;
+  cursor: pointer;
+  align-items: center;
+}
+.chip:hover {
+  color: var(--chalk);
+}
+.chipOn {
+  color: var(--chalk);
+}
+.chipLabel {
+  position: relative;
+}
+.chipCount {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--chalk-muted);
+  transform: translateY(-5px);
+}
+.chipOn .chipCount {
+  color: var(--chalk-red);
+}
+.loop {
+  position: absolute;
+  inset: -2px -4px;
+  width: calc(100% + 8px);
+  height: calc(100% + 4px);
+  overflow: visible;
+  pointer-events: none;
+}
+.loop path {
+  fill: none;
+  stroke: var(--chalk);
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+
+/* ── reduced-motion grid ──────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 44px 28px;
+  margin: 0;
+  padding: 18px 0 0;
+  list-style: none;
+}
+.grid > li {
+  display: flex;
+}
+
+@media (max-width: 899px) {
+  .head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .filters {
+    margin-left: -6px;
+  }
+  .chip {
+    font-size: 22px;
+    padding-inline: 12px;
+  }
+}

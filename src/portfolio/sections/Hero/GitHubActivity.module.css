@@ -1,0 +1,355 @@
+.wrap {
+  position: relative;
+}
+
+.card {
+  padding: 18px 20px 14px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+}
+.ghIcon {
+  color: var(--ink-2);
+}
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.handle {
+  font-size: 13px;
+  color: var(--ink-3);
+  transition: color 0.15s;
+}
+a.handle:hover {
+  color: var(--accent-ink);
+}
+
+/* dev-only: impossible to mistake the sample graph for real activity */
+.sampleCard .grid,
+.sampleCard .foot {
+  filter: grayscale(0.55);
+  opacity: 0.8;
+}
+.devBanner {
+  margin: -4px -6px 12px;
+  padding: 8px 12px;
+  border: 1.5px dashed var(--accent-2);
+  border-radius: 6px;
+  background: repeating-linear-gradient(-45deg, var(--sticky) 0 10px, var(--sticky-2) 10px 20px);
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--ink);
+}
+.devBanner strong {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--accent-ink);
+}
+.devBanner code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--accent-ink);
+}
+
+/* ── scrolling grid area ────────────────────────────────────── */
+.scroller {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  margin-inline: -4px;
+  padding: 4px 4px 6px;
+  scrollbar-color: var(--paper-3) transparent;
+}
+
+.inner {
+  --label-w: 30px;
+  --gap: 3px;
+  min-width: 600px;
+}
+
+.monthsRow {
+  display: flex;
+  height: 18px;
+}
+.corner,
+.days {
+  flex: 0 0 var(--label-w);
+}
+/* frozen weekday column while the grid scrolls sideways (mobile) */
+.scrolls .corner,
+.scrolls .days {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  background: var(--paper);
+  box-shadow: -8px 0 0 var(--paper), 7px 0 7px -6px rgba(40, 32, 24, 0.22);
+}
+.months {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--weeks, 53), minmax(0, 1fr));
+  column-gap: var(--gap);
+  font-size: 11px;
+  line-height: 1;
+  color: var(--ink-3);
+}
+.month {
+  grid-row: 1;
+  align-self: start;
+  padding: 1px 2px 5px;
+  margin-left: -2px;
+  white-space: nowrap;
+  cursor: default;
+  user-select: none;
+  transition: color 0.15s;
+}
+.month:hover,
+.monthOn {
+  color: var(--accent-ink);
+}
+
+.body {
+  display: flex;
+}
+.days {
+  display: grid;
+  grid-template-rows: repeat(7, minmax(0, 1fr));
+  row-gap: var(--gap);
+  font-size: 10px;
+  line-height: 1;
+  color: var(--ink-3);
+}
+.days span {
+  display: flex;
+  align-items: center;
+}
+
+.gridWrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.bandGrid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(var(--weeks, 53), minmax(0, 1fr));
+  grid-template-rows: 1fr;
+  column-gap: var(--gap);
+  pointer-events: none;
+}
+.band {
+  grid-row: 1;
+  margin: -3px;
+  border-radius: 5px;
+  background: var(--accent-soft);
+  box-shadow: 0 0 0 1.5px var(--accent);
+  animation: bandIn 0.2s var(--ease-out);
+}
+@keyframes bandIn {
+  from {
+    opacity: 0;
+    transform: scaleY(0.9);
+  }
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, auto);
+  grid-template-columns: repeat(var(--weeks, 53), minmax(0, 1fr));
+  gap: var(--gap);
+  border-radius: 4px;
+}
+.grid:focus-visible {
+  outline-offset: 5px;
+}
+
+.cell,
+.future {
+  display: block;
+  aspect-ratio: 1;
+  border-radius: 2.5px;
+}
+.cell {
+  opacity: 0;
+  transform: scale(0.2);
+  transition: scale 0.15s var(--ease-out), opacity 0.2s, box-shadow 0.15s;
+}
+.show .cell {
+  animation: pop 0.55s var(--ease-spring) both;
+  animation-delay: calc(var(--i) * 11ms);
+}
+.settled .cell {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+/* loading: a calm shimmering grid (real data replaces it; a failed fetch hides the card) */
+.skeleton .cell {
+  opacity: 1;
+  transform: none;
+  background: var(--heat-0);
+  animation: shimmer 1.4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 18ms);
+}
+@keyframes shimmer {
+  50% {
+    opacity: 0.45;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton .cell {
+    animation: none;
+  }
+}
+.grid .cell.dim {
+  opacity: 0.22;
+}
+.cell:hover,
+.cell.active {
+  scale: 1.35;
+  box-shadow: 0 0 0 1.5px var(--ink);
+  position: relative;
+  z-index: 1;
+}
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.l0 {
+  background: var(--heat-0);
+}
+.l1 {
+  background: var(--heat-1);
+}
+.l2 {
+  background: var(--heat-2);
+}
+.l3 {
+  background: var(--heat-3);
+}
+.l4 {
+  background: var(--heat-4);
+}
+
+/* ── footer ─────────────────────────────────────────────────── */
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: var(--ink-2);
+}
+.total strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 11.5px;
+  color: var(--ink-3);
+}
+.legend span:first-child {
+  margin-right: 4px;
+}
+.legend span:last-child {
+  margin-left: 4px;
+}
+.swatch {
+  width: 11px;
+  height: 11px;
+  border-radius: 2.5px;
+}
+
+/* ── tooltip ────────────────────────────────────────────────── */
+.tip {
+  position: absolute;
+  z-index: 5;
+  transform: translate(-50%, calc(-100% - 10px));
+  padding: 6px 10px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--paper);
+  background: var(--ink);
+  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+  animation: tipIn 0.14s var(--ease-out);
+}
+.tip::after {
+  content: '';
+  position: absolute;
+  left: calc(50% + var(--shift, 0px));
+  bottom: -5px;
+  width: 10px;
+  height: 10px;
+  background: inherit;
+  border-radius: 2px;
+  transform: translateX(-50%) rotate(45deg);
+}
+@keyframes tipIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-100% - 4px));
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: 16px 14px 12px;
+  }
+  .inner {
+    min-width: 700px;
+  }
+  .title {
+    font-size: 14px;
+  }
+  .foot {
+    font-size: 14px;
+  }
+  .legend {
+    font-size: 12px;
+  }
+}

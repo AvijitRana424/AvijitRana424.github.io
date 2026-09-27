@@ -1,0 +1,403 @@
+/* extra paper feel on the shared Modal panel */
+.panel {
+  background-image:
+    linear-gradient(90deg, transparent 0 18px, rgba(217, 80, 63, 0.22) 18px 19.5px, transparent 19.5px),
+    radial-gradient(120% 80% at 100% 0%, rgba(255, 255, 255, 0.5), transparent 60%);
+  border-radius: 14px 18px 16px 20px;
+}
+
+/* ── title ─────────────────────────────────────────────────── */
+.title {
+  position: relative;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 10px;
+  padding-top: 6px;
+  padding-left: 8px;
+}
+.titleLead {
+  font-size: clamp(24px, 5vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.titleHand {
+  position: relative;
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: clamp(32px, 7vw, 38px);
+  line-height: 1;
+  color: var(--accent-ink);
+  transform: rotate(-2deg);
+  display: inline-block;
+}
+.titleSquiggle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 12px;
+  overflow: visible;
+}
+.titleSquiggle path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+.plane {
+  width: 70px;
+  height: 34px;
+  align-self: center;
+  margin-left: 2px;
+  overflow: visible;
+}
+.planeTrail {
+  fill: none;
+  stroke: var(--ink-3);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-dasharray: 3 5;
+}
+.planeBody {
+  fill: var(--paper);
+  stroke: var(--ink-2);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+/* ── body ──────────────────────────────────────────────────── */
+.body {
+  padding-left: 8px;
+}
+.lede {
+  margin-top: 4px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 46ch;
+}
+
+.open {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 5px 12px 6px;
+  font-family: var(--font-hand);
+  font-size: 18px;
+  line-height: 1.1;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--sticky) 0%, var(--sticky) 80%, var(--sticky-2) 100%);
+  border-radius: 3px;
+  box-shadow: 0 4px 10px -4px rgba(0, 0, 0, 0.35);
+}
+.openDot {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--st-offer);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.08);
+}
+.openDot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--st-offer);
+  opacity: 0;
+  animation: ping 2.2s var(--ease-out) infinite;
+}
+@keyframes ping {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.rows {
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.row {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  padding: 10px 10px 10px 12px;
+  border-radius: 12px;
+  background: var(--paper-2);
+  border: 1px solid var(--paper-line);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 2px 0 var(--paper-3);
+  transition: transform 0.2s var(--ease-out), box-shadow 0.2s, background 0.2s;
+}
+.row:hover {
+  background: var(--paper);
+  transform: translateY(-2px) rotate(-0.4deg);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.6) inset, 0 5px 0 var(--paper-3), 0 10px 18px -12px rgba(0, 0, 0, 0.4);
+}
+.rowLink {
+  color: inherit;
+}
+.rowLink:hover .act {
+  color: var(--accent-ink);
+}
+.rowLink:hover .act svg {
+  transform: translate(2px, -2px);
+}
+
+.badge {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: var(--accent);
+  background: var(--paper);
+  border: 2px dotted var(--accent);
+  box-shadow: 0 0 0 3px var(--paper);
+}
+.badge svg {
+  width: 19px;
+  height: 19px;
+}
+.rowText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.rowLabel {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.labelIcon {
+  display: none;
+}
+.rowValue {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+.rowActions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.act {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 44px;
+  height: 42px;
+  padding: 0 12px;
+  border-radius: 999px;
+  font-family: var(--font-hand);
+  font-size: 17px;
+  line-height: 1;
+  color: var(--ink-2);
+  background: var(--paper);
+  border: 1.5px solid var(--paper-line);
+  transition: color 0.15s, background 0.15s, border-color 0.15s, transform 0.18s var(--ease-out);
+}
+.act svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  transition: transform 0.2s var(--ease-out);
+}
+button.act:hover,
+a.act:hover {
+  color: var(--accent-ink);
+  border-color: rgba(217, 80, 63, 0.4);
+  transform: translateY(-1px);
+}
+.actPrimary {
+  color: var(--paper);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+a.actPrimary:hover {
+  color: var(--paper);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.actDone {
+  color: var(--accent-ink);
+  border-color: rgba(217, 80, 63, 0.45);
+  background: var(--accent-soft);
+}
+.actText {
+  padding-bottom: 1px;
+}
+
+/* "copied!" handwritten pop */
+.burst {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  margin-left: -34px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--font-hand);
+  font-size: 19px;
+  color: var(--accent-ink);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.burstLines {
+  width: 26px;
+  height: 16px;
+  overflow: visible;
+}
+.burstLines path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.burstLines path:not(.burstCheck) {
+  display: none;
+}
+
+/* ── footer row ────────────────────────────────────────────── */
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1.5px dashed var(--paper-line);
+}
+.clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: var(--ink-2);
+}
+.clock time {
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.clockFace {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  overflow: visible;
+}
+.clockFace path {
+  fill: var(--paper);
+  stroke: var(--ink-2);
+  stroke-width: 1.5;
+}
+.clockFace circle {
+  fill: var(--accent);
+}
+.hand {
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transform-box: view-box;
+  transform-origin: 16px 16px;
+}
+.handMin {
+  stroke: var(--ink-2);
+  stroke-width: 1.4;
+}
+
+.resumeLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 4px;
+  font-family: var(--font-hand);
+  font-size: 19px;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: rgba(217, 80, 63, 0.6);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  transition: color 0.15s;
+}
+.resumeLink svg {
+  width: 17px;
+  height: 17px;
+  color: var(--accent);
+  transition: transform 0.25s var(--ease-spring);
+}
+.resumeLink:hover {
+  color: var(--accent-ink);
+}
+.resumeLink:hover svg {
+  transform: translateY(2px);
+}
+
+@media (max-width: 520px) {
+  .body {
+    padding-left: 4px;
+  }
+  .lede {
+    font-size: 14px;
+  }
+  .row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    min-height: 60px;
+    padding: 8px 8px 8px 14px;
+  }
+  .badge {
+    display: none;
+  }
+  .labelIcon {
+    display: inline-flex;
+    margin-right: 6px;
+    color: var(--accent);
+    vertical-align: -2px;
+  }
+  .labelIcon svg {
+    width: 13px;
+    height: 13px;
+  }
+  .rowValue {
+    font-size: 14.5px;
+  }
+  .actText {
+    display: none;
+  }
+  .act {
+    padding: 0;
+    width: 42px;
+  }
+  .rowActions {
+    gap: 4px;
+  }
+  .plane {
+    display: none;
+  }
+}

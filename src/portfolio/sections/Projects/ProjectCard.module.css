@@ -1,0 +1,193 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.fixed {
+  height: var(--card-h, 452px);
+}
+
+/* ── art ───────────────────────────────────────── */
+.artPanel {
+  position: relative;
+  margin: 12px 12px 0;
+  aspect-ratio: 360 / 200;
+  border-radius: 8px;
+  background-color: var(--tint);
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 16%, transparent) 0.9px, transparent 1.3px);
+  background-size: 13px 13px;
+  background-position: 6px 6px;
+  box-shadow: inset 0 0 0 1px var(--paper-line), inset 0 -18px 30px -24px rgba(0, 0, 0, 0.25);
+  flex: none;
+}
+.artPanel > svg {
+  position: absolute;
+  inset: 0;
+}
+
+.kind {
+  display: inline-block;
+  font-family: var(--font-hand);
+  font-size: 17px;
+  line-height: 1;
+  padding: 5px 12px 6px;
+  border-radius: 4px;
+  color: var(--ink);
+  background: var(--sticky);
+  box-shadow: var(--shadow-sticker);
+  white-space: nowrap;
+}
+.kind-personal {
+  background: var(--sticky);
+}
+.kind-work {
+  background: var(--chalk-blue);
+}
+.kind-this-site {
+  background: var(--accent-2); /* paper text on it stays >= 4.5:1 */
+  color: var(--paper);
+}
+.kindPos {
+  position: absolute;
+  top: -9px;
+  right: -12px;
+  transform: rotate(5deg);
+  z-index: 2;
+}
+
+/* ── body ──────────────────────────────────────── */
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  padding: 16px var(--card-pad-x, 20px) 16px;
+}
+.title {
+  font-family: var(--font-sans);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.titleBtn {
+  text-align: left;
+  font: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  border-radius: 4px;
+  transition: color 0.15s;
+}
+.card:hover .titleBtn {
+  color: var(--accent-ink);
+}
+.subtitle {
+  margin-top: 3px;
+  font-family: var(--font-hand);
+  font-size: 18px;
+  line-height: 1.2;
+  color: var(--accent-ink);
+}
+.blurb {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.fixed .blurb {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 14px;
+}
+.card:not(.fixed) .foot {
+  margin-top: 16px;
+}
+
+/* full-name tech chips: one row, the component picks how many fit (+N for the rest) */
+.tech {
+  display: flex;
+  flex: 1 1 auto;
+  flex-wrap: nowrap;
+  gap: 4px;
+  min-width: 0;
+  margin: 0;
+  padding: 0 0 2px; /* room for the chip's drop shadow under overflow: hidden */
+  list-style: none;
+  overflow: hidden;
+}
+.chip {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 7px;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  color: var(--ink);
+  background: var(--chip, var(--paper-2));
+  border: 1.2px solid color-mix(in srgb, var(--ink) 62%, transparent);
+  box-shadow: 0 2px 0 color-mix(in srgb, var(--ink) 20%, transparent);
+}
+.more {
+  padding: 0 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--paper-2);
+  color: var(--ink-3);
+  border-style: dashed;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+}
+.links > a {
+  width: 40px;
+  height: 40px;
+}
+.details {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  min-height: 40px;
+  padding: 4px 6px 4px 8px;
+  margin-right: -6px;
+  font-family: var(--font-hand);
+  font-size: 17px;
+  color: var(--ink-2);
+  border-radius: 8px;
+  transition: color 0.15s, background 0.15s;
+}
+.details svg {
+  transition: transform 0.2s var(--ease-out);
+}
+.card:hover .details,
+.details:hover {
+  color: var(--accent-ink);
+}
+.card:hover .details svg,
+.details:hover svg {
+  transform: translate(2px, -2px);
+}

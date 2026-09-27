@@ -1,0 +1,36 @@
+{
+ "jobPostingInfo": {
+  "id": "e8aea0101be7102fac113dc196160000",
+  "title": "Senior Software Engineer - NVEX",
+  "jobDescription": "<p>NVIDIA is widely considered to be one of the technology world’s most desirable employers. We have some of the most forward-thinking and hardworking people on the planet working for us. If you&#39;re creative, passionate and self-motivated, we want to hear from you! We are looking for an experienced system engineer, who will play a dual role on the NVIDIA Enterprise Experience (NVEX) team. An awesome candidate is highly technical who can triage customer software issues and resolve customer problems as well as someone who can develop key enhancements and tools for the DGX Platform Software, Container Orchestrators, Deep Learning containers, and potentially other Enterprise related system software.</p><p></p><p>This individual should have proven grasp of platform and systems engineering who understands Linux internals, knowledge about servers and has the ability to resolve hardware and/or OS internal issues. This person will also focus on NVIDIA AI Enterprise SW, a cloud-native suite of AI and data analytics software optimized for the development and deployment of AI. NVIDIA AI Enterprise is the operating system of the NVIDIA AI platform, essential for applications built with an extensive library of frameworks: NVIDIA® Riva for speech AI, NVIDIA Merlin™ for recommenders, NVIDIA Clara™ for medical imaging, and more. We are also looking for someone who has superb interpersonal and communication skills, given you would be working closely with our customers and engineers to understand, explain and resolve issues, and collaborate with the team to build scalable software. If you have a real passion for technology, and you are interested in a role that you can make a difference in and contribute at all different levels, this may be a phenomenal position for you.</p><p></p><p><b><span>What you&#39;ll be doing:</span></b></p><ul><li><p>Develop features and tools as part of solution engineering efforts to support all Enterprise Service offerings including, but not limited to NGC, Container Orchestrators (such as Kubernetes), GPU accelerated applications, and Deep Learning frameworks.</p></li><li><p>Work with NVIDIA Enterprise customers and internal users to improve the availability, reliability, and overall experience of working with NVIDIA servers, system software stack and Deep Learning Framework containers on NVIDIA GPUs.</p></li><li><p>Take ownership and drive customer issues on system software components, containers, Deep Learning frameworks, and Cloud deployment from inception to resolution.</p></li><li><p><span>Build upon the opportunity to research new use cases with GPUs for emerging container technologies and Deep Learning frameworks.</span></p></li><li><p>Bring independent analysis, communication, and problem-solving to customer experience.</p></li><li><p>Be on call one weekend per month in the event a customer has a Sev1 outage and requires engineering assistance.</p></li></ul><p></p><p><b><span>What we need to see:</span></b></p><ul><li><p>BS in Computer Science, Electrical Engineering, Computer Engineering, or related field (or equivalent experience).</p></li><li><p>At least 5&#43; years system software development and troubleshooting experience, ideally with some customer facing.</p></li><li><p>Intellectual curiosity, positive attitude, flexibility, analytical ability, self-motivation, and team-oriented.</p></li><li><p><span>Strong computer science concepts and excellent knowledge of Python and scripting methodologies.</span></p></li><li><p>Deep understanding of at least two of the following: data centers, servers, distributed systems, virtualization, deep learning frameworks, <span>containers/containerization</span> (ie Docker, Kubernetes), hybrid cloud (ie AWS, GCP).</p></li><li><p>You&#39;d have cultivated a deep Linux knowledge, and be very comfortable working in various Linux environments as well as with Windows OS’s.</p></li><li><p>Professional-level communication skills, interpersonal skills with a passion to solve problems.</p></li></ul><p></p>",
+  "location": "India, Bengaluru",
+  "postedOn": "Posted 6 Days Ago",
+  "startDate": "2026-09-20",
+  "timeType": "Full time",
+  "jobReqId": "JR2025965",
+  "jobPostingId": "Senior-Software-Engineer---NVEX_JR2025965",
+  "jobPostingSiteId": "NVIDIAExternalCareerSite",
+  "country": {
+   "descriptor": "India",
+   "id": "c4f78be1a8f14da0ab49ce1162348a5e"
+  },
+  "canApply": true,
+  "posted": true,
+  "includeResumeParsing": true,
+  "jobRequisitionLocation": {
+   "descriptor": "India, Bengaluru",
+   "country": {
+    "descriptor": "India",
+    "id": "c4f78be1a8f14da0ab49ce1162348a5e",
+    "alpha2Code": "IN"
+   }
+  },
+  "externalUrl": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/India-Bengaluru/Senior-Software-Engineer---NVEX_JR2025965",
+  "questionnaireId": "2f2764b3a82910064296831695150000"
+ },
+ "hiringOrganization": {
+  "name": "IN01 NVIDIA Graphics Bengaluru",
+  "url": ""
+ },
+ "userAuthenticated": false
+}

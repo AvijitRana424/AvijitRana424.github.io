@@ -1,0 +1,73 @@
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'backend/**'
+      - '.github/workflows/job-fetch.yml'
+      - 'docs/**'
+      - '**.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false # let a deployment that already started finish
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - run: npm ci
+
+      # (secrets can't be used in `if:` expressions, so the check runs in the shell)
+      - name: Warn when building in demo mode
+        env:
+          URL: ${{ vars.SUPABASE_URL || secrets.SUPABASE_URL }}
+          KEY: ${{ vars.SUPABASE_ANON_KEY || secrets.SUPABASE_ANON_KEY }}
+        run: |
+          if [ -z "$URL" ] || [ -z "$KEY" ]; then
+            echo "::warning title=Demo build::SUPABASE_URL / SUPABASE_ANON_KEY are not set, so the site deploys in DEMO mode (read-only resume, tracker shows a setup screen). See docs/SETUP.md step 5."
+          fi
+
+      - name: Build
+        run: npm run build
+        env:
+          # "/" for <user>.github.io repos or a custom domain, "/<repo>/" for project repos
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}/
+          # Public values (safe to expose — RLS protects the data). Set them under
+          # Settings → Secrets and variables → Actions → Variables.
+          VITE_SUPABASE_URL: ${{ vars.SUPABASE_URL || secrets.SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ vars.SUPABASE_ANON_KEY || secrets.SUPABASE_ANON_KEY }}
+          VITE_OWNER_EMAIL: ${{ vars.OWNER_EMAIL }}
+          VITE_GITHUB_REPO: ${{ github.repository }}
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

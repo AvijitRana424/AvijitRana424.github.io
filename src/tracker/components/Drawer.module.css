@@ -1,0 +1,91 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 9, 0.5);
+  backdrop-filter: blur(3px);
+}
+.panel {
+  --focus-ring: var(--accent-2);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(500px, 100vw);
+  display: flex;
+  flex-direction: column;
+  color: var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-lift);
+  outline: none;
+  border-radius: var(--r-lg) 0 0 var(--r-lg);
+}
+.panel::before {
+  /* torn paper edge on the left */
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -6px;
+  width: 8px;
+  background: var(--paper);
+  clip-path: polygon(100% 0, 30% 2%, 90% 5%, 20% 9%, 80% 13%, 10% 18%, 70% 24%, 25% 30%, 85% 36%, 15% 43%, 75% 50%, 20% 57%, 90% 64%, 30% 71%, 80% 78%, 10% 85%, 70% 92%, 30% 97%, 100% 100%);
+  border-radius: 0;
+}
+.sheet {
+  top: auto;
+  left: 0;
+  width: 100%;
+  height: min(92vh, 92dvh);
+  border-radius: 20px 20px 0 0;
+}
+.sheet::before {
+  display: none;
+}
+.grabber {
+  flex: none;
+  display: grid;
+  place-items: center;
+  height: 26px;
+  cursor: grab;
+  touch-action: none;
+}
+.grabber span {
+  width: 44px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--paper-3);
+}
+.close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--ink-2);
+  transition: background 0.15s, transform 0.2s var(--ease-out);
+}
+.close:hover {
+  background: rgba(0, 0, 0, 0.06);
+  transform: rotate(90deg);
+}
+.sheet .close {
+  top: 16px;
+}
+.scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 28px 28px 32px;
+}
+.sheet .scroll {
+  padding: 8px 18px 28px;
+}
+.panel :focus-visible {
+  outline-color: var(--accent-2);
+}

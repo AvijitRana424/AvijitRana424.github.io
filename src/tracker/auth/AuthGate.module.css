@@ -1,0 +1,154 @@
+.center {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 22px;
+  padding: 40px 16px;
+}
+.cardWrap {
+  width: min(420px, calc(100vw - 32px));
+}
+.cardWide {
+  width: min(520px, calc(100vw - 32px));
+}
+.card {
+  padding: 34px 30px 28px;
+  display: grid;
+  gap: 18px;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.radarOnPaper {
+  padding: 6px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--board);
+  box-shadow: inset 0 0 0 2px var(--board-3), var(--shadow-sticker);
+}
+.title {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+.accent {
+  color: var(--accent-ink);
+}
+.kicker {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.lead {
+  font-size: 14.5px;
+  color: var(--ink-2);
+  line-height: 1.5;
+}
+.denied {
+  font-family: var(--font-hand);
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--accent-ink);
+}
+.error {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--accent-ink);
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+}
+.submit {
+  width: 100%;
+  min-height: 46px;
+}
+.hint {
+  margin-top: -8px;
+  font-size: 13px;
+  color: var(--ink-3);
+  text-align: center;
+}
+.code {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--paper-2);
+  box-shadow: inset 0 0 0 1px var(--paper-3);
+  overflow-wrap: anywhere;
+}
+.link {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  color: var(--chalk-dim);
+  border: 1.5px dashed var(--chalk-faint);
+}
+.back:hover {
+  color: var(--chalk);
+  border-color: var(--chalk-dim);
+}
+
+.skeleton {
+  position: relative;
+  z-index: 1;
+}
+.skelBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 64px;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  border-bottom: 1px solid var(--board-line);
+}
+.skelBody {
+  display: grid;
+  gap: 18px;
+  max-width: 1400px;
+  margin-inline: auto;
+  padding: 28px var(--gutter);
+}
+.skelGrid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+}
+@media (max-width: 640px) {
+  .skelGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .card {
+    padding: 30px 20px 24px;
+  }
+}
+.card :focus-visible {
+  outline-color: var(--accent-2);
+}

@@ -1,0 +1,189 @@
+.section {
+  position: relative;
+  padding-top: var(--section-y);
+  padding-bottom: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: clamp(36px, 5vw, 76px);
+  align-items: start;
+}
+
+.left {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  justify-self: center;
+  z-index: 1;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+  padding-top: 8px;
+}
+
+/* public visitors only see the short info card: let it ride along with the tall clipboard */
+@media (min-width: 961px) {
+  .side[data-sticky] {
+    position: sticky;
+    top: calc(var(--nav-h) + 28px);
+  }
+}
+
+.connect {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 4px 4px 4px 2px;
+  margin-top: -6px;
+  font-family: var(--font-chalk);
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--chalk-dim);
+  transition: color 0.2s;
+}
+.connect span {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1.5px no-repeat;
+  transition: background-size 0.35s var(--ease-out);
+  padding-bottom: 2px;
+}
+.connect svg {
+  transition: transform 0.25s var(--ease-out);
+}
+.connect:hover {
+  color: var(--chalk);
+}
+.connect:hover span {
+  background-size: 100% 1.5px;
+}
+.connect:hover svg {
+  transform: translateX(4px) rotate(-6deg);
+}
+
+/* ── sheet states ─────────────────────────────────────────────────── */
+.loadingSheet {
+  position: relative;
+  aspect-ratio: 8.5 / 11;
+}
+.errorSheet {
+  aspect-ratio: 8.5 / 11;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  text-align: center;
+  color: var(--ink-2);
+  background: var(--paper);
+}
+.errorSheet svg {
+  color: var(--accent);
+}
+.errorTitle {
+  font-family: var(--font-hand);
+  font-size: 22px;
+  color: var(--ink);
+}
+.errorSub {
+  font-size: 14px;
+}
+
+/* ── sticky "no PDF yet" note on the clipboard ─────────────────────── */
+.noPdf {
+  position: absolute !important;
+  z-index: 8;
+  top: 14%;
+  right: -66px;
+  width: 214px;
+  padding: 22px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--ink-2);
+  pointer-events: none;
+}
+.noPdf strong {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.1;
+  color: var(--accent-ink);
+}
+
+/* ── chalk annotation ─────────────────────────────────────────────── */
+.annotation {
+  position: absolute;
+  z-index: 2;
+  right: -12px;
+  top: -64px;
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+  pointer-events: none;
+  color: var(--chalk-dim);
+}
+.annotationText {
+  font-family: var(--font-chalk);
+  font-size: 21px;
+  line-height: 1;
+  transform: rotate(-3deg);
+  white-space: nowrap;
+  order: 2;
+  margin-top: -6px;
+}
+.annotationArrow {
+  width: 64px;
+  height: 44px;
+  order: 1;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+  transform: scaleX(-1) translateY(4px);
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .left {
+    max-width: 580px;
+  }
+  .side {
+    max-width: 580px;
+    width: 100%;
+    justify-self: center;
+    padding-top: 0;
+  }
+  .annotation {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .noPdf {
+    top: 4px;
+    right: -6px;
+    width: 150px;
+    padding: 14px 10px 9px;
+  }
+  .noPdf strong {
+    font-size: 16px;
+  }
+  .noPdf span {
+    display: none;
+  }
+}

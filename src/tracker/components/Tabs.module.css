@@ -1,0 +1,88 @@
+.tablist {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1.5px dashed var(--board-line-strong);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tablist::-webkit-scrollbar {
+  display: none;
+}
+.tab {
+  position: relative;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 10px 16px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--chalk-dim);
+  border-radius: 10px 10px 0 0;
+  transition: color 0.15s, background 0.15s;
+}
+.tab:hover {
+  color: var(--chalk);
+  background: rgba(255, 255, 255, 0.03);
+}
+.on {
+  color: var(--chalk);
+}
+.icon {
+  display: inline-flex;
+}
+.icon svg {
+  width: 17px;
+  height: 17px;
+}
+.on .icon {
+  color: var(--accent);
+}
+.count {
+  min-width: 22px;
+  height: 20px;
+  padding: 0 7px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--chalk-dim);
+  background: var(--board-3);
+  font-variant-numeric: tabular-nums;
+}
+.on .count {
+  color: var(--ink);
+  background: var(--chalk);
+}
+.underline {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: -3px;
+  height: 9px;
+  width: calc(100% - 20px);
+  overflow: visible;
+}
+@media (max-width: 640px) {
+  .tab {
+    padding: 10px 11px 14px;
+    gap: 6px;
+    font-size: 14px;
+  }
+  .count {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .tablist {
+    gap: 0;
+  }
+  .tab {
+    padding: 10px 10px 14px;
+  }
+  .icon {
+    display: none;
+  }
+}

@@ -1,0 +1,36 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: clamp(28px, 4vw, 44px);
+}
+.center {
+  align-items: center;
+  text-align: center;
+}
+.title {
+  font-size: clamp(28px, 3.4vw, 40px);
+  color: var(--chalk);
+}
+.onPaper .title {
+  color: var(--ink);
+}
+.accent {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  color: var(--accent);
+  font-size: 1.08em;
+  letter-spacing: 0;
+}
+.underline {
+  width: 60px;
+  height: 8px;
+  color: var(--chalk);
+  overflow: visible;
+}
+.onPaper .accent {
+  color: var(--accent-ink);
+}
+.onPaper .underline {
+  color: var(--accent);
+}

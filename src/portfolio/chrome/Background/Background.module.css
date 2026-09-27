@@ -1,0 +1,113 @@
+/* Fixed, full-viewport, never interactive. Sits under the page (z 0). */
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  contain: strict;
+}
+
+.gl {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.4s var(--ease-out);
+}
+.gl[data-ready] {
+  opacity: 1;
+}
+.gl canvas {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none;
+}
+
+/* ── 2D board markings ─────────────────────────────────────────────── */
+.markings {
+  position: absolute;
+  inset: 0;
+  color: var(--chalk);
+}
+.markings svg {
+  position: absolute;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.markings text {
+  fill: currentColor;
+  stroke: none;
+  font-family: var(--font-chalk);
+}
+
+.ruler {
+  top: 0;
+  opacity: 0.13;
+}
+.rulerLeft {
+  left: 0;
+}
+.rulerRight {
+  right: 0;
+}
+.rulerNum {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.cross {
+  opacity: 0.2;
+  transform: translate(-50%, -50%);
+}
+
+.protractor {
+  opacity: 0.15;
+}
+.p1 {
+  top: 17%;
+  right: max(18px, 3.5vw);
+  transform: rotate(-4deg);
+}
+.p2 {
+  bottom: 9%;
+  left: max(28px, 3vw);
+  transform: rotate(2deg);
+}
+.deg {
+  font-size: 14px;
+  font-weight: 500;
+}
+.degDim {
+  opacity: 0.55;
+}
+.theta {
+  font-size: 15px;
+}
+
+@media (max-width: 760px) {
+  .rulerNum {
+    display: none;
+  }
+  .ruler {
+    opacity: 0.1;
+  }
+  .hideSm {
+    display: none;
+  }
+  .p1 {
+    top: 12%;
+    right: -64px;
+    transform: rotate(-4deg) scale(0.72);
+    transform-origin: right top;
+  }
+  .p2 {
+    bottom: 14%;
+    left: -18px;
+    transform: rotate(2deg) scale(0.7);
+    transform-origin: left bottom;
+  }
+}

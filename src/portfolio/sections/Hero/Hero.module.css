@@ -1,0 +1,271 @@
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-top: calc(var(--nav-h) + clamp(16px, 2.6vw, 36px));
+  padding-bottom: 0;
+}
+
+/* the composition sits in the optical middle of the first screen */
+.grid {
+  flex: 1 0 auto;
+  display: grid;
+  grid-template-columns: clamp(236px, 22vw, 290px) minmax(0, 1fr);
+  grid-template-areas: 'left right';
+  align-content: center; /* the grid grows with its content, so this never pushes anything off-screen */
+  align-items: start;
+  column-gap: clamp(36px, 4.4vw, 64px);
+  padding-bottom: 12px;
+}
+
+.left {
+  grid-area: left;
+  /* a tugged polaroid should pass over the sticky note, not under it */
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  padding-top: 18px;
+}
+
+.right {
+  grid-area: right;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-width: 0;
+}
+
+/* ── header: name · badge · socials / taglines ─────────────── */
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'title socials'
+    'tag   tag';
+  align-items: center;
+  column-gap: 20px;
+  row-gap: 6px;
+}
+
+.titleRow {
+  grid-area: title;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  min-width: 0;
+}
+
+.name {
+  font-size: clamp(40px, 4.4vw, 58px);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--chalk);
+  text-shadow: 0 0 1px rgba(236, 232, 223, 0.35), 0 0 18px rgba(236, 232, 223, 0.06);
+}
+.letters {
+  display: inline-block;
+  white-space: nowrap;
+}
+.letter {
+  display: inline-block;
+  will-change: transform;
+}
+.letterInner {
+  display: inline-block;
+  cursor: default;
+}
+.space {
+  display: inline-block;
+  width: 0.26em;
+}
+
+.socials {
+  grid-area: socials;
+  justify-self: end;
+}
+
+.taglines {
+  grid-area: tag;
+  /* separators live in a clipped gutter, so a wrapped line never starts with a dangling dot */
+  overflow: hidden;
+  padding-block: 2px;
+}
+.tagInner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  margin-left: -22px;
+}
+.tagline {
+  white-space: nowrap;
+}
+.tagline::before {
+  content: '·';
+  content: '·' / '';
+  display: inline-block;
+  width: 22px;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  color: var(--chalk-muted);
+}
+/* the one handwritten red line in the hero */
+.tagHand {
+  font-family: var(--font-hand);
+  font-size: clamp(21px, 1.7vw, 24px);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: var(--accent);
+}
+/* role line: plain chalk sans, quieter than the handwriting */
+.tagPlain {
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--chalk-dim);
+}
+.word {
+  display: inline-block;
+}
+
+/* open-to-work chalk badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 40px;
+  padding: 5px 16px 6px 13px;
+  border-radius: 999px;
+  border: 1.5px dashed var(--chalk-faint);
+  background: rgba(155, 209, 163, 0.06);
+  font-family: var(--font-chalk);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--chalk);
+  transition: border-color 0.2s, background 0.2s;
+}
+.badge:hover {
+  border-color: var(--chalk-green);
+  background: rgba(155, 209, 163, 0.12);
+}
+.dot {
+  position: relative;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--chalk-green);
+  box-shadow: 0 0 8px rgba(155, 209, 163, 0.7);
+  flex: none;
+}
+.dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--chalk-green);
+  animation: pulse 2.2s var(--ease-out) infinite;
+}
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  80%,
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dot::after {
+    display: none;
+  }
+}
+
+/* ── scroll arrow ──────────────────────────────────────────── */
+.scrollHint {
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  margin: 4px auto clamp(10px, 2vh, 22px);
+  border-radius: 50%;
+  color: var(--chalk-dim);
+  transition: color 0.2s;
+}
+.scrollHint:hover {
+  color: var(--chalk);
+}
+.scrollArrow {
+  display: block;
+}
+.scrollArrow svg {
+  display: block;
+  width: 20px;
+  height: 34px;
+}
+
+/* ── tablet / mobile: stack ────────────────────────────────── */
+@media (max-width: 899px) {
+  .hero {
+    min-height: 0;
+    padding-top: calc(var(--nav-h) + 20px);
+  }
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: 'left' 'right';
+    row-gap: 22px;
+    padding-bottom: 0;
+  }
+  /* phones scroll without being told to */
+  .scrollHint {
+    display: none;
+  }
+  .left {
+    padding-top: 14px;
+  }
+  .right {
+    gap: 26px;
+  }
+  .head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+  }
+  .titleRow {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .socials {
+    justify-self: auto;
+    margin-top: 4px;
+  }
+  .tagInner {
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-left: 0;
+  }
+  .tagline {
+    white-space: normal;
+  }
+  .tagline::before {
+    display: none;
+  }
+  .tagHand {
+    font-size: 22px;
+    line-height: 1.3;
+  }
+  .tagPlain {
+    font-size: 15px;
+  }
+}

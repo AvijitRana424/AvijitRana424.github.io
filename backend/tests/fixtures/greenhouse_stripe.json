@@ -1,0 +1,212 @@
+{
+ "jobs": [
+  {
+   "absolute_url": "https://stripe.com/jobs/search?gh_jid=8172487",
+   "education": "education_required",
+   "internal_job_id": 3537052,
+   "location": {
+    "name": "Dublin"
+   },
+   "metadata": null,
+   "id": 8172487,
+   "updated_at": "2026-09-25T16:45:00-04:00",
+   "requisition_id": "See Opening ID",
+   "title": "Abuse Investigator",
+   "company_name": "Stripe",
+   "first_published": "2026-09-03T13:30:34-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;h2&gt;&lt;strong&gt;Who we are &lt;/strong&gt;&lt;/h2&gt;\n&lt;h3&gt;&lt;strong&gt;About Stripe&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;Stripe is a financial infrastructure platform for businesses. Millions of companies - from the world’s largest enterprises to the most ambitious startups - use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone&#39;s reach while doing the most important work of your career.&lt;/span&gt;&lt;/p&gt;\n&lt;h3&gt;&lt;strong&gt;About the team&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;Abuse Operations is the front-line incident response and remediation function handling active product abuse and fraud impacting Stripe and its merchants. This multi-disciplinary group, spanning Incident Managers, Investigators, Forward Deployed Security Engineers, and Data Scientists, neutralizes active attacks, gathers requirements for operational tooling, and leads incidents. The team&amp;nbsp; works directly with impacted merchants to resolve technical incidents and policy abuse rapidly. Operating primarily across Eastern, Pacific and Western European time zones, these team members regularly coordinate with global stakeholders across the world.&lt;/p&gt;\n&lt;h2&gt;&lt;strong&gt;What you’ll do&lt;/strong&gt;&lt;/h2&gt;\n&lt;p&gt;You&#39;ll play a critical role in safeguarding our financial ecosystem by investigating high-risk accounts and identifying complex patterns of fraud during incidents. You will lead incident response for product abuse and fraud events, conducting deep-dive analyses to identify root causes. By collaborating cross-functionally, you will drive improvements that enhance our fraud detection and prevention strategies at scale. Your expertise will be essential in automating response processes through agentic approaches, allowing us to safeguard merchants and neutralize threats with speed and precision.&lt;/p&gt;\n&lt;h3&gt;&lt;strong&gt;Responsibilities&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;Investigate, mitigate, and remediate urgent fraud incidents (e.g., ATO, card testing), utilizing FT3-mapped detection and signals enrichment to reduce uncertainty and accelerate response.&lt;/li&gt;\n&lt;li&gt;As part of incidents, analyze high-risk accounts to identify fraudulent merchants, card testing, account takeovers, and other fraud vectors, classifying them using FT3 (Fraud Taxonomy 3.0) to standardize threat intelligence.&lt;/li&gt;\n&lt;li&gt;Lead incident root cause analyses to identify gaps in current systems and strategies, leveraging the FT3 framework, data-driven model to drive enhancements and process improvements for emerging fraud risks.&lt;/li&gt;\n&lt;li&gt;Streamline incident response capabilities, ensuring the tooling and processes are clear, accurate and efficient&lt;/li&gt;\n&lt;li&gt;Work cross-functionally with security, fraud and data science teams to build agentic solutions for responding to abuse incidents at scale&lt;/li&gt;\n&lt;li&gt;Effectively communicate cross-functionally with legal and policy teams to assess and mitigate risks, while demonstrating strong problem-solving under pressure.&lt;/li&gt;\n&lt;li&gt;Collaborate effectively with teammates, leading projects, mentoring others, and developing and championing quality standards within the team&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;&lt;strong&gt;Who you are&lt;/strong&gt;&lt;/h2&gt;\n&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;We&#39;re looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement.&lt;/span&gt;&lt;/p&gt;\n&lt;h3&gt;&lt;strong&gt;Minimum requirements&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;5+ years of experience conducting incident response in security, product abuse or trust domains&lt;/li&gt;\n&lt;li&gt;5+ years experience analyzing large data sets to solve problems and/or building models with a behavioral approach to fraud detection&lt;/li&gt;\n&lt;li&gt;B.S. or M.S. Computer Science or related field, or equivalent experience&lt;/li&gt;\n&lt;li&gt;Expert knowledge of Python and SQL, and familiarity with other programming languages&lt;/li&gt;\n&lt;li&gt;Existing experience with log analysis (e.g. first or third party applications, system / data access, event logs), network security, digital forensics, and incident response investigations&lt;/li&gt;\n&lt;li&gt;Ability to communicate results clearly and focus on impact&lt;/li&gt;\n&lt;li&gt;Ability to think creatively and holistically about reducing risk in a complex environment&lt;/li&gt;\n&lt;/ul&gt;\n",
+   "departments": [
+    {
+     "id": 81946,
+     "name": "8611 Security Analytics",
+     "child_ids": [],
+     "parent_id": 78876
+    }
+   ],
+   "offices": [
+    {
+     "id": 87011,
+     "name": "Ireland Locations",
+     "location": null,
+     "child_ids": [
+      80459,
+      80460
+     ],
+     "parent_id": 17446
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": false,
+   "ai_opt_out_request_url": "http://app.greenhouse.io/ai_opt_out_request/job_post/8172487/ai_opt_out"
+  },
+  {
+   "absolute_url": "https://stripe.com/jobs/search?gh_jid=8031833",
+   "education": "education_required",
+   "internal_job_id": 3481706,
+   "location": {
+    "name": "Bengaluru"
+   },
+   "metadata": null,
+   "id": 8031833,
+   "updated_at": "2026-09-25T16:44:48-04:00",
+   "requisition_id": "See Opening ID",
+   "title": "Software Engineer, Intern",
+   "company_name": "Stripe",
+   "first_published": "2026-07-10T01:33:52-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;h2&gt;&lt;strong&gt;Who we are&lt;/strong&gt;&lt;/h2&gt;\n&lt;h3&gt;&lt;strong&gt;About Stripe&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;Stripe is a technology company focused on improving the conditions for economic growth and prosperity. We build programmable financial infrastructure, rethinking from first principles how financial services should work, to make it easier and cheaper for any business to start and scale. More than 10 million &lt;a href=&quot;https://stripe.com/customers&quot;&gt;businesses&lt;/a&gt; build on Stripe, spanning the economic frontier—from solo founders to established enterprises—united by a practical focus on growth. The most ambitious companies in the world use Stripe as core infrastructure to grow faster. They process trillions of dollars a year on Stripe, equivalent to around 1.6% of global GDP. While economic growth makes everyone better off, open markets also enable greater variety. When any business can easily serve a global customer base, the quality and diversity of products in the world increase, and craft and creativity are unleashed into the smallest niches. Our own growth is wholly contingent on the success of the businesses building on Stripe. We therefore invest back into our technology at an unusual rate. We make &lt;a href=&quot;https://stripe.com/roadmap&quot;&gt;upgrades to our products&lt;/a&gt; every single day to deliver compounding gains to our customers. We maintain some of the most &lt;a href=&quot;https://status.stripe.com/&quot;&gt;reliable APIs&lt;/a&gt; on the internet. We build entirely new &lt;a href=&quot;https://tempo.xyz/&quot;&gt;pieces&lt;/a&gt; of &lt;a href=&quot;https://mpp.dev/&quot;&gt;financial&lt;/a&gt; &lt;a href=&quot;https://joinopenstandard.com/&quot;&gt;infrastructure&lt;/a&gt; to enable new ideas. And our significant advances in &lt;a href=&quot;https://stripe.com/radar&quot;&gt;risk and fraud&lt;/a&gt; infrastructure over many years are making the internet economy safer and more accessible.&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;Though people at Stripe don’t tend to take themselves seriously, Stripe is a fairly serious place: our customers are depending on us for their livelihoods. We admire ambition, intensity, curiosity, humility, and rigor. The most effective people become knowledgeable about many domains besides their own. Any company is an applied exercise in understanding some aspect of society or the market. In working with so many (especially the new and innovative ones), we think that Stripe is one of the very best places to learn about how the world works.&lt;/p&gt;\n&lt;h2&gt;&lt;strong&gt;What you’ll do&lt;/strong&gt;&lt;/h2&gt;\n",
+   "departments": [
+    {
+     "id": 84360,
+     "name": "5112 General University",
+     "child_ids": [],
+     "parent_id": 84359
+    }
+   ],
+   "offices": [
+    {
+     "id": 80454,
+     "name": "IN-Bengaluru",
+     "location": "Bengaluru, Karnataka, India",
+     "child_ids": [],
+     "parent_id": 87000
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": false,
+   "ai_opt_out_request_url": "http://app.greenhouse.io/ai_opt_out_request/job_post/8031833/ai_opt_out"
+  },
+  {
+   "absolute_url": "https://stripe.com/jobs/search?gh_jid=7543868",
+   "education": "education_required",
+   "internal_job_id": 3339485,
+   "location": {
+    "name": "Bengaluru, India"
+   },
+   "metadata": null,
+   "id": 7543868,
+   "updated_at": "2026-09-25T16:44:37-04:00",
+   "requisition_id": "See Opening ID",
+   "title": "Software Engineer, Internal Systems",
+   "company_name": "Stripe",
+   "first_published": "2026-01-27T22:58:55-05:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;h2&gt;Who we are&lt;/h2&gt;\n&lt;h3&gt;About Stripe&lt;/h3&gt;\n&lt;p&gt;Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world&#39;s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone&#39;s reach while doing the most important work of your career.&lt;/p&gt;\n&lt;h3&gt;About the team&lt;/h3&gt;\n&lt;p&gt;Our mission is to enable effective financial decisions through reliable data, increased efficiency, and automation. We support Marketing, Sales, Seller, Accounting, Tax, Finance and Strategy (F&amp;amp;S), Finance Operations (FinOps), and Treasury functions across automation, data insights, and process improvements.&lt;/p&gt;\n&lt;p&gt;You may work on a wide variety of critical business areas including&lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;Seller Systems&lt;/strong&gt;&amp;nbsp;— Responsible for building the systems and tooling that make sellers and internal revenue teams at Stripe dramatically more productive and effective. We partner with Sales, Finance, Legal, and Product to deliver a single &quot;plane of glass&quot; selling experience that spans deal creation and modeling, negotiation and approvals, contracting, onboarding, and activation. The Seller Systems team composes first‑party, custom Stripe components with best‑in‑class third‑party business systems to deliver configurable, auditable, and globally scalable workflows. Engineers on Seller Systems build services, APIs, integrations, data pipelines, and internal UIs that power seller productivity, reduce time‑to‑activation, improve deal velocity, and enable AI‑driven assistive workflows. Use cases include deal modeling and pricing engines, approval and orchestration platforms, CLM/CPQ integrations, onboarding automation, seller analytics, and AI‑assisted seller tooling.&lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;Finance Engineering&lt;/strong&gt;&amp;nbsp;— Responsible for building the robust and scalable infrastructure that powers the company&#39;s core financial operations, including payments processing, fund settlement, accounting, and business intelligence. The Finance Engineering team is at the core of Stripe to empower business-critical financial domains including Accounting, Finance operations, Finance and Strategy, and Treasury. Engineers on the Financial Engineering team build platforms, data pipelines, and financial products for the Finance team. The use cases include financial analytics and insights, accounting automation, auditing, financial planning and forecasting, and financial business intelligence.&lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;Marketing and Sales Systems&lt;/strong&gt;&amp;nbsp;— Responsible for building the most measurable, cross-channel messaging capability possible, to attract and engage customers. We do this through scalable motions, with the most relevant messaging and increasing reach of our marketing motions. We are a cross-functional team of engineers, analysts, marketers, and product managers that deliver the insights, internal systems and tools that fuel growth at Stripe.&lt;/p&gt;\n&lt;p&gt;As part of the Marketing Systems team, you own systems that power go-to-market motions productizing gathered insights and intelligence. This includes building tools that 1/ power better digital experiences, 2/ accelerate customer journey with intelligent orchestrations, 3/ drive smarter decisions with CDP, and 4/ improve marketer and seller productivity.&lt;/p&gt;\n&lt;h2&gt;What you&#39;ll do&lt;/h2&gt;\n&lt;p&gt;We&#39;re looking for Software Engineers who want to make an impact on managing money at a global scale with a passion for building ergonomic APIs. You&#39;ll play a key role in extending our balance management platform and in building out a new funds accessibility platform leveraged by enterprises and SMBs alike. Our team collaborates with many cross-functional teams — from Infrastructure to Product — at Stripe to deliver innovative solutions that address evolving user needs.&lt;/p&gt;\n&lt;h3&gt;Responsibilities&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;Design, build, and maintain beautiful, robust, and high-performance APIs and services&lt;/li&gt;\n&lt;li&gt;Ensure our infrastructure is extensible, scalable, reliable, and meets service-level agreements for both external and internal users&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Hide complexity from our users behind simple yet powerful abstractions&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Partner closely with other engineers, analysts, and scientists to build highly scalable systems, to deliver delightful developer experiences and comprehensive interfaces&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Build the APIs that power internal stakeholder-facing UI experiences, defining composable data models and durable interfaces&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Debug production issues across services and multiple levels of the stack with an eye towards improving maintainability over the long term&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Improve engineering standards, tooling, and processes&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;Who you are&lt;/h2&gt;\n&lt;p&gt;We&#39;re looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement.&lt;/p&gt;\n&lt;h3&gt;Minimum requirements&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;8+ years of experience designing, implementing, and operating large-scale, high-performance APIs and services&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;You have implemented server-side APIs in dynamic languages like Ruby, working with document and relational datastores (especially Mongo and MySQL) and enjoy spelunking through new datasets (especially in systems like Redshift, Presto, or Trino).&lt;/li&gt;\n&lt;li&gt;Empathetic, collaborative, and user-first mindset in everything you build and have excellent oral and written communication&lt;/li&gt;\n&lt;li&gt;Experience proactively seeking feedback from users, teammates, and subject matter experts&lt;/li&gt;\n&lt;li&gt;The skills to build holistically — from specs and documentation to implementation, testing, deployment, and measuring impact and ability to balance speed, complexity, and scope in service of user needs&lt;/li&gt;\n&lt;/ul&gt;\n",
+   "departments": [
+    {
+     "id": 68139,
+     "name": "7420 Finance Systems",
+     "child_ids": [],
+     "parent_id": 78734
+    }
+   ],
+   "offices": [
+    {
+     "id": 87000,
+     "name": "India Locations",
+     "location": null,
+     "child_ids": [
+      84345,
+      80454,
+      80444
+     ],
+     "parent_id": 4260
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": false,
+   "ai_opt_out_request_url": "http://app.greenhouse.io/ai_opt_out_request/job_post/7543868/ai_opt_out"
+  },
+  {
+   "absolute_url": "https://stripe.com/jobs/search?gh_jid=8209970",
+   "education": "education_required",
+   "internal_job_id": 3553102,
+   "location": {
+    "name": "Bangalore"
+   },
+   "metadata": null,
+   "id": 8209970,
+   "updated_at": "2026-09-25T16:45:06-04:00",
+   "requisition_id": "See Opening ID",
+   "title": "Software Engineer, Stripe Data Pipeline",
+   "company_name": "Stripe",
+   "first_published": "2026-09-21T07:18:26-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;h2&gt;Who we are&lt;/h2&gt;\n&lt;h3&gt;About Stripe&lt;/h3&gt;\n&lt;p&gt;Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world&#39;s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone&#39;s reach while doing the most important work of your career.&lt;/p&gt;\n&lt;h3&gt;About the team&lt;/h3&gt;\n&lt;p&gt;&lt;strong&gt;Stripe Data Pipeline&lt;/strong&gt;—The Stripe Data Pipeline (SDP) team owns a critical product that delivers all of a merchant&#39;s Stripe data directly into their data warehouse. We serve major technology companies and Fortune 100 enterprises, delivering petabytes of data daily with high reliability, low latency, and strong correctness guarantees. SDP is marching towards 99.99% availability and near real-time data freshness across multiple warehouse platforms. Merchants depend on this data for their own billing, reconciliation and analytics, and the quality of what we deliver has immediate, visible impact. The systems are distributed, multi-tenant, and operate under strict SLAs. You will work on hard problems at the intersection of data infrastructure, merchant-facing product, and operational excellence.&lt;/p&gt;\n&lt;h2&gt;What you&#39;ll do&lt;/h2&gt;\n&lt;p&gt;As a Software Engineer, you&#39;ll design and build platforms and system solutions that are configurable and scalable around the globe. You&#39;ll partner with many functions at Stripe, with the opportunity to both work on financial platform systems, as well as direct user-facing business impact.&lt;/p&gt;\n&lt;h3&gt;Responsibilities&lt;/h3&gt;\n&lt;p&gt;• Design, build, and maintain APIs, services, and systems across engineering teams at Stripe.&lt;/p&gt;\n&lt;p&gt;• Work with engineers across the company to build new features at large scale.&lt;/p&gt;\n&lt;p&gt;• Maintain a collaborative environment, engaging in discussions and decision-making processes with stakeholders within various domains at Stripe.&lt;/p&gt;\n&lt;h2&gt;Who you are&lt;/h2&gt;\n&lt;p&gt;We&#39;re looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement.&lt;/p&gt;\n&lt;h3&gt;Minimum requirements&lt;/h3&gt;\n&lt;p&gt;• 7+ years of experience in delivering, extending, and maintaining large-scale distributed systems&lt;/p&gt;\n&lt;p&gt;• Love to design systems that are elegant abstractions over complex patterns and practices, especially in the financial industry.&lt;/p&gt;\n&lt;p&gt;• Hold yourself and others to a high bar when working with production systems.&lt;/p&gt;\n&lt;p&gt;• Take pride in working on projects to successful completion involving a wide variety of technologies and systems.&lt;/p&gt;\n&lt;p&gt;• Think about systems, services, and platforms, and write high-quality code.&lt;/p&gt;\n&lt;p&gt;• You have great product taste and a track record of taking complex problems and solving them elegantly.&lt;/p&gt;\n&lt;p&gt;• You are capable of working in ambiguous, fast-moving environments and have a curiosity to learn the domain to a deep level.&lt;/p&gt;\n",
+   "departments": [
+    {
+     "id": 78953,
+     "name": "8122 Data Foundations",
+     "child_ids": [],
+     "parent_id": 78811
+    }
+   ],
+   "offices": [
+    {
+     "id": 87000,
+     "name": "India Locations",
+     "location": null,
+     "child_ids": [
+      84345,
+      80454,
+      80444
+     ],
+     "parent_id": 4260
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": false,
+   "ai_opt_out_request_url": "http://app.greenhouse.io/ai_opt_out_request/job_post/8209970/ai_opt_out"
+  },
+  {
+   "absolute_url": "https://stripe.com/jobs/search?gh_jid=8185014",
+   "education": "education_required",
+   "internal_job_id": 3541964,
+   "location": {
+    "name": "Bengaluru"
+   },
+   "metadata": null,
+   "id": 8185014,
+   "updated_at": "2026-09-25T16:45:02-04:00",
+   "requisition_id": "See Opening ID",
+   "title": "Staff Engineer, Payments",
+   "company_name": "Stripe",
+   "first_published": "2026-09-21T13:04:24-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;h2&gt;Who we are&lt;/h2&gt;\n&lt;h3&gt;About Stripe&lt;/h3&gt;\n&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities. Our mission is to increase the GDP of the internet, and we have a staggering amount of work ahead. That means you have an unprecedented opportunity to put the global economy within everyone’s reach while doing the most important work of your career.&lt;/span&gt;&lt;/p&gt;\n&lt;h3&gt;About the team&lt;/h3&gt;\n&lt;p&gt;Payments is at the core of Stripe’s mission to increase the GDP of the internet. As we expand our payments footprint in India, we are looking for a Staff Engineer to set the technical direction for our next generation of payment offerings in the market.&lt;/p&gt;\n&lt;p&gt;As a Staff Engineer on the India Payments team, you will build on Stripe’s foundational platforms and lead the architectural evolution of critical systems that process money movement every millisecond. Working across the payments stack, you will shape how we integrate with local payment rails, initiate and intelligently route payments, ensure reliable completion and automate reconciliation and settlement.&lt;/p&gt;\n&lt;p&gt;Partnering with engineering teams, cross-functional partners and leaders globally, you will solve complex, high-stakes technical challenges involving low-latency execution, transactional correctness and idempotency, safe migrations with zero downtime and resilient distributed-state management.&lt;/p&gt;\n&lt;h2&gt;What you’ll do&lt;/h2&gt;\n&lt;h3&gt;Responsibilities&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;Design, build and operate secure, reliable and extensible production systems.&lt;/li&gt;\n&lt;li&gt;Drive complex initiatives from concept to launch by managing dependencies, making decisive architectural trade-offs and ensuring successful delivery.&lt;/li&gt;\n&lt;li&gt;Set a high technical bar through hands-on coding, design and code reviews, rigorous testing, clear documentation and maintainable system design.&lt;/li&gt;\n&lt;li&gt;Partner with cross-functional teams and external partners to navigate regulatory and operational complexity, unblock execution and deliver roadmap commitments.&lt;/li&gt;\n&lt;li&gt;Own operational excellence by leading incident response and continuously improving system health, security and operational workflows.&lt;/li&gt;\n&lt;li&gt;Improve engineering standards, tooling and processes.&lt;/li&gt;\n&lt;li&gt;Mentor and develop engineers to cultivate the next generation of leaders at Stripe.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h2&gt;&lt;strong&gt;Who you are&lt;/strong&gt;&lt;/h2&gt;\n&lt;p&gt;&lt;span style=&quot;font-weight: 400;&quot;&gt;We’re looking for someone who meets the minimum requirements to be considered for the role. If you meet these requirements, you are encouraged to apply. The preferred qualifications are a bonus, not a requirement.&lt;/span&gt;&lt;/p&gt;\n&lt;h3&gt;Minimum requirements&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;10+ years of hands-on experience building and operating highly available, fault-tolerant distributed systems.&lt;/li&gt;\n&lt;li&gt;Proven experience driving the architectural vision for complex, multi-team initiatives, backed by deep expertise in system design, databases and API development.&lt;/li&gt;\n&lt;li&gt;Strong track record of end-to-end technical ownership, steering projects from concept to delivery while proactively influencing both technical and product roadmaps.&lt;/li&gt;\n&lt;li&gt;Excellent written and verbal communication skills, with the ability to distill highly complex technical concepts for diverse, non-technical audiences.&lt;/li&gt;\n&lt;li&gt;A highly collaborative mindset, valuing diverse perspectives and thriving across functional and organizational boundaries.&lt;/li&gt;\n",
+   "departments": [
+    {
+     "id": 66161,
+     "name": "8516 Payments Global",
+     "child_ids": [],
+     "parent_id": 340725
+    }
+   ],
+   "offices": [
+    {
+     "id": 87000,
+     "name": "India Locations",
+     "location": null,
+     "child_ids": [
+      84345,
+      80454,
+      80444
+     ],
+     "parent_id": 4260
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": false,
+   "ai_opt_out_request_url": "http://app.greenhouse.io/ai_opt_out_request/job_post/8185014/ai_opt_out"
+  }
+ ],
+ "meta": {
+  "total": 5
+ }
+}

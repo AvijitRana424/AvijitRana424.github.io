@@ -1,0 +1,114 @@
+.tab {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+}
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 14px;
+}
+.search {
+  flex: 1 1 260px;
+  max-width: 440px;
+}
+.search input {
+  padding-right: 40px;
+}
+.search input::-webkit-search-cancel-button {
+  display: none;
+}
+.clearSearch {
+  position: absolute;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--chalk-dim);
+}
+.clearSearch:hover {
+  color: var(--chalk);
+  background: rgba(255, 255, 255, 0.08);
+}
+.toolbarEnd {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: auto;
+}
+.skelBoard {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+}
+.skelCol {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 12px 10px;
+  min-height: 360px;
+  border-radius: 14px;
+  border: 1.5px dashed var(--board-line);
+}
+.modalTitle {
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: 26px;
+  color: var(--ink);
+}
+.query {
+  font-family: var(--font-sans);
+  font-size: 0.8em;
+  font-weight: 600;
+}
+.confirmBody {
+  display: grid;
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+.confirmBody b {
+  color: var(--ink);
+}
+.seg,
+.archived,
+.add {
+  display: inline-flex;
+}
+@media (max-width: 760px) {
+  .toolbar {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'seg add'
+      'search search'
+      'arch arch';
+    gap: 10px 12px;
+  }
+  .seg {
+    grid-area: seg;
+  }
+  .search {
+    grid-area: search;
+    max-width: none;
+  }
+  .toolbarEnd {
+    display: contents;
+  }
+  .archived {
+    grid-area: arch;
+  }
+  .add {
+    grid-area: add;
+    justify-self: end;
+  }
+  .skelBoard {
+    grid-template-columns: 82% 82%;
+    overflow: hidden;
+  }
+}
+

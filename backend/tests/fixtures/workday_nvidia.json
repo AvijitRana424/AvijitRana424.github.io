@@ -1,0 +1,52 @@
+{
+ "total": 5,
+ "jobPostings": [
+  {
+   "title": "Senior Software Engineer",
+   "externalPath": "/job/India-Bengaluru/Senior-Software-Engineer_JR2024294",
+   "locationsText": "India, Bengaluru",
+   "postedOn": "Posted 30+ Days Ago",
+   "bulletFields": [
+    "JR2024294"
+   ]
+  },
+  {
+   "title": "Senior Software Engineer - NVEX",
+   "externalPath": "/job/India-Bengaluru/Senior-Software-Engineer---NVEX_JR2025965",
+   "locationsText": "India, Bengaluru",
+   "postedOn": "Posted 6 Days Ago",
+   "bulletFields": [
+    "JR2025965"
+   ]
+  },
+  {
+   "title": "Senior Software Engineer, Security",
+   "externalPath": "/job/US-CA-Santa-Clara/Senior-Security-Architect_JR2018245",
+   "locationsText": "2 Locations",
+   "postedOn": "Posted Yesterday",
+   "bulletFields": [
+    "JR2018245"
+   ]
+  },
+  {
+   "title": "Senior Software Engineer",
+   "externalPath": "/job/Israel-Raanana/Senior-Software-Engineer_JR1998124",
+   "locationsText": "Israel, Raanana",
+   "postedOn": "Posted 30+ Days Ago",
+   "bulletFields": [
+    "JR1998124"
+   ]
+  },
+  {
+   "title": "Senior Software Engineer, Networking",
+   "externalPath": "/job/US-CA-Santa-Clara/Senior-Linux-Kernel-Software-Engineer_JR2015068",
+   "locationsText": "US, CA, Santa Clara",
+   "postedOn": "Posted 30+ Days Ago",
+   "bulletFields": [
+    "JR2015068"
+   ]
+  }
+ ],
+ "facets": [],
+ "userAuthenticated": false
+}

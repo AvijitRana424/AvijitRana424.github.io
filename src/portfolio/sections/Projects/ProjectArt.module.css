@@ -1,0 +1,632 @@
+/* Ink-on-pastel illustration primitives. --tint is set by the art panel. */
+.art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  --tint-deep: color-mix(in srgb, var(--tint, var(--paper-3)), var(--ink) 16%);
+  --tint-soft: color-mix(in srgb, var(--tint, var(--paper-3)), var(--paper) 45%);
+  --win: color-mix(in srgb, var(--paper), #fff 45%);
+}
+
+/* strokes */
+.ln,
+.lnThin,
+.lnPaper,
+.lnAccent,
+.check,
+.dash,
+.dashAccent,
+.dashInk,
+.tick,
+.cross,
+.ringLine,
+.placeholder,
+.textLine,
+.textLineSoft,
+.track,
+.trackFill {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ln {
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+.lnThin {
+  stroke: var(--ink);
+  stroke-width: 1.2;
+  fill: none;
+}
+.lnPaper {
+  stroke: var(--paper);
+  stroke-width: 1.4;
+}
+.lnAccent {
+  stroke: var(--accent);
+  stroke-width: 1.8;
+}
+.check {
+  stroke: var(--accent);
+  stroke-width: 1.7;
+}
+.tick {
+  stroke: var(--ink);
+  stroke-opacity: 0.22;
+  stroke-width: 1;
+}
+.cross {
+  stroke: var(--ink);
+  stroke-opacity: 0.22;
+  stroke-width: 1;
+}
+.ringLine {
+  stroke: var(--ink);
+  stroke-opacity: 0.4;
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
+}
+.placeholder,
+.textLineSoft {
+  stroke: var(--ink);
+  stroke-opacity: 0.22;
+  stroke-width: 2.2;
+}
+.textLine {
+  stroke: var(--ink-2);
+  stroke-width: 2.4;
+}
+
+.dash,
+.dashAccent,
+.dashInk {
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+.dash {
+  stroke: var(--ink-2);
+}
+.dashAccent {
+  stroke: var(--accent);
+  stroke-width: 1.8;
+}
+.dashInk {
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+
+/* fills */
+.shadow {
+  fill: var(--ink);
+  fill-opacity: 0.16;
+}
+.win {
+  fill: var(--win);
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+.pill {
+  fill: var(--paper-2);
+  stroke: var(--ink);
+  stroke-opacity: 0.35;
+  stroke-width: 1;
+}
+.card {
+  fill: var(--win);
+  stroke: var(--ink);
+  stroke-width: 1.4;
+}
+.chip {
+  fill: var(--sticky);
+  stroke: var(--ink);
+  stroke-width: 1.1;
+}
+.field {
+  fill: var(--paper-2);
+  stroke: var(--ink);
+  stroke-width: 1.1;
+}
+.pipe {
+  fill: var(--tint-deep);
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+.dbBody {
+  fill: var(--paper-2);
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+.dbTop {
+  fill: var(--tint-deep);
+  stroke: var(--ink);
+  stroke-width: 1.5;
+}
+.fInk {
+  fill: var(--ink);
+}
+.fAccent {
+  fill: var(--accent);
+}
+.fSticky {
+  fill: var(--sticky);
+}
+.fGreen {
+  fill: var(--chalk-green);
+}
+.fGreenSoft {
+  fill: color-mix(in srgb, var(--chalk-green), var(--paper) 30%);
+}
+.fStickySoft {
+  fill: var(--sticky-2);
+}
+.fBlueSoft {
+  fill: color-mix(in srgb, var(--chalk-blue), var(--paper) 30%);
+}
+.fTintSoft {
+  fill: var(--tint-deep);
+}
+
+/* labels */
+.url,
+.label,
+.labelSm,
+.labelTiny,
+.labelOnInk {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+.url {
+  font-size: 6.5px;
+  fill: var(--ink-3);
+}
+.label {
+  font-size: 8.5px;
+  font-weight: 500;
+  fill: var(--ink-2);
+}
+.labelSm {
+  font-size: 7px;
+  fill: var(--ink-3);
+}
+.labelTiny {
+  font-size: 5.6px;
+  font-weight: 600;
+  fill: var(--paper);
+}
+.labelOnInk {
+  font-size: 7.5px;
+  font-weight: 600;
+  fill: var(--paper);
+}
+
+/* memory bank */
+.tA {
+  fill: color-mix(in srgb, var(--sticky), var(--paper) 20%);
+}
+.tB {
+  fill: color-mix(in srgb, var(--chalk-blue), var(--paper) 35%);
+}
+.tC {
+  fill: var(--tint-soft);
+}
+.tD {
+  fill: color-mix(in srgb, var(--chalk-green), var(--paper) 35%);
+}
+.tE {
+  fill: color-mix(in srgb, var(--st-saved), var(--paper) 30%);
+}
+.tF {
+  fill: color-mix(in srgb, var(--chalk-red), var(--paper) 55%);
+}
+.tileEdge {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.3;
+}
+.sun {
+  fill: var(--sticky-2);
+  stroke: var(--ink);
+  stroke-width: 1.2;
+}
+.hill {
+  fill: var(--tint-deep);
+  stroke: var(--ink);
+  stroke-width: 1.2;
+  stroke-linejoin: round;
+}
+.skin {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 1.2;
+}
+.shirt {
+  fill: var(--tint-deep);
+  stroke: var(--ink);
+  stroke-width: 1.2;
+}
+.avatar {
+  fill: var(--tint-deep);
+  stroke: var(--ink);
+  stroke-width: 1.2;
+}
+.hearts path {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: floatHeart 2.7s var(--ease-out) infinite;
+}
+@keyframes floatHeart {
+  0% {
+    opacity: 0;
+    translate: 0 0;
+    scale: 0.5;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    translate: var(--hx, 0) -34px;
+    scale: 1.15;
+  }
+}
+
+/* ecommerce */
+.stream circle {
+  animation: streamFlow 3.6s linear infinite;
+}
+@keyframes streamFlow {
+  0% {
+    translate: 0 0;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    translate: 240px 0;
+    opacity: 0;
+  }
+}
+.flowDown {
+  animation: dashMove 1s linear infinite;
+}
+.flowUp,
+.flowRight {
+  animation: dashMove 1.2s linear infinite;
+}
+@keyframes dashMove {
+  to {
+    stroke-dashoffset: -14;
+  }
+}
+
+/* order flow */
+.receipt {
+  fill: var(--paper-2);
+}
+.boxA {
+  fill: var(--kraft);
+  stroke: var(--ink);
+  stroke-width: 1.2;
+}
+.boxB {
+  fill: color-mix(in srgb, var(--kraft), var(--paper) 40%);
+  stroke: var(--ink);
+  stroke-width: 1.2;
+}
+.token {
+  animation: token 2.6s var(--ease-out) infinite;
+}
+@keyframes token {
+  0% {
+    translate: 0 0;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  70% {
+    translate: 27px 0;
+    opacity: 1;
+  }
+  85%,
+  100% {
+    translate: 27px 0;
+    opacity: 0;
+  }
+}
+.ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ring 2.2s var(--ease-out) infinite;
+}
+@keyframes ring {
+  0% {
+    scale: 0.6;
+    opacity: 0.8;
+  }
+  100% {
+    scale: 1.5;
+    opacity: 0;
+  }
+}
+.bell {
+  transform-box: fill-box;
+  transform-origin: 50% 10%;
+  animation: bell 2.2s ease-in-out infinite;
+}
+@keyframes bell {
+  0%,
+  60%,
+  100% {
+    rotate: 0deg;
+  }
+  70% {
+    rotate: 12deg;
+  }
+  80% {
+    rotate: -10deg;
+  }
+  90% {
+    rotate: 5deg;
+  }
+}
+.track {
+  stroke: var(--ink);
+  stroke-opacity: 0.2;
+  stroke-width: 3;
+}
+.trackFill {
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-dasharray: 212;
+  stroke-dashoffset: 212;
+  animation: fillTrack 4.2s var(--ease-out) infinite;
+}
+@keyframes fillTrack {
+  0% {
+    stroke-dashoffset: 212;
+  }
+  60%,
+  85% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    stroke-opacity: 0;
+  }
+}
+.stepDot {
+  fill: var(--win);
+  stroke: var(--ink);
+  stroke-width: 1.4;
+  animation: stepDot 4.2s steps(1, end) infinite;
+}
+@keyframes stepDot {
+  0% {
+    fill: var(--win);
+  }
+  20% {
+    fill: var(--accent);
+  }
+  95% {
+    fill: var(--accent);
+  }
+}
+
+/* field app */
+.phone {
+  fill: var(--ink);
+}
+.screen {
+  fill: var(--win);
+}
+.speaker {
+  fill: var(--ink-2);
+}
+.appBar {
+  fill: var(--ink-2);
+}
+.rowBg {
+  fill: var(--paper-2);
+}
+.row {
+  animation: rowIn 5s var(--ease-out) infinite;
+}
+@keyframes rowIn {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  46% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+  56% {
+    opacity: 1;
+  }
+}
+.offline {
+  fill: var(--accent);
+}
+.barOff {
+  fill: var(--ink);
+  fill-opacity: 0.2;
+}
+.barDashed {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.1;
+  stroke-dasharray: 2 2;
+}
+.cloud {
+  fill: var(--win);
+  stroke: var(--ink);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+}
+.cloudShadow {
+  fill: var(--ink);
+  fill-opacity: 0.16;
+}
+.delta {
+  fill: var(--accent);
+}
+.spinSmall {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spin 2.4s linear infinite;
+}
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+/* radar */
+.scope {
+  fill: var(--tint-soft);
+  stroke: var(--ink);
+  stroke-width: 1.6;
+}
+.sweep {
+  transform-box: view-box;
+  animation-name: spin;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.sweepA {
+  fill: var(--accent);
+  fill-opacity: 0.08;
+}
+.sweepB {
+  fill: var(--accent);
+  fill-opacity: 0.12;
+}
+.sweepC {
+  fill: var(--accent);
+  fill-opacity: 0.2;
+}
+.blip,
+.blipRing {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation-name: blip;
+  animation-timing-function: ease-out;
+  animation-iteration-count: infinite;
+}
+.blip {
+  fill: var(--accent);
+}
+.blipRing {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  animation-name: blipRing;
+}
+@keyframes blip {
+  0% {
+    scale: 1.5;
+    opacity: 1;
+  }
+  35% {
+    scale: 1;
+    opacity: 0.75;
+  }
+  100% {
+    scale: 1;
+    opacity: 0.3;
+  }
+}
+@keyframes blipRing {
+  0% {
+    scale: 0.4;
+    opacity: 0.9;
+  }
+  30% {
+    scale: 1.4;
+    opacity: 0;
+  }
+  100% {
+    scale: 1.4;
+    opacity: 0;
+  }
+}
+.ping {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ping 2.4s ease-in-out infinite;
+}
+@keyframes ping {
+  0%,
+  100% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.08;
+  }
+}
+.matchNew {
+  animation: matchIn 6s var(--ease-out) infinite;
+}
+@keyframes matchIn {
+  0% {
+    opacity: 0.35;
+    translate: 10px 0;
+  }
+  10%,
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.stNew {
+  fill: var(--st-new);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+.stApplied {
+  fill: var(--st-applied);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+.stInterview {
+  fill: var(--st-interview);
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+/* resting states: what the art looks like when motion is reduced */
+.stepDone {
+  fill: var(--accent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .stream circle {
+    animation: none;
+    translate: calc(var(--i, 0) * 56px) 0;
+  }
+  .hearts path:first-child {
+    animation: none;
+    opacity: 1;
+    translate: 0 -18px;
+  }
+  .trackFill {
+    animation: none;
+    stroke-dashoffset: 141;
+  }
+  .token,
+  .matchNew,
+  .ring {
+    animation: none;
+  }
+}

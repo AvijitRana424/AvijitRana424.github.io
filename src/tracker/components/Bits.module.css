@@ -1,0 +1,278 @@
+/* monogram */
+.mono {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 8px;
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+  font-family: var(--font-sans);
+  line-height: 1;
+}
+
+/* score ring */
+.ring {
+  position: relative;
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+}
+.ring svg {
+  position: absolute;
+  inset: 0;
+}
+.ringNum {
+  position: relative;
+  font-weight: 700;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+/* pills */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 3px 8px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--c) 55%, var(--paper));
+  white-space: nowrap;
+}
+.pillSm {
+  font-size: 11.5px;
+  padding: 2px 8px 2px 6px;
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--c) 55%, var(--ink));
+}
+.pulse .dot {
+  animation: pulse 1.2s ease-in-out infinite;
+}
+@keyframes pulse {
+  50% {
+    transform: scale(1.6);
+    opacity: 0.5;
+  }
+}
+
+.ats {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 5px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--c) 60%, var(--paper));
+  border: 1px solid color-mix(in srgb, var(--c) 70%, var(--ink-3));
+  white-space: nowrap;
+}
+
+.atsAuto {
+  border-style: dashed;
+}
+.atsAutoTag {
+  margin-left: 5px;
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--ink-2);
+}
+
+/* switch */
+.switchWrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  cursor: pointer;
+  user-select: none;
+  color: var(--ink);
+}
+.switchBoard {
+  color: var(--chalk);
+}
+.disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.switchInput {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.switch {
+  position: relative;
+  flex: none;
+  width: 42px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--paper-3);
+  border: 1.5px solid var(--ink-3);
+  transition: background 0.2s, border-color 0.2s;
+}
+.switchBoard .switch {
+  background: var(--board-3);
+  border-color: var(--chalk-faint);
+}
+.switchOn,
+.switchBoard .switchOn {
+  background: color-mix(in srgb, var(--st-offer) 75%, var(--paper));
+  border-color: color-mix(in srgb, var(--st-offer) 50%, var(--ink));
+}
+.knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+.switchInput:focus-visible + .switch {
+  outline: 2px dashed var(--accent);
+  outline-offset: 3px;
+}
+.switchBoard .switchInput:focus-visible + .switch {
+  outline-color: var(--chalk-yellow);
+}
+.switchLabel {
+  font-size: 14px;
+}
+
+/* tooltip */
+.tipWrap {
+  position: relative;
+  display: inline-flex;
+}
+.tip {
+  position: absolute;
+  z-index: 70;
+  bottom: calc(100% + 10px);
+  right: 0;
+  width: max-content;
+  max-width: min(300px, 80vw);
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--ink);
+  background: var(--sticky);
+  box-shadow: var(--shadow-sticker);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px) rotate(-1deg);
+  transition: opacity 0.15s, transform 0.2s var(--ease-out);
+  white-space: normal;
+  text-align: left;
+}
+.tipBottom {
+  bottom: auto;
+  top: calc(100% + 10px);
+  transform: translateY(-4px) rotate(1deg);
+}
+.tipOpen {
+  opacity: 1;
+  transform: none;
+}
+
+/* segmented */
+.seg {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  border-radius: 999px;
+  border: 1.5px dashed var(--chalk-faint);
+  background: rgba(255, 255, 255, 0.02);
+}
+.segPaper {
+  border: 1px solid var(--paper-line);
+  background: var(--paper-2);
+  flex-wrap: wrap;
+  border-radius: 12px;
+}
+.segBtn {
+  position: relative;
+  min-height: 40px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--chalk-dim);
+  transition: color 0.2s;
+}
+.segSm .segBtn {
+  min-height: 32px;
+  padding: 4px 12px;
+  font-size: 13px;
+}
+.segPaper .segBtn {
+  color: var(--ink-2);
+  border-radius: 9px;
+}
+.segBtn:hover {
+  color: var(--chalk);
+}
+.segPaper .segBtn:hover {
+  color: var(--ink);
+}
+.segOn,
+.segOn:hover {
+  color: var(--ink);
+}
+.segThumb {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--paper);
+  box-shadow: var(--shadow-sticker);
+}
+.segPaper .segThumb {
+  background: var(--ink);
+  box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.4);
+}
+.segPaper .segOn {
+  color: var(--paper);
+}
+.segInner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.segInner svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* skeleton */
+.skel {
+  display: block;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.11) 50%, rgba(255, 255, 255, 0.05) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}

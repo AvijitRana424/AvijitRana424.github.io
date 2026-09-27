@@ -1,0 +1,143 @@
+.puppy {
+  display: block;
+  width: 58px;
+  height: 40px;
+  max-width: none;
+  overflow: visible;
+  transition: transform 0.25s var(--ease-out);
+}
+.puppy path,
+.puppy circle {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.body {
+  fill: var(--board);
+  stroke: var(--chalk);
+  stroke-width: 1.7;
+}
+.ear {
+  fill: var(--chalk-faint);
+  stroke: var(--chalk);
+  stroke-width: 1.5;
+}
+.dot {
+  fill: var(--chalk);
+}
+.collar {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.4;
+}
+.tongue {
+  fill: var(--chalk-red);
+  stroke: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.walking .tongue {
+  opacity: 1;
+}
+.tail {
+  fill: none;
+  stroke: var(--chalk);
+  stroke-width: 1.8;
+  transform-box: fill-box;
+  transform-origin: 100% 100%;
+  animation: wag 1.4s ease-in-out infinite alternate;
+}
+.walking .tail {
+  animation-duration: 0.22s;
+}
+.leg {
+  fill: none;
+  stroke: var(--chalk);
+  stroke-width: 1.8;
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+}
+.far {
+  stroke: var(--chalk-dim);
+}
+.walking .legA {
+  animation: swing 0.3s ease-in-out infinite alternate;
+}
+.walking .legB {
+  animation: swing 0.3s ease-in-out infinite alternate-reverse;
+}
+.walking .bob {
+  animation: bob 0.15s ease-in-out infinite alternate;
+}
+
+@keyframes swing {
+  from {
+    rotate: -22deg;
+  }
+  to {
+    rotate: 22deg;
+  }
+}
+@keyframes bob {
+  to {
+    translate: 0 -1.3px;
+  }
+}
+@keyframes wag {
+  from {
+    rotate: -12deg;
+  }
+  to {
+    rotate: 16deg;
+  }
+}
+
+/* ── track ─────────────────────────────────────── */
+.track {
+  position: relative;
+  padding: 34px 26px 6px;
+  min-width: 0;
+}
+.rail {
+  position: relative;
+  height: 10px;
+}
+.line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.line path {
+  fill: none;
+  stroke: var(--chalk-faint);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.fill path {
+  stroke: var(--accent);
+  stroke-width: 3.4;
+}
+.stop {
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%;
+  background: var(--board);
+  border: 1.5px solid var(--chalk-dim);
+}
+.dogLane {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+.dog {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 58px;
+  translate: -50% 0;
+}

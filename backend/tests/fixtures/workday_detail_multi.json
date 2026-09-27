@@ -1,0 +1,39 @@
+{
+ "jobPostingInfo": {
+  "id": "176ed2e178a51011f6d289c6fb610000",
+  "title": "Senior Software Engineer, AIOps",
+  "jobDescription": "<p>NVIDIA is powering the world&#39;s most advanced AI Factories. To ensure their seamless operation, we are building a mission-critical Observability and Prediction platform - delivered as both a high-scale SaaS solution and a robust on-premises deployment for our largest enterprise customers.</p><p>We are looking for a Senior Software Engineer to join the AIOps platform team and help build the core distributed systems that ingest massive telemetry streams from GPU clusters and operationalize predictive AI models at scale. You will work at the intersection of high-performance data engineering and production ML, turning research algorithms into reliable, mission-critical software.</p><p></p><p><b>What you&#39;ll be doing:</b></p><ul><li><p>Architect and build an agentic AIOps system that autonomously monitors GPU fleet health, aggregates and correlates massive telemetry streams, surfaces intelligent alerts, and orchestrates multi-step diagnostic workflows and corrective actions - powering real-time dashboards, automated root-cause analysis, and proactive incident response.</p></li><li><p>Research, evaluate, and prototype data storage strategies and data representations across diverse database technologies and modalities, ensuring AI models are trained on high-quality, well-structured data that improves predictive accuracy and generalization.</p></li><li><p>High-Scale Engineering: Design distributed systems to handle the extreme telemetry density of large-scale AI clusters, ensuring efficient data ingestion, processing, and real-time analysis.</p></li><li><p>Instrument services with deep observability (metrics, logs, traces) to support rapid debugging and continuous performance improvement.</p></li><li><p>Build and own the model-serving infrastructure that operationalizes predictive algorithms at scale - packaging, versioning, deploying, and monitoring AI models in both SaaS and on-premises environments.</p></li><li><p>Contribute to the platform&#39;s core libraries and abstractions that accelerate development across the broader AIOps engineering team.</p></li></ul><p></p><p><b>What we need to see:</b></p><ul><li><p>B.Sc./M.Sc. in Computer Science, Computer Engineering, or a related technical field.</p></li><li><p>8&#43; years of software engineering experience building production distributed systems.</p></li><li><p>Core Systems Programming: Expert-level proficiency in languages such as Go, C&#43;&#43;, or Rust, with a focus on high-performance, concurrent architectures.</p></li><li><p>Solid understanding of Kubernetes and container-based deployments for production services.</p></li><li><p>Experience deploying, monitoring, and maintaining ML models or data-intensive services in a production environment.</p></li><li><p>Comfort working in ambiguous, fast-moving environments where the product is still being shaped.</p></li></ul><p></p><p><b>Ways to stand out from the crowd:</b></p><ul><li><p>Experience building ML model-serving platforms or MLOps tooling (model registries, A/B rollout frameworks, feature stores) at scale.</p></li>",
+  "location": "Israel, Raanana",
+  "additionalLocations": [
+   "Israel, Tel Aviv"
+  ],
+  "postedOn": "Posted 30+ Days Ago",
+  "startDate": "2026-06-15",
+  "timeType": "Full time",
+  "jobReqId": "JR2019710",
+  "jobPostingId": "Senior-Software-Engineer--AIOps_JR2019710",
+  "jobPostingSiteId": "NVIDIAExternalCareerSite",
+  "country": {
+   "descriptor": "Israel",
+   "id": "084562884af243748dad7c84c304d89a"
+  },
+  "canApply": true,
+  "posted": true,
+  "includeResumeParsing": true,
+  "jobRequisitionLocation": {
+   "descriptor": "Israel, Raanana",
+   "country": {
+    "descriptor": "Israel",
+    "id": "084562884af243748dad7c84c304d89a",
+    "alpha2Code": "IL"
+   }
+  },
+  "externalUrl": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite/job/Israel-Raanana/Senior-Software-Engineer--AIOps_JR2019710",
+  "questionnaireId": "2f2764b3a82910064296831695150000"
+ },
+ "hiringOrganization": {
+  "name": "IL00 Mellanox Technologies, Ltd.",
+  "url": ""
+ },
+ "userAuthenticated": false
+}

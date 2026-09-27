@@ -1,0 +1,615 @@
+/* ── drawing canvas (z 40) ─────────────────────────────────────────── */
+.canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  z-index: 40;
+  pointer-events: none;
+  touch-action: auto;
+}
+.canvas[data-drawing] {
+  pointer-events: auto;
+  /* one finger draws; two fingers pan / zoom the page natively (manual fallback in JS) */
+  touch-action: pinch-zoom;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* ── dock (z 60): docked tray in the gutter, or the collapsed chalk button ── */
+.dock {
+  position: fixed;
+  z-index: 60;
+  transform-origin: 100% 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+.dock[data-mode='docked'] {
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+}
+.dock[data-mode='fab'] {
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  width: 48px;
+  height: 48px;
+}
+.dock[data-away] {
+  pointer-events: none;
+}
+
+/* the tray itself (232 × 100); docked it's scaled from its bottom-right corner */
+.tray {
+  --stick-w: 40px;
+  --stick-h: 90px;
+  --art-w: 16px;
+  --art-h: 76px;
+  --front-h: 19px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 232px;
+  height: 100px;
+  transform-origin: 100% 100%;
+}
+
+/* collapsed: the tray pops out to the left of the button */
+.pop {
+  position: absolute;
+  right: calc(100% + 10px);
+  bottom: 0;
+  width: 232px;
+  height: 100px;
+  transform-origin: 100% 80%;
+}
+.pop::before {
+  /* a soft board-coloured backing so the tray reads over paper cards too */
+  content: '';
+  position: absolute;
+  inset: 14px -6px -8px -6px;
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--board) 88%, transparent);
+  box-shadow: 0 18px 36px -14px rgba(0, 0, 0, 0.75), inset 0 0 0 1px var(--board-line-strong);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* the round chalk button: a slate disc in a kraft (wooden) rim */
+.fab {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: var(--chalk);
+  background: radial-gradient(circle at 34% 28%, var(--board-3), var(--board) 72%);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--kraft) 82%, var(--board)), 0 0 0 4px rgba(0, 0, 0, 0.35),
+    0 12px 22px -8px rgba(0, 0, 0, 0.8), 0 4px 8px -2px rgba(0, 0, 0, 0.45);
+  touch-action: manipulation;
+}
+.fab:focus-visible {
+  outline-offset: 5px;
+}
+.fabRing {
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 1px dashed color-mix(in srgb, var(--chalk) 22%, transparent);
+  pointer-events: none;
+}
+.fabStick {
+  display: block;
+  line-height: 0;
+  filter: drop-shadow(-2px 3px 2px rgba(0, 0, 0, 0.55));
+}
+.fabStick svg {
+  width: 11px;
+  height: 36px;
+}
+.fabIcon {
+  display: grid;
+  place-items: center;
+}
+.fabScribble {
+  position: absolute;
+  left: 7px;
+  bottom: 8px;
+  width: 20px;
+  height: 9px;
+  fill: none;
+  stroke: var(--chalk);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.items {
+  position: absolute;
+  left: 10px;
+  right: 8px;
+  bottom: 6px;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  gap: 1px;
+}
+
+.stick {
+  position: relative;
+  width: var(--stick-w);
+  height: var(--stick-h);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 10px;
+  touch-action: manipulation;
+}
+.stick:focus-visible {
+  outline-offset: -2px;
+}
+.stickArt {
+  display: block;
+  transform-origin: 50% 100%;
+  filter: drop-shadow(-2px 5px 3px rgba(0, 0, 0, 0.45));
+  will-change: transform;
+}
+.stickArt svg {
+  width: var(--art-w);
+  height: var(--art-h);
+}
+.stick[aria-pressed='true'] .stickArt {
+  filter: drop-shadow(-6px 16px 8px rgba(0, 0, 0, 0.5));
+}
+/* little chalk-dust ring under the picked stick */
+.stick[aria-pressed='true']::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--front-h) - 4px);
+  width: 26px;
+  height: 7px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--chalk) 55%, transparent), transparent);
+  pointer-events: none;
+}
+
+.eraser {
+  position: relative;
+  margin-left: auto;
+  width: 80px;
+  height: 56px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: calc(var(--front-h) - 7px);
+  border-radius: 10px;
+  touch-action: manipulation;
+}
+.eraser:focus-visible {
+  outline-offset: -2px;
+}
+.eraserHold {
+  display: block;
+  transform-origin: 50% 100%;
+}
+
+/* felt eraser art (tray + sweep) */
+.eraserArt {
+  --e-w: 72px;
+  --e-h: 32px;
+  --felt-h: 11px;
+  position: relative;
+  display: block;
+  width: var(--e-w);
+  height: var(--e-h);
+  filter: drop-shadow(0 5px 4px rgba(0, 0, 0, 0.5));
+}
+.eraserBig {
+  --e-w: 170px;
+  --e-h: 72px;
+  --felt-h: 24px;
+}
+.eraserWood {
+  position: absolute;
+  inset: 0 0 var(--felt-h) 0;
+  border-radius: 7px 7px 3px 3px;
+  background:
+    repeating-linear-gradient(
+      178deg,
+      transparent 0 3px,
+      color-mix(in srgb, var(--board) 9%, transparent) 3px 4px,
+      transparent 4px 9px
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--kraft) 70%, var(--paper)) 0%,
+      var(--kraft) 38%,
+      color-mix(in srgb, var(--kraft) 72%, var(--board)) 100%
+    );
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--paper) 45%, transparent);
+}
+.eraserGroove {
+  position: absolute;
+  left: 16%;
+  right: 16%;
+  top: 30%;
+  height: 18%;
+  border-radius: 99px;
+  background: color-mix(in srgb, var(--kraft) 55%, var(--board));
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35), 0 1px 0 color-mix(in srgb, var(--paper) 30%, transparent);
+}
+.eraserFelt {
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  bottom: 0;
+  height: var(--felt-h);
+  border-radius: 1px 1px 5px 5px;
+  background:
+    linear-gradient(0deg, color-mix(in srgb, var(--chalk) 50%, transparent) 0 2px, transparent 55%),
+    repeating-linear-gradient(90deg, var(--board-3) 0 2px, var(--board-2) 2px 3px, var(--board-3) 3px 5px);
+}
+
+/* shelf: back/top surface behind the sticks, front face over their feet */
+.shelf {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 30px;
+  pointer-events: none;
+}
+.shelfTop {
+  position: absolute;
+  left: 5px;
+  right: 5px;
+  bottom: calc(var(--front-h) - 2px);
+  height: 11px;
+  z-index: 1;
+  border-radius: 4px 4px 0 0;
+  background:
+    radial-gradient(40px 5px at 30% 60%, color-mix(in srgb, var(--chalk) 18%, transparent), transparent),
+    linear-gradient(180deg, color-mix(in srgb, var(--kraft) 55%, var(--board)) 0%, color-mix(in srgb, var(--kraft) 78%, var(--board)) 100%);
+}
+.shelfFront {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: var(--front-h);
+  z-index: 3;
+  border-radius: 3px 3px 6px 6px;
+  background:
+    repeating-linear-gradient(
+      179deg,
+      transparent 0 4px,
+      color-mix(in srgb, var(--board) 8%, transparent) 4px 5px,
+      transparent 5px 11px
+    ),
+    radial-gradient(60px 8px at 70% 55%, color-mix(in srgb, var(--board) 10%, transparent), transparent),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--kraft) 72%, var(--paper)) 0 2px,
+      var(--kraft) 3px,
+      color-mix(in srgb, var(--kraft) 70%, var(--board)) 100%
+    );
+  box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.65), 0 3px 6px -2px rgba(0, 0, 0, 0.4),
+    inset 0 -2px 0 color-mix(in srgb, var(--board) 22%, transparent);
+}
+.dust {
+  position: absolute;
+  left: 14px;
+  bottom: calc(var(--front-h) - 4px);
+  width: 96px;
+  height: 7px;
+  z-index: 4;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--chalk) 22%, transparent), transparent);
+  opacity: 0.8;
+}
+
+/* ── drawing bar (bottom centre, z 61) ──────────────────────────────── */
+.barWrap {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: max(14px, calc(env(safe-area-inset-bottom) + 8px));
+  z-index: 61;
+  display: flex;
+  justify-content: center;
+  padding-inline: 12px;
+  pointer-events: none;
+}
+.bar {
+  --focus-ring: var(--accent-2);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+  padding: 6px;
+  border-radius: 16px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: var(--shadow-lift), inset 0 0 0 1px var(--paper-line);
+  white-space: nowrap;
+  pointer-events: auto;
+  overflow: visible;
+}
+.bar::before {
+  /* a scrap of masking tape */
+  content: '';
+  position: absolute;
+  top: -9px;
+  left: 22px;
+  width: 44px;
+  height: 16px;
+  background: var(--tape);
+  transform: rotate(-6deg);
+  clip-path: polygon(0 10%, 12% 0, 26% 12%, 40% 2%, 55% 10%, 70% 0, 86% 9%, 100% 3%, 100% 92%, 88% 100%, 72% 90%, 56% 100%, 40% 92%, 24% 100%, 10% 91%, 0 100%);
+}
+.barColor {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  transition: background-color 0.15s ease;
+}
+.barColor:hover {
+  background: var(--paper-3);
+}
+.barText {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1px;
+  padding: 0 10px 0 4px;
+  line-height: 1;
+}
+.barTitle {
+  font-family: var(--font-hand);
+  font-size: 20px;
+  color: var(--ink);
+}
+.barSub {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+.barTimer {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 3px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--accent);
+  opacity: 0.55;
+  transform-origin: 0 50%;
+  animation: barTimer linear forwards;
+  pointer-events: none;
+}
+@keyframes barTimer {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}
+.dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--board);
+  box-shadow: inset 0 0 0 1px var(--board-line-strong), 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+.dot::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--dot);
+  box-shadow: 0 0 6px var(--dot);
+}
+.tbBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0 12px;
+  border-radius: 10px;
+  font-family: var(--font-hand);
+  font-size: 18px;
+  line-height: 1;
+  color: var(--ink);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+.tbBtn:hover:not(:disabled) {
+  background: var(--paper-3);
+}
+.tbBtn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.tbBtn:disabled {
+  opacity: 0.38;
+  cursor: default;
+}
+.tbDone {
+  background: var(--ink);
+  color: var(--paper);
+}
+.tbDone:hover:not(:disabled) {
+  background: var(--ink-2);
+}
+
+/* ── first-visit hint (a sticky note, always inside the right gutter) ── */
+.hint {
+  position: absolute;
+  right: 6px;
+  bottom: calc(100% + 34px);
+  max-width: 200px;
+  padding: 9px 15px 10px;
+  border-radius: 3px;
+  background: var(--sticky);
+  color: var(--ink);
+  font-family: var(--font-hand);
+  font-size: 19px;
+  line-height: 1.1;
+  text-align: left;
+  white-space: nowrap;
+  box-shadow: var(--shadow-paper);
+  transform-origin: 80% 100%;
+  --focus-ring: var(--accent-2);
+}
+.hint[data-mode='fab'] {
+  right: 0;
+  bottom: calc(100% + 30px);
+  width: 150px;
+  font-size: 18px;
+  white-space: normal;
+}
+.hintArrow {
+  position: absolute;
+  right: 18px;
+  top: calc(100% - 4px);
+  color: var(--chalk);
+  opacity: 0.9;
+  filter: drop-shadow(0 1px 1.5px rgba(0, 0, 0, 0.7));
+}
+.hint[data-mode='fab'] .hintArrow {
+  right: 2px;
+  transform: scale(0.8);
+  transform-origin: 50% 0;
+}
+
+/* ── hover tooltip in chalk ────────────────────────────────────────── */
+.tip {
+  position: absolute;
+  left: 6px;
+  bottom: calc(100% + 8px);
+  padding: 5px 12px 6px;
+  border-radius: 8px;
+  background: var(--board-2);
+  border: 1px solid var(--board-line-strong);
+  box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.7);
+  font-family: var(--font-chalk);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--chalk);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.tip::after {
+  /* little tail */
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 100%;
+  width: 9px;
+  height: 9px;
+  margin-top: -4px;
+  background: var(--board-2);
+  border-right: 1px solid var(--board-line-strong);
+  border-bottom: 1px solid var(--board-line-strong);
+  transform: rotate(45deg);
+}
+.tipEraser {
+  left: auto;
+  right: 14px;
+}
+.tipEraser::after {
+  left: auto;
+  right: 26px;
+}
+
+/* ── wipe sweep (z 45) ─────────────────────────────────────────────── */
+.sweepLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  pointer-events: none;
+  overflow: hidden;
+}
+.sweeper {
+  position: absolute;
+  left: 0;
+  top: 0;
+  will-change: transform;
+}
+.wake {
+  position: absolute;
+  left: 40%;
+  top: -60px;
+  width: 75vw;
+  height: 200px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--chalk) 18%, transparent), transparent 80%);
+  filter: blur(18px);
+}
+.puffs {
+  position: absolute;
+  left: 70%;
+  top: 60%;
+}
+.puff {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--chalk) 45%, transparent), transparent);
+}
+
+/* ── mobile ────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .tray,
+  .pop {
+    width: 196px;
+    height: 80px;
+  }
+  .tray {
+    --stick-h: 74px;
+    --art-w: 14px;
+    --art-h: 60px;
+    --front-h: 16px;
+  }
+  .pop {
+    right: calc(100% + 8px);
+  }
+  .items {
+    left: 6px;
+    right: 4px;
+    bottom: 4px;
+    gap: 0;
+  }
+  .eraser {
+    width: 64px;
+    height: 48px;
+  }
+  .eraserArt:not(.eraserBig) {
+    --e-w: 58px;
+    --e-h: 27px;
+    --felt-h: 9px;
+  }
+  .dust {
+    width: 70px;
+  }
+  .eraserBig {
+    --e-w: 120px;
+    --e-h: 52px;
+    --felt-h: 17px;
+  }
+}
+@media (max-width: 380px) {
+  .tbText {
+    display: none;
+  }
+  .barText {
+    padding-right: 6px;
+  }
+}

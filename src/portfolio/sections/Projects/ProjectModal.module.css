@@ -1,0 +1,160 @@
+.modal {
+  overflow-x: hidden;
+}
+.wrap {
+  display: flex;
+  flex-direction: column;
+}
+.art {
+  position: relative;
+  aspect-ratio: 360 / 200;
+  max-height: 340px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: var(--tint);
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 16%, transparent) 0.9px, transparent 1.3px);
+  background-size: 14px 14px;
+  box-shadow: inset 0 0 0 1px var(--paper-line);
+}
+.art > svg {
+  position: absolute;
+  inset: 4% 3%;
+  width: 94%;
+  height: 92%;
+}
+.kind {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  transform: rotate(4deg);
+  font-size: 19px;
+}
+.subtitle {
+  margin-top: 16px;
+  font-family: var(--font-hand);
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--accent-ink);
+}
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: 28px;
+  margin-top: 8px;
+}
+.blurb {
+  font-size: 15.5px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.label {
+  margin: 20px 0 10px;
+  font-family: var(--font-hand);
+  font-weight: 400;
+  font-size: 19px;
+  letter-spacing: 0.01em;
+  color: var(--ink-3);
+}
+.side .label:first-child {
+  margin-top: 0;
+}
+.bullets {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+.bullets li {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 10px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+.tick {
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.side {
+  padding: 16px 16px 18px;
+  border-radius: 10px;
+  background: var(--paper-2);
+  border: 1px dashed var(--paper-line);
+  align-self: start;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 10px 3px 3px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--paper-line);
+}
+.mono {
+  display: grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 4px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  border: 1px solid color-mix(in srgb, var(--ink) 55%, transparent);
+}
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.pager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 22px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--paper-line);
+}
+.pager button {
+  min-height: 40px;
+  color: var(--ink-2);
+}
+.count {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--ink-3);
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .side {
+    margin-top: 12px;
+  }
+  .subtitle {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,472 @@
+/* Ink-on-tint illustrations. Every animated element has a good-looking static base state,
+   and animations only run with .live (removed for reduced-motion users). */
+.art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+/* animated parts rotate/scale around their own centre; elements that carry an SVG
+   transform attribute are excluded (a CSS origin would skew that transform) */
+.art :not([transform]) {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* ── strokes (outline only; fill classes below override) ── */
+.ink {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.thin {
+  stroke-width: 1.6;
+}
+.inkBold {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.dim {
+  opacity: 0.45;
+}
+.faint {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  opacity: 0.18;
+}
+.shineLine {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.78);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+.paperLine {
+  fill: none;
+  stroke: var(--paper);
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0.85;
+}
+.shadow {
+  fill: var(--ink);
+  opacity: 0.12;
+}
+.tubeInk {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+.tubeGold,
+.tubeAccent {
+  fill: none;
+  stroke-width: 3.8;
+  stroke-linecap: round;
+}
+.tubeGold {
+  stroke: var(--chalk-yellow);
+}
+.tubeAccent {
+  stroke: var(--accent);
+}
+.lane {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.6;
+  stroke-dasharray: 2 6;
+  stroke-linecap: round;
+  opacity: 0.5;
+}
+.speed path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 5 7;
+  opacity: 0.5;
+}
+.spark path {
+  stroke-width: 2;
+}
+
+/* ── fills ── */
+.fPaper {
+  fill: var(--paper);
+}
+.fInk {
+  fill: var(--ink);
+}
+.fAccent {
+  fill: var(--accent);
+}
+.fAccent2 {
+  fill: var(--accent-2);
+}
+.fAccentSoft {
+  fill: color-mix(in srgb, var(--accent) 35%, var(--paper));
+}
+.fGold {
+  fill: var(--chalk-yellow);
+}
+.fYellowSoft,
+.fYellowSoft path {
+  fill: var(--sticky);
+}
+.fBlue {
+  fill: var(--chalk-blue);
+}
+.fGreen {
+  fill: var(--chalk-green);
+}
+.fKraft {
+  fill: var(--kraft);
+}
+.halo {
+  fill: rgba(255, 255, 255, 0.4);
+}
+
+/* radar */
+.scope {
+  fill: color-mix(in srgb, var(--ink) 88%, var(--chalk-green));
+}
+.rings {
+  fill: none;
+  stroke: var(--chalk-green);
+  stroke-width: 1.1;
+  opacity: 0.4;
+}
+.sweepStop0 {
+  stop-color: var(--chalk-green);
+  stop-opacity: 0;
+}
+.sweepStop1 {
+  stop-color: var(--chalk-green);
+  stop-opacity: 0.55;
+}
+.sweepEdge {
+  fill: none;
+  stroke: var(--chalk-green);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.spin {
+  transform-box: view-box;
+  transform-origin: 120px 76px;
+  transform: rotate(40deg);
+}
+.blip {
+  fill: var(--chalk-green);
+  opacity: 0.3;
+}
+
+/* ── idle animations (only with .live) ── */
+.live .bob {
+  animation: bob 3.2s ease-in-out infinite;
+}
+.live .rock {
+  animation: rock 4.6s ease-in-out infinite;
+}
+.live .twinkle {
+  animation: twinkle 2.6s ease-in-out infinite;
+}
+.live .fall {
+  animation: fall 3.4s ease-in infinite;
+}
+.live .flame {
+  transform-origin: 50% 0%;
+  animation: flicker 0.18s ease-in-out infinite alternate;
+}
+.live .shake {
+  animation: shake 2.4s ease-in-out infinite;
+}
+.live .speed path {
+  animation: dash 0.7s linear infinite;
+}
+.live .puff {
+  animation: puff 1.8s ease-out infinite;
+}
+.live .drift {
+  animation: drift 5s ease-in-out infinite;
+}
+.live .msg {
+  animation: flow 3.3s linear infinite;
+}
+.msg {
+  opacity: 0;
+}
+.msg:nth-child(3) {
+  opacity: 1;
+  transform: translateX(62px);
+}
+.msg:nth-child(4) {
+  opacity: 1;
+  transform: translateX(128px);
+}
+.live .msg:nth-child(n) {
+  opacity: 0;
+  transform: none;
+}
+.live .pulse {
+  animation: pulse 2.2s ease-in-out infinite;
+}
+.live .buzz {
+  animation: buzz 2.2s ease-in-out infinite;
+}
+.live .spark {
+  animation: spark 2.2s ease-in-out infinite;
+}
+.live .wave {
+  animation: wave 1.8s ease-in-out infinite;
+}
+.live .rise {
+  animation: rise 3.6s ease-in-out infinite;
+}
+.live .spin {
+  animation: spin 4s linear infinite;
+}
+.live .blip {
+  animation: ping 4s linear infinite;
+}
+.live .steam {
+  animation: steam 2.7s ease-in-out infinite;
+}
+.steam {
+  opacity: 0.55;
+}
+.live .sway {
+  transform-origin: 50% 0%;
+  animation: sway 3.6s ease-in-out infinite;
+}
+.live .wiggle {
+  animation: wiggle 5s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+@keyframes rock {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.55) rotate(25deg);
+    opacity: 0.55;
+  }
+}
+@keyframes fall {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(26px) rotate(200deg);
+    opacity: 0;
+  }
+}
+@keyframes flicker {
+  from {
+    transform: scaleY(0.82) scaleX(1.04);
+  }
+  to {
+    transform: scaleY(1.14) scaleX(0.94);
+  }
+}
+@keyframes shake {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0.6px, -1.6px);
+  }
+  50% {
+    transform: translate(-0.4px, -3px);
+  }
+  75% {
+    transform: translate(0.5px, -1.2px);
+  }
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+@keyframes puff {
+  0% {
+    transform: translateY(0) scale(0.6);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(14px) scale(1.35);
+    opacity: 0;
+  }
+}
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-2px, 3px) rotate(-3deg);
+  }
+}
+@keyframes flow {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  8%,
+  86% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(180px);
+    opacity: 0;
+  }
+}
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+@keyframes buzz {
+  0%,
+  86%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  89% {
+    transform: rotate(-4deg) scale(1.05);
+  }
+  92% {
+    transform: rotate(3deg) scale(1.05);
+  }
+  95% {
+    transform: rotate(-2deg) scale(1.02);
+  }
+}
+@keyframes spark {
+  0%,
+  84%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.9);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+@keyframes wave {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes rise {
+  0% {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  30%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes ping {
+  0% {
+    opacity: 1;
+    transform: scale(1.7);
+  }
+  8% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 0.18;
+    transform: scale(1);
+  }
+}
+@keyframes steam {
+  0% {
+    transform: translateY(6px);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+}
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-2.5deg);
+  }
+  50% {
+    transform: rotate(2.5deg);
+  }
+}
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}

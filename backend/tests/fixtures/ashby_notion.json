@@ -1,0 +1,182 @@
+{
+ "apiVersion": "1",
+ "jobs": [
+  {
+   "id": "42f18ccd-c4c8-4a85-8c1f-de12c575fe87",
+   "title": "Software Engineer, Infrastructure ",
+   "department": "Engineering",
+   "team": "Engineering",
+   "employmentType": "FullTime",
+   "location": "Hyderabad, India",
+   "shouldDisplayCompensationOnJobPostings": false,
+   "secondaryLocations": [],
+   "publishedAt": "2026-08-06T20:17:46.520+00:00",
+   "isListed": true,
+   "isRemote": true,
+   "workplaceType": "Hybrid",
+   "address": {
+    "postalAddress": {
+     "addressRegion": "India",
+     "addressCountry": "India",
+     "addressLocality": "Hyderabad"
+    }
+   },
+   "jobUrl": "https://jobs.ashbyhq.com/notion/42f18ccd-c4c8-4a85-8c1f-de12c575fe87",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/42f18ccd-c4c8-4a85-8c1f-de12c575fe87/application",
+   "descriptionHtml": "<h1>Who We Are</h1><p style=\"min-height:1.5em\">Notion is the collaborative AI workspace where teams and agents <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.youtube.com/watch?v=vkpYpWfEK5s\">think together</a>. We're building one place where your knowledge, projects, meetings, and AI tools live side by side, so work is faster, clearer, and less fragmented. Millions of individuals, small teams, and large companies run their work on Notion.</p><p style=\"min-height:1.5em\"></p><p style=\"min-height:1.5em\">Notinos (our employees) are customer zero in bringing this future of work to life. We care about craft, building things that last, and the belief that great work is still fundamentally human. Our goal isn’t to ship the next feature. Each and every team of Notinos is working to set the standard for how humans work together in the AI era. From building a business’s system of record to making and managing AI agents to automating away the busy work, we care deeply about giving our customers more time for their life’s work.</p><p style=\"min-height:1.5em\"></p><h1>About The Role</h1><p style=\"min-height:1.5em\">The Hyderabad Infra team builds and maintains Notion's internal async task runner and configuration management platform. The async task runner plays a critical role in ensuring our millions of users have a fast, reliable, and secure experience. The configuration management platform enables safe, explicit configuration management for Notion's product and infrastructure engineers.</p><p style=\"min-height:1.5em\"></p><p style=\"min-height:1.5em\">As part of the Hyderabad Infra Team, you’ll have a unique opportunity to shape how Notion manages and scales its async task runner and configuration management platform, enabling innovation across the company.</p><p style=\"min-height:1.5em\"></p><h1>What You'll Achieve</h1><ul style=\"min-height:1.5em\"><li><p style=\"min-height:1.5em\">You will contribute to the evolution and maintenance of our async task runner to meet the needs of over 100 million global users and support the rapid growth of our product and business. </p></li><li><p style=\"min-height:1.5em\">With guidance from senior team members, you'll help ensure our systems remain reliable, efficient, and scalable. You'll evaluate and integrate new technologies to keep us ahead of emerging challenges. </p></li><li><p style=\"min-height:1.5em\">Your work will empower our engineering team to build features confidently while you grow your skills in distributed systems and infrastructure.</p></li><li><p style=\"min-height:1.5em\">You will develop the skills and confidence to debug live production systems with minimal disruption, whether replacing components or managing failovers. You will participate in an on-call rotation, responding to incidents to uphold service reliability and quickly restore normal operations.</p></li><li><p style=\"min-height:1.5em\">You will partner with product engineers and other infra teams to ensure our platforms align with evolving business needs and product goals.</p></li></ul><p style=\"min-height:1.5em\"></p><h1>Skills You'll Need to Bring</h1><ul style=\"min-height:1.5em\"><li><p style=\"min-height:1.5em\">A software developer with at least 4 years of experience and the ability to perform well in a fast-paced environment.</p></li><li><p style=\"min-height:1.5em\">Systems thinker: You understand distributed systems and can design solutions that account for tradeoffs like consistency, latency, and scalability.</p></li><li><p style=\"min-height:1.5em\">Pragmatic problem-solver: You prioritize business impact and understand the balance between craft, speed, and long-term maintainability. You’re opinionated but not ideological, and you learn new technologies as you go.</p></li><li><p style=\"min-height:1.5em\">Ownership and initiative: You thrive in a fast-moving, unstructured environment and are comfortable taking ownership of ambiguous problems. You act with a bias toward action and focus on results.</p></li>",
+   "descriptionPlain": "WHO WE ARE\n\nNotion is the collaborative AI workspace where teams and agents think together https://www.youtube.com/watch?v=vkpYpWfEK5s. We're building one place where your knowledge, projects, meetings, and AI tools live side by side, so work is faster, clearer, and less fragmented. Millions of individuals, small teams, and large companies run their work on Notion.\n\n\n\nNotinos (our employees) are customer zero in bringing this future of work to life. We care about craft, building things that last, and the belief that great work is still fundamentally human. Our goal isn’t to ship the next feature. Each and every team of Notinos is working to set the standard for how humans work together in the AI era. From building a business’s system of record to making and managing AI agents to automating away the busy work, we care deeply about giving our customers more time for their life’s work.\n\n\n\n\nABOUT THE ROLE\n\nThe Hyderabad Infra team builds and maintains Notion's internal async task runner and configuration management platform. The async task runner plays a critical role in ensuring our millions of users have a fast, reliable, and secure experience. The configuration management platform enables safe, explicit configuration management for Notion's product and infrastructure engineers.\n\n\n\nAs part of the Hyderabad Infra Team, you’ll have a unique opportunity to shape how Notion manages and scales its async task runner and configuration management platform, enabling innovation across the company.\n\n\n\n\nWHAT YOU'LL ACHIEVE\n\n - You will contribute to the evolution and maintenance of our async task runner to meet the needs of over 100 million global users and support the rapid growth of our product and business. \n\n - With guidance from senior team members, you'll help ensure our systems remain reliable, efficient, and scalable. You'll evaluate and integrate new technologies to keep us ahead of emerging challenges. \n\n - Your work will empower our engineering team to build features confidently while you grow your skills in distributed systems and infrastructure.\n\n - You will develop the skills and confidence to debug live production systems with minimal disruption, whether replacing components or managing failovers. You will participate in an on-call rotation, responding to incidents to uphold service reliability and quickly restore normal operations.\n\n - You will partner with product engineers and other infra teams to ensure our platforms align with evolving business needs and product goals.\n\n\n\n\nSKILLS YOU'LL NEED TO BRING\n\n - A software developer with at least 4 years of experience and the ability to perform well in a fast-paced environment.\n\n - Systems thinker: You understand distributed systems and can design solutions that account for tradeoffs like consistency, latency, and scalability.\n\n - Pragmatic problem-solver: You prioritize business impact and understand the balance between craft, speed, and long-term maintainability. You’re opinionated but not ideological, and you learn new technologies as you go.\n\n - Ownership and initiative: You thrive in a fast-moving, unstructured environment and are comfortable taking ownership of ambiguous problems. You act with a bias toward action and focus on results.\n\n",
+   "compensation": {
+    "compensationTierSummary": null,
+    "scrapeableCompensationSalarySummary": null,
+    "compensationTiers": [],
+    "summaryComponents": []
+   }
+  },
+  {
+   "id": "1fc309c8-da20-4ff2-84c7-8b863ece2b0a",
+   "title": "Software Engineer, Developer Platform",
+   "department": "Engineering",
+   "team": "Engineering",
+   "employmentType": "FullTime",
+   "location": "San Francisco, California",
+   "shouldDisplayCompensationOnJobPostings": false,
+   "secondaryLocations": [
+    {
+     "location": "New York, New York",
+     "address": {
+      "postalAddress": {
+       "addressRegion": "New York",
+       "addressCountry": "United States",
+       "addressLocality": "New York"
+      }
+     }
+    }
+   ],
+   "publishedAt": "2026-08-24T14:44:49.699+00:00",
+   "isListed": true,
+   "isRemote": true,
+   "workplaceType": "Hybrid",
+   "address": {
+    "postalAddress": {
+     "addressRegion": "California",
+     "addressCountry": "United States",
+     "addressLocality": "San Francisco"
+    }
+   },
+   "jobUrl": "https://jobs.ashbyhq.com/notion/1fc309c8-da20-4ff2-84c7-8b863ece2b0a",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/1fc309c8-da20-4ff2-84c7-8b863ece2b0a/application",
+   "descriptionHtml": "",
+   "descriptionPlain": "WHO WE ARE\n\nNotion is the collaborative AI workspace where teams and agents think together https://www.youtube.com/watch?v=vkpYpWfEK5s. We're building one place where your knowledge, projects, meetings, and AI tools live side by side, so work is faster, clearer, and less fragmented. Millions of individuals, small teams, and large companies run their work on Notion.\n\n\n\nNotinos (our employees) are customer zero in bringing this future of work to life. We care about craft, building things that last, and the belief that great work is still fundamentally human. Our goal isn’t to ship the next feature. Each and every team of Notinos is working to set the standard for how humans work together in the AI era. From building a business’s system of record to making and managing AI agents to automating away the busy work, we care deeply about giving our customers more time for their life’s work.\n\n\n\n\nABOUT THE ROLE:\n\nAs a Developer Platform https://www.notion.com/product/dev engineer, you will directly contribute to the foundational pieces that make Notion extensible and connected. You will build tools, APIs, and platform experiences that help customers connect Notion to the world — bringing their apps, data, and workflows into one workspace. Your work will make it easier for developers, admins, and builders to create reliable integrations and automations on top of Notion.\n\n\nYou will be a key player in building the robust technical foundation that allows Notion to achieve the connected workspace vision. Your work will include both internal platform contributions that accelerate other Notion engineering teams and end-user-facing functionality that enables toolmaking ubiquity. You will be presented with challenging technical problems, as Notion’s product needs are complex. You’ll play a key role in identifying and executing against technical investments that ensure the long-term quality, reliability, and performance of Notion’s platform as we scale.\n\n\nThis role can be based in either San Francisco or New York City. We work from our offices on Mondays, Tuesdays and Thursdays (our Anchor Days) because we do our best thinking and building together in person. We’re looking for someone who’s excited to work alongside the team during those days. \n\n\n\n\nWHAT YOU'LL ACHIEVE:\n\n - You’ll work with a team of engineers and cross-functional partners across product, design, data science, and user research to define a product strategy and drive execution through conception, research, implementation, and maintenance.\n\n - You’ll evolve Developer Platform capabilities across APIs, MCP tools, and integration infrastructure that help customers automate workflows, customize Notion, and connect Notion to the tools and data they use every day.\n\n - You’ll contribute to the overall performance, reliability, and robustness of the Notion product, ensuring it scales elegantly across many dimensions.\n\n - You’ll partner with engineering leaders to identify and execute against high-leverage technical investments that ensure the long-term flexibility and sustainability of our core systems.\n\n\n\n\nSKILLS YOU'LL NEED TO BRING: \n\n - 7+ years of experience shipping production software, with a strong track record of owning features end-to-end\n\n - Fluency with TypeScript across both backend and frontend\n\n - Strong product instincts: you can take a vague problem, propose a solid technical approach, and know when to cut scope\n\n - You don’t need to be an AI expert, but you’re curious and willing to adopt AI tools to work smarter and deliver better results\n\n\n\n\nNICE TO HAVES:\n\n - Experience building developer tools like APIs and SDKs\n\n - Experience driving teams toward shared goals and balancing business priorities with individuals’ strengths, areas of interest, and career development goals\n\n - Familiarity with AI/agent tooling, evals, or LLM-driven product experiences\n\n\n\n",
+   "compensation": {
+    "compensationTierSummary": null,
+    "scrapeableCompensationSalarySummary": null,
+    "compensationTiers": [],
+    "summaryComponents": []
+   }
+  },
+  {
+   "id": "10437426-14c8-4c45-8075-67959ce80393",
+   "title": "Forward Deployed Engineer, GTM, AMER",
+   "department": "Sales",
+   "team": "Sales",
+   "employmentType": "FullTime",
+   "location": "San Francisco, California",
+   "shouldDisplayCompensationOnJobPostings": false,
+   "secondaryLocations": [
+    {
+     "location": "New York, New York",
+     "address": {
+      "postalAddress": {
+       "addressRegion": "New York",
+       "addressCountry": "United States",
+       "addressLocality": "New York"
+      }
+     }
+    }
+   ],
+   "publishedAt": "2025-08-07T23:35:32.716+00:00",
+   "isListed": true,
+   "isRemote": true,
+   "workplaceType": "Hybrid",
+   "address": {
+    "postalAddress": {
+     "addressRegion": "California",
+     "addressCountry": "United States",
+     "addressLocality": "San Francisco"
+    }
+   },
+   "jobUrl": "https://jobs.ashbyhq.com/notion/10437426-14c8-4c45-8075-67959ce80393",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/10437426-14c8-4c45-8075-67959ce80393/application",
+   "descriptionHtml": "",
+   "descriptionPlain": "WHO WE ARE\n\nNotion is the collaborative AI workspace where teams and agents think together https://www.youtube.com/watch?v=vkpYpWfEK5s. We're building one place where your knowledge, projects, meetings, and AI tools live side by side, so work is faster, clearer, and less fragmented. Millions of individuals, small teams, and large companies run their work on Notion.\n\n\n\nNotinos (our employees) are customer zero in bringing this future of work to life. We care about craft, building things that last, and the belief that great work is still fundamentally human. Our goal isn’t to ship the next feature. Each and every team of Notinos is working to set the standard for how humans work together in the AI era. From building a business’s system of record to making and managing AI agents to automating away the busy work, we care deeply about giving our customers more time for their life’s work.\n\n\n\n\nABOUT THE ROLE\n\nAs a Forward Deployed Engineer on Notion’s Services team, you will lead the hands on technical delivery of our most complex customer engagements. You will design, build, and deploy production ready solutions that help enterprise customers integrate Notion as the operating layer for their business.\n\n\n\nYou’ll embed with enterprise customers to design and build solutions that integrate Notion deeply into their technical and operational environments. This includes writing and maintaining custom code, designing and deploying production-grade custom agents and AI workflows with MCP, Agent APIs, and Notion’s automation and execution infrastructure, building data pipelines and resolving complex challenges around scale, permissions, and governance.\n\n\n\nYou’ll embed with enterprise customers to design and build solutions that integrate Notion deeply into their technical and operational environments.\n\n\n\nThis is a customer-facing engineering role for someone who is comfortable writing code, debugging technical issues, explaining tradeoffs to stakeholders, and turning ambiguous customer problems into scalable technical solutions. Your work will help shape best practices for how we support complex customer needs and ensure Notion’s platform is ready for scale.\n\n\n\n\nWHAT YOU'LL ACHIEVE\n\n - Own the hands-on technical delivery of customer engagements, including deep technical discovery, requirements gathering, solution design, and end to end implementation.\n\n - Act as a trusted technical advisor, helping customers make informed architectural decisions and identify opportunities to expand and deepen their use of Notion.\n\n - Design, build, and operate custom agents, integrations, automations, and data pipelines that connect Notion with customers’ systems and workflows.\n\n - Lead the design and execution of large-scale content and data migrations, including discovery, scoping, data modeling, transformation logic, validation, and post-migration optimization.\n\n - Work directly with customer engineering, IT, security and business stakeholders to gather technical requirements, identify constraints, evaluate feasibility, and make sound architectural decisions that maximizes the value of Notion within their broader technical ecosystem.\n\n - Troubleshoot complex implementation issues across APIs, integrations, automation logic, data quality, permissions, authentication, system limits, and customer specific environments.\n\n - Design and operate feedback loops with Product, CX, and Engineering, translating real-world implementation challenges into actionable insights, technical requirements, and tooling improvements that directly influence Notion’s Product Roadmap and our Customers.\n\n - Build reusable technical assets, including migration tooling, integration patterns, reference implementations, discovery frameworks, technical standards, scripts, and internal delivery tooling.\n\n - Help define how Services delivers complex technical implementations at scale by improving methodologies, scoping artifacts, build patterns, technical documentation and engineering best practices.\n\n\n\n\nSKILLS YOU'LL NEED TO BRING\n\n - 5+ years of experience in customer-facing or forward deployed engineering role or a similar hands-on technical role.\n\n - Proficiency in at least one programming language such as Java, JavaScript, Node.js, SQL, or Python and comfort with writing production-quality code in customer-facing or internal engineering contexts.\n\n - Hands-on experience with APIs and data integration.\n\n - Ability to lead technical discovery with customers, assess feasibility, identify risks, scope technical work, estimate effort, and translate ambiguous requirements into an executable plan.\n\n - Strong debugging and problem-solving skills, with the ability to isolate root causes across code, APIs, permissions, integrations and customer specific configuration.\n\n - Strong written and verbal communication skills, with the ability to engage both technical and business audiences effectively.\n\n",
+   "compensation": {
+    "compensationTierSummary": null,
+    "scrapeableCompensationSalarySummary": null,
+    "compensationTiers": [],
+    "summaryComponents": []
+   }
+  },
+  {
+   "id": "05e14247-17c4-4e98-9a13-53828a4e2f13",
+   "title": "Business Development Representative, New York",
+   "department": "Early Career",
+   "team": "Early Career",
+   "employmentType": "FullTime",
+   "location": "New York, New York",
+   "shouldDisplayCompensationOnJobPostings": false,
+   "secondaryLocations": [],
+   "publishedAt": "2026-04-02T21:00:55.755+00:00",
+   "isListed": true,
+   "isRemote": true,
+   "workplaceType": "Hybrid",
+   "address": {
+    "postalAddress": {
+     "addressRegion": "New York",
+     "addressCountry": "United States",
+     "addressLocality": "New York"
+    }
+   },
+   "jobUrl": "https://jobs.ashbyhq.com/notion/05e14247-17c4-4e98-9a13-53828a4e2f13",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/05e14247-17c4-4e98-9a13-53828a4e2f13/application",
+   "descriptionHtml": "",
+   "descriptionPlain": "WHO WE ARE\n\nNotion is the collaborative AI workspace where teams and agents think together https://www.youtube.com/watch?v=vkpYpWfEK5s. We're building one place where your knowledge, projects, meetings, and AI tools live side by side, so work is faster, clearer, and less fragmented. Millions of individuals, small teams, and large companies run their work on Notion.\n\n\n\nNotinos (our employees) are customer zero in bringing this future of work to life. We care about craft, building things that last, and the belief that great work is still fundamentally human. Our goal isn’t to ship the next feature. Each and every team of Notinos is working to set the standard for how humans work together in the AI era. From building a business’s system of record to making and managing AI agents to automating away the busy work, we care deeply about giving our customers more time for their life’s work.\n\n\n\n\nABOUT THE ROLE\n\n",
+   "compensation": {
+    "compensationTierSummary": null,
+    "scrapeableCompensationSalarySummary": null,
+    "compensationTiers": [],
+    "summaryComponents": []
+   }
+  },
+  {
+   "id": "b21fef72-4864-4a3e-a627-91557a0f8a36",
+   "title": "Business Development Representative, San Francisco",
+   "department": "Early Career",
+   "team": "Early Career",
+   "employmentType": "FullTime",
+   "location": "San Francisco, California",
+   "shouldDisplayCompensationOnJobPostings": false,
+   "secondaryLocations": [],
+   "publishedAt": "2026-04-01T23:05:05.541+00:00",
+   "isListed": true,
+   "isRemote": true,
+   "workplaceType": "Hybrid",
+   "address": {
+    "postalAddress": {
+     "addressRegion": "California",
+     "addressCountry": "United States",
+     "addressLocality": "San Francisco"
+    }
+   },
+   "jobUrl": "https://jobs.ashbyhq.com/notion/b21fef72-4864-4a3e-a627-91557a0f8a36",
+   "applyUrl": "https://jobs.ashbyhq.com/notion/b21fef72-4864-4a3e-a627-91557a0f8a36/application",
+   "descriptionHtml": "",
+   "descriptionPlain": "WHO WE ARE\n\nNotion is the collaborative AI workspace where teams and agents think together https://www.youtube.com/watch?v=vkpYpWfEK5s. We're building one place where your knowledge, projects, meetings, and AI tools live side by side, so work is faster, clearer, and less fragmented. Millions of individuals, small teams, and large companies run their work on Notion.\n\n\n\nNotinos (our employees) are customer zero in bringing this future of work to life. We care about craft, building things that last, and the belief that great work is still fundamentally human. Our goal isn’t to ship the next feature. Each and every team of Notinos is working to set the standard for how humans work together in the AI era. From building a business’s system of record to making and managing AI agents to automating away the busy work, we care deeply about giving our customers more time for their life’s work.\n\n\n\n\nABOUT THE ROLE\n\n",
+   "compensation": {
+    "compensationTierSummary": null,
+    "scrapeableCompensationSalarySummary": null,
+    "compensationTiers": [],
+    "summaryComponents": []
+   }
+  }
+ ]
+}

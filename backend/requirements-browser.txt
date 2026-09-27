@@ -1,0 +1,4 @@
+# Optional: render JavaScript-only career pages with headless Chromium.
+# pip install -r requirements-browser.txt && python -m playwright install --with-deps chromium
+-r requirements.txt
+playwright>=1.44

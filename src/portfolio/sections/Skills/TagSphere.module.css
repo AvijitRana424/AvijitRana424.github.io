@@ -1,0 +1,107 @@
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  touch-action: pan-y;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.stage[data-dragging] {
+  cursor: grabbing;
+}
+.stage::before {
+  /* soft chalk-dust glow behind the sphere */
+  content: '';
+  position: absolute;
+  inset: 5%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 42% 38%, color-mix(in srgb, var(--chalk) 7%, transparent), transparent 68%);
+  pointer-events: none;
+}
+
+.outline {
+  position: absolute;
+  inset: 4%;
+  width: 92%;
+  height: 92%;
+  overflow: visible;
+  pointer-events: none;
+}
+.outline path {
+  fill: none;
+  stroke: var(--chalk-faint);
+  stroke-width: 1.3;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+.outline .outline2 {
+  stroke: color-mix(in srgb, var(--chalk) 10%, transparent);
+  stroke-dasharray: 2 7;
+}
+
+.cloud {
+  position: absolute;
+  inset: 0;
+  perspective: var(--persp, 900px);
+}
+
+.item {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  padding: 4px 6px;
+  white-space: nowrap;
+  font-family: var(--font-chalk);
+  font-weight: 700;
+  font-size: calc(clamp(16px, 1.6vw, 22px) * var(--w, 1));
+  line-height: 1;
+  color: var(--c, var(--chalk));
+  cursor: pointer;
+  /* first frame is written synchronously; hide until then */
+  transform: translate(-50%, -50%);
+}
+
+.inner {
+  display: inline-block;
+  border-radius: 999px;
+  text-shadow: 0 0 10px color-mix(in srgb, currentColor 22%, transparent);
+  transition:
+    transform 0.28s var(--ease-spring),
+    opacity 0.35s var(--ease-out),
+    background-color 0.2s,
+    color 0.2s,
+    box-shadow 0.2s;
+}
+/* low specificity so hover / filter / selected states below still win */
+:where(.item[data-core]) .inner {
+  text-shadow: 0 0 14px color-mix(in srgb, currentColor 35%, transparent);
+}
+.item:hover .inner {
+  transform: scale(1.2);
+  text-shadow: 0 0 14px color-mix(in srgb, currentColor 65%, transparent);
+}
+.inner[data-dim] {
+  opacity: 0.13;
+}
+.inner[data-on] {
+  transform: scale(1.1);
+  text-shadow: 0 0 16px color-mix(in srgb, currentColor 55%, transparent);
+}
+.inner[data-sel] {
+  padding: 3px 11px 5px;
+  color: var(--ink);
+  background: var(--paper);
+  box-shadow: var(--shadow-sticker);
+  text-shadow: none;
+  opacity: 1;
+  transform: scale(1.08) rotate(-2deg);
+}
+
+@media (max-width: 640px) {
+  .item {
+    font-size: calc(15px * var(--w, 1));
+    padding: 3px 4px;
+  }
+}
