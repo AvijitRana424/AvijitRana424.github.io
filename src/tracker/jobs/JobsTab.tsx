@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { Kanban, List, Plus, Search, X } from 'lucide-react';
+import { Eraser, Kanban, List, Plus, Search, X } from 'lucide-react';
 import type { Job, JobStatus } from '@/lib/types';
+import { isStale, STALE_AFTER_DAYS, staleCutoff } from '@/lib/tracker/stale';
 import { Button } from '@/ui';
 import { Segmented, Skeleton, Switch } from '../components/Bits';
 import { Drawer } from '../components/Drawer';
@@ -10,6 +11,7 @@ import { scanTimeLocal } from '../lib/format';
 import form from '../components/Form.module.css';
 import { AddJobModal } from './AddJobModal';
 import { Board } from './Board';
+import { ClearStaleDialog } from './ClearStaleDialog';
 import { DeleteJobDialog } from './DeleteJobDialog';
 import { JobDetail } from './JobDetail';
 import { DEFAULT_FILTERS, ListView, type ListFilters } from './ListView';
@@ -27,7 +29,7 @@ function readView(): View {
 }
 
 export function JobsTab({ onGoCompanies }: { onGoCompanies: () => void }) {
-  const { state, jobs, companies, companyById, moveJob, moveJobs, removeJob } = useTracker();
+  const { state, jobs, companies, companyById, moveJob, moveJobs, removeJob, clearStaleJobs } = useTracker();
   const [view, setViewState] = useState<View>(readView);
   const [q, setQ] = useState('');
   const [showArchived, setShowArchived] = useState(false);
@@ -35,6 +37,7 @@ export function JobsTab({ onGoCompanies }: { onGoCompanies: () => void }) {
   const [openId, setOpenId] = useState<string | null>(null);
   const [adding, setAdding] = useState(false);
   const [deleting, setDeleting] = useState<Job | null>(null);
+  const [clearing, setClearing] = useState(false);
 
   const setView = (v: View) => {
     setViewState(v);
@@ -73,6 +76,11 @@ export function JobsTab({ onGoCompanies }: { onGoCompanies: () => void }) {
   }, [openId, openJob, state]);
 
   const archivedCount = jobs.filter((j) => j.status === 'archived').length;
+  // found 7+ days ago and never applied to — what "Clear old jobs" would remove right now
+  const staleJobs = useMemo(() => {
+    const cutoff = staleCutoff();
+    return jobs.filter((j) => isStale(j, cutoff));
+  }, [jobs]);
 
   return (
     <div className={styles.tab}>
@@ -107,6 +115,21 @@ export function JobsTab({ onGoCompanies }: { onGoCompanies: () => void }) {
         <div className={styles.toolbarEnd}>
           <span className={styles.archived}>
             <Switch tone="board" checked={showArchived} onChange={setShowArchived} label={`Show archived${archivedCount ? ` (${archivedCount})` : ''}`} />
+          </span>
+          <span className={styles.clear}>
+            <Button
+              variant="chalk"
+              icon={<Eraser />}
+              onClick={() => setClearing(true)}
+              disabled={!staleJobs.length}
+              title={
+                staleJobs.length
+                  ? `Clear ${staleJobs.length} job${staleJobs.length === 1 ? '' : 's'} found ${STALE_AFTER_DAYS}+ days ago that you haven't applied to`
+                  : `Nothing to clear: no job older than ${STALE_AFTER_DAYS} days is waiting without an application`
+              }
+            >
+              Clear old jobs{staleJobs.length ? ` (${staleJobs.length})` : ''}
+            </Button>
           </span>
           <span className={styles.add}>
             <Button variant="marker" icon={<Plus />} onClick={() => setAdding(true)} disabled={!companies.length && state === 'ready'}>
@@ -176,6 +199,8 @@ export function JobsTab({ onGoCompanies }: { onGoCompanies: () => void }) {
           onDelete={onAskDelete}
         />
       )}
+
+      <ClearStaleDialog open={clearing} jobs={staleJobs} onClose={() => setClearing(false)} onConfirm={() => void clearStaleJobs()} />
 
       <DeleteJobDialog job={deleting} onClose={() => setDeleting(null)} onArchive={(id) => void moveJob(id, 'archived')} onDelete={(id) => removeJob(id)} />
 

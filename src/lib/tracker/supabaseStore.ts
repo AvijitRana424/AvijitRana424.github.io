@@ -3,6 +3,7 @@ import type { Company, FetchRun, Job, NewJob, SearchCriteria } from '@/lib/types
 import type { CompanyPatch, CriteriaPatch, JobPatch, NewCompanyInput, TrackerStore, UpdateJobOptions } from './store';
 import { DEFAULT_CRITERIA } from './defaults';
 import { TrackerError, type TrackerErrorKind } from './errors';
+import { STALE_STATUSES } from './stale';
 
 /** Turn PostgREST / network errors into something a human can act on (no trailing period). */
 export function friendlyError(err: unknown, action: string): TrackerError {
@@ -23,6 +24,9 @@ export function friendlyError(err: unknown, action: string): TrackerError {
     kind = 'permission';
   } else if (code === '42P01' || code === 'PGRST205' || /relation .* does not exist|could not find the table/i.test(msg)) {
     text = 'Tracker tables are missing — run supabase/schema.sql in the Supabase SQL editor';
+    kind = 'schema';
+  } else if (code === '42703' || code === 'PGRST204' || /column .* does not exist|could not find the .* column/i.test(msg)) {
+    text = 'Tracker tables are out of date — run supabase/schema.sql again in the Supabase SQL editor';
     kind = 'schema';
   } else if (code === '23505') {
     text = 'That already exists';
@@ -111,7 +115,8 @@ export class SupabaseStore implements TrackerStore {
   // ── jobs ───────────────────────────────────────────────────
   async listJobs() {
     const rows = await this.wrap<Job[]>('load jobs', () =>
-      this.db.from('jobs').select('*').order('date_found', { ascending: false }),
+      // cleared ("Clear old jobs") rows stay in the table only so the scanner doesn't re-add them
+      this.db.from('jobs').select('*').is('dismissed_at', null).order('date_found', { ascending: false }),
     );
     return rows.map(normJob);
   }
@@ -154,6 +159,24 @@ export class SupabaseStore implements TrackerStore {
   async deleteJob(id: string) {
     const rows = await this.wrap<{ id: string }[]>('delete job', () => this.db.from('jobs').delete().eq('id', id).select('id'));
     if (!rows.length) throw friendlyError({ code: 'PGRST116', message: '' }, 'delete job');
+  }
+
+  async clearStaleJobs(cutoffIso: string) {
+    // Same rule as isStale(), enforced by the database at the moment of the update (a job applied to
+    // in another tab meanwhile is kept). A hard delete would come back as New on the next scan, so the
+    // row is archived (the scanner skips archived jobs) and hidden by dismissed_at instead.
+    const rows = await this.wrap<{ id: string }[]>('clear old jobs', () =>
+      this.db
+        .from('jobs')
+        .update({ status: 'archived', dismissed_at: new Date().toISOString() })
+        .eq('source', 'scraper')
+        .is('applied_at', null)
+        .in('status', STALE_STATUSES)
+        .lt('date_found', cutoffIso)
+        .is('dismissed_at', null)
+        .select('id'),
+    );
+    return rows.map((r) => r.id);
   }
 
   // ── criteria (single row) ──────────────────────────────────

@@ -77,6 +77,12 @@ create index if not exists jobs_company_idx on public.jobs (company_id);
 create index if not exists jobs_status_idx  on public.jobs (status);
 create index if not exists jobs_found_idx   on public.jobs (date_found desc);
 
+-- "Clear old jobs" (tracker button): scraped jobs found 7+ days ago and never applied to are archived
+-- and stamped here. The row stays, hidden, only so the scanner keeps treating the posting as known —
+-- a deleted row would come straight back as New on the next scan.
+alter table public.jobs add column if not exists dismissed_at timestamptz;
+create index if not exists jobs_visible_idx on public.jobs (date_found desc) where dismissed_at is null;
+
 -- keep status_updated_at / applied_at in sync with status changes
 create or replace function public.jobs_status_touch()
 returns trigger

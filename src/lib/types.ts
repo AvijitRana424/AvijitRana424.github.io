@@ -58,6 +58,8 @@ export interface Job {
   notes: string | null;
   source: 'scraper' | 'manual';
   notified: boolean;
+  /** set by "Clear old jobs" — such rows stay in the table (so the scanner skips them) but are never loaded */
+  dismissed_at?: string | null;
 }
 
 export type NewJob = Pick<Job, 'company_id' | 'title'> &

@@ -36,6 +36,9 @@ export interface TrackerStore {
   addJob(input: NewJob): Promise<Job>;
   updateJob(id: string, patch: JobPatch, opts?: UpdateJobOptions): Promise<Job>;
   deleteJob(id: string): Promise<void>;
+  /** Clears every job that isStale() at `cutoffIso` and returns the ids it cleared. Live: the rows stay
+   *  in the table, archived and hidden (dismissed_at), so the scanner doesn't re-add the postings. */
+  clearStaleJobs(cutoffIso: string): Promise<string[]>;
   /** The single search_criteria row (created with defaults if missing). */
   getCriteria(): Promise<SearchCriteria>;
   saveCriteria(partial: CriteriaPatch): Promise<SearchCriteria>;

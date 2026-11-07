@@ -76,8 +76,29 @@
 }
 .seg,
 .archived,
+.clear,
 .add {
   display: inline-flex;
+}
+.breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin: -4px 0 0;
+  padding: 0;
+  list-style: none;
+  font-weight: 600;
+  color: var(--ink);
+}
+.breakdown li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
 }
 @media (max-width: 760px) {
   .toolbar {
@@ -86,7 +107,7 @@
     grid-template-areas:
       'seg add'
       'search search'
-      'arch arch';
+      'arch clear';
     gap: 10px 12px;
   }
   .seg {
@@ -101,6 +122,10 @@
   }
   .archived {
     grid-area: arch;
+  }
+  .clear {
+    grid-area: clear;
+    justify-self: end;
   }
   .add {
     grid-area: add;

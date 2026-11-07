@@ -3,6 +3,7 @@ import type { Company, FetchRun, Job, NewJob, SearchCriteria } from '@/lib/types
 import type { CompanyPatch, CriteriaPatch, JobPatch, NewCompanyInput, TrackerStore, UpdateJobOptions } from './store';
 import { buildSeed, uid, type DemoDb } from './seed';
 import { TrackerError } from './errors';
+import { isStale } from './stale';
 
 export const DEMO_STORAGE_KEY = 'job-radar-demo-v1';
 
@@ -189,6 +190,16 @@ export class LocalStore implements TrackerStore {
     if (!this.db.jobs.some((j) => j.id === id)) throw new TrackerError("Couldn't delete job: it no longer exists", 'notfound');
     this.db.jobs = this.db.jobs.filter((j) => j.id !== id);
     this.commit();
+  }
+
+  async clearStaleJobs(cutoffIso: string) {
+    await wait();
+    // the demo has no scanner to re-add them, so these really go
+    const gone = this.db.jobs.filter((j) => isStale(j, cutoffIso)).map((j) => j.id);
+    const set = new Set(gone);
+    this.db.jobs = this.db.jobs.filter((j) => !set.has(j.id));
+    this.commit();
+    return gone;
   }
 
   // ── criteria ───────────────────────────────────────────────

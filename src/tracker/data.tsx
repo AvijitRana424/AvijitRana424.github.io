@@ -12,6 +12,7 @@ import {
 } from '@/lib/tracker/store';
 import { useToast } from './components/Toast';
 import { nextScan, plural, STATUS_META } from './lib/format';
+import { isStale, staleCutoff } from '@/lib/tracker/stale';
 
 export type LoadState = 'loading' | 'ready' | 'error';
 
@@ -44,6 +45,9 @@ export interface TrackerData {
   removeJob(id: string): boolean;
   addCompany(input: NewCompanyInput): Promise<Company | null>;
   patchCompany(id: string, patch: CompanyPatch, opts?: { quiet?: boolean; message?: ReactNode }): Promise<boolean>;
+  /** "Clear old jobs": hides every isStale() job at once and clears them after the same undo window.
+   *  Returns how many were hidden (0 = nothing to clear). */
+  clearStaleJobs(): number;
   /** Same undo window as removeJob; the company's jobs go with it. */
   removeCompany(id: string): boolean;
   saveCriteria(patch: CriteriaPatch): Promise<boolean>;
@@ -125,6 +129,10 @@ interface PendingDelete {
   commit: () => void;
 }
 
+interface PendingClear extends PendingDelete {
+  ids: Set<string>;
+}
+
 export function TrackerDataProvider({ children }: { children: ReactNode }) {
   const store = useMemo(() => getStore(), []);
   const toast = useToast();
@@ -157,6 +165,7 @@ export function TrackerDataProvider({ children }: { children: ReactNode }) {
   const lastBgError = useRef<string | null>(null);
   const pendingJobDeletes = useRef(new Map<string, PendingDelete>());
   const pendingCompanyDeletes = useRef(new Map<string, PendingDelete>());
+  const pendingClear = useRef<PendingClear | null>(null);
 
   const reload = useCallback<TrackerData['reload']>(
     async (opts) => {
@@ -181,7 +190,8 @@ export function TrackerDataProvider({ children }: { children: ReactNode }) {
         const goneJobs = pendingJobDeletes.current;
         const goneCos = pendingCompanyDeletes.current;
         setCompanies(c.filter((x) => !goneCos.has(x.id)));
-        setJobs(j.filter((x) => !goneJobs.has(x.id) && !goneCos.has(x.company_id)));
+        const cleared = pendingClear.current?.ids;
+        setJobs(j.filter((x) => !goneJobs.has(x.id) && !goneCos.has(x.company_id) && !cleared?.has(x.id)));
         setCriteria(cr);
         setRuns(r);
         setError(null);
@@ -385,6 +395,63 @@ export function TrackerDataProvider({ children }: { children: ReactNode }) {
     [store, toast],
   );
 
+  const clearStaleJobs = useCallback<TrackerData['clearStaleJobs']>(() => {
+    pendingClear.current?.commit(); // a previous clear still in its undo window goes through first
+    const cutoff = staleCutoff();
+    const gone = jobsRef.current.filter((j) => isStale(j, cutoff) && !pendingJobDeletes.current.has(j.id));
+    if (!gone.length) return 0;
+    const ids = new Set(gone.map((j) => j.id));
+    setJobs((js) => js.filter((j) => !ids.has(j.id)));
+    const putBack = () => setJobs((js) => [...js, ...gone.filter((g) => !js.some((j) => j.id === g.id))].sort(byFound));
+    const commit = () => {
+      const p = pendingClear.current;
+      if (!p || p.ids !== ids) return;
+      window.clearTimeout(p.timer);
+      pendingClear.current = null;
+      inFlight.current++; // a background refresh mid-request must not flash the jobs back
+      store
+        .clearStaleJobs(cutoff)
+        .then(
+          (clearedIds) => {
+            if (!clearedIds.length) {
+              // RLS updates nothing for an expired session instead of failing
+              putBack();
+              toast({ tone: 'error', message: "Couldn't clear old jobs: nothing changed — refresh, or sign in again. They're back on the board." });
+              return;
+            }
+            const done = new Set(clearedIds);
+            setJobs((js) => js.filter((j) => !done.has(j.id)));
+            clearedIds.forEach(clearNotesDraft);
+            // some were kept (e.g. applied to from another tab meanwhile): reload to show them as they are now
+            if (gone.some((g) => !done.has(g.id))) window.setTimeout(() => void reload({ quiet: true, background: true }), 0);
+          },
+          (e) => {
+            putBack();
+            toast({ tone: 'error', message: `${msg(e)}. They're back on the board.` });
+          },
+        )
+        .finally(() => {
+          inFlight.current--;
+        });
+    };
+    pendingClear.current = { ids, timer: window.setTimeout(commit, UNDO_MS + 250), commit };
+    toast({
+      message: <>Cleared {plural(gone.length, 'old job')} you didn't apply to</>,
+      duration: UNDO_MS,
+      action: {
+        label: 'Undo',
+        onClick: () => {
+          const p = pendingClear.current;
+          if (!p || p.ids !== ids) return;
+          window.clearTimeout(p.timer);
+          pendingClear.current = null;
+          putBack();
+        },
+      },
+    });
+    return gone.length;
+  }, [store, toast, reload]);
+
   const addCompany = useCallback<TrackerData['addCompany']>(
     async (input) => {
       try {
@@ -473,6 +540,7 @@ export function TrackerDataProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const flush = () => {
       for (const p of [...pendingJobDeletes.current.values(), ...pendingCompanyDeletes.current.values()]) p.commit();
+      pendingClear.current?.commit();
     };
     window.addEventListener('pagehide', flush);
     return () => window.removeEventListener('pagehide', flush);
@@ -622,6 +690,7 @@ export function TrackerDataProvider({ children }: { children: ReactNode }) {
     patchJob,
     addJob,
     removeJob,
+    clearStaleJobs,
     addCompany,
     patchCompany,
     removeCompany,
